@@ -11,7 +11,7 @@ class Startup extends Model
 {
     protected $fillable = [
         'name',
-        'startdate',
+        'start-date',
         'website',
         'employees',
         'image',

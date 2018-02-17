@@ -15,7 +15,6 @@ class RoleTableSeeder extends Seeder
         foreach($roles as $r){
             DB::table('roles')->insert([
                 'name' => $r,
-                'active' => true,
             ]);
         }
     }
