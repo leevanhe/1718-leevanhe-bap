@@ -15,6 +15,11 @@ class DatabaseSeeder extends Seeder
             RoleTableSeeder::class,
             AdressesTableSeeder::class,
             StartupTableSeeder::class,
+            CategoryTableSeeder::class,
+            EventTableSeeder::class,
+            PostTableSeeder::class,
+            ServicesTableSeeder::class,
+            RealisationsTableSeeder::class,
         ]);
     }
 }
