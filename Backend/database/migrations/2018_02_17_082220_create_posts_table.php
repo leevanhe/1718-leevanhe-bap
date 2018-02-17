@@ -15,7 +15,12 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('description', 1000);
+
+            $table->unsignedInteger('startup_id');
             $table->timestamps();
+
+            $table->foreign('startup_id')->references('id')->on('startups');
         });
     }
 

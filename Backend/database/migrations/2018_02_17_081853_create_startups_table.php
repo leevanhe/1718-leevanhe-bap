@@ -15,7 +15,18 @@ class CreateStartupsTable extends Migration
     {
         Schema::create('startups', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('website');
+            $table->string('image');
+            $table->unsignedInteger('employees');
+            $table->date('start-date');
+
+            $table->unsignedInteger('adresses_id');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('adresses_id')->references('id')->on('adresses');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

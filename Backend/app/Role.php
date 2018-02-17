@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Role extends Model
 {
@@ -15,6 +16,6 @@ class Role extends Model
     */
     public function User()
     {
-        return $this->hasMany('App\User');
+        return $this->hasMany(User::class);
     }
 }
