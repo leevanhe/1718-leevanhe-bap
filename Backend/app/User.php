@@ -4,10 +4,14 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Startup;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    const VERIFIED_USER = '1';
+    const UNVERIFIED_USER = '0';
 
     /**
      * The attributes that are mass assignable.
@@ -18,6 +22,8 @@ class User extends Authenticatable
         'name', 
         'email', 
         'password',
+        'verified',
+        'verification_token',
         'role_id',
     ];
 
@@ -29,13 +35,33 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 
         'remember_token',
+        'verification_token'
     ];
 
     /** 
-     * Get a role a user
+     * Relationships
     */
     public function role () 
     {
         return $this->belongsTo('App\Role');
+    }
+
+    public function startup()
+    {
+        return $this->belongsTo(Startup::class);
+    }
+
+    /*+
+     * Method verified
+    */
+    public function isVerified () {
+        return $this->verified == User::VERIFIED_USER;
+    }
+
+    /*+
+     * generate token
+    */
+    public static function generateVerificationToken () {
+        return str_random(40);
     }
 }
