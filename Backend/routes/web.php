@@ -12,7 +12,7 @@
 */
 
 Route::middleware('auth')->group(function() {
-    Route::get('/dashboard', 'Backoffice\Home\IndexController@index')->middleware('auth');
+    Route::get('/dashboard', 'Backoffice\Home\IndexController@index');
 });
 
 Auth::routes();

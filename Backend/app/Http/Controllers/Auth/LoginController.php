@@ -33,15 +33,10 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        $role = Role::where('name', '=', 'admin')->first();
-        if(Auth::attempt(['username' => $request->username, 'password' => $request->password], $request->remember))
+        if(Auth::attempt(['username' => $request->username, 'password' => $request->password, 'role_id' => 1], $request->remember))
         {
-            if(Auth::user()->role_id == $role->id)
-            {
-                return redirect()->intended('/dashboard');
-            } else {
-                abort(404, 'Not allowed');
-            }
+            return redirect()->intended('/dashboard');
+
         } else {
             return redirect()->back();
         }
