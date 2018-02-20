@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Role;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -18,14 +21,38 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+    public function index () {
+        return view('auth.login');
+    }
+
+    public function authenticate(Request $request)
+    {
+        $this->validate($request, [
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        $role = Role::where('name', '=', 'admin')->first();
+        if(Auth::attempt(['username' => $request->username, 'password' => $request->password], $request->remember))
+        {
+            if(Auth::user()->role_id == $role->id)
+            {
+                return redirect()->intended('/dashboard');
+            } else {
+                abort(404, 'Not allowed');
+            }
+        } else {
+            return redirect()->back();
+        }
+    }
+
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect()->intended('login');
+    }
 
     /**
      * Create a new controller instance.

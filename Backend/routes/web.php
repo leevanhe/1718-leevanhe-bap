@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('auth')->group(function() {
+    Route::get('/dashboard', 'Backoffice\Home\IndexController@index')->middleware('auth');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+Route::get('/login', 'Auth\LoginController@index')->name('login');
+Route::post('/authenticate', 'Auth\LoginController@authenticate')->name('authenticate');
+
+
