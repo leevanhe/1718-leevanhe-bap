@@ -25,21 +25,16 @@
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    &nbsp;
-                </ul>
 
-                <!-- Right Side Of Navbar -->
+                <!-- Top navbar -->
                 <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
                     @guest
                         <li><a href="{{ route('login') }}">Login</a></li>
                         <li><a href="{{ route('register') }}">Register</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu">
@@ -58,9 +53,26 @@
                         </li>
                     @endguest
                 </ul>
+
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+                            <li {{ (Request::is('/dashboard') ? 'class="active"' : '') }}>
+                                <a href="{{ ('/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            </li>
+                            <li {{ (Request::is('/users') ? 'class="active"' : '') }}>
+                                <a href="{{ ('/users') }}"><i class="fa fa-dashboard fa-fw"></i> Users</a>
+                            </li>
+                            <li {{ (Request::is('/events') ? 'class="active"' : '') }}>
+                                <a href="{{ ('/events') }}"><i class="fa fa-dashboard fa-fw"></i> Events</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
             </div>
         </nav>
-        <div class="page-wrapper">
+        <div id="page-wrapper">
         @yield('content')
         </div>
 </div>
