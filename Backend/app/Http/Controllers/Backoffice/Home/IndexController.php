@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Backoffice\Home;
 
+use App\User;
+use App\Event;
+use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +17,10 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view ('home.index');
+        $getuserscount = User::all()->count();
+        $geteventscount = Event::all()->count();
+        $getpostscount = Post::all()->count();
+        return view ('home.index', compact('getuserscount', 'geteventscount', 'getpostscount'));
     }
 
     /**

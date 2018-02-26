@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backoffice\Event;
 
+use App\Event;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event::all();
+        return view ('event.index', compact('events'));
     }
 
     /**
@@ -24,7 +26,6 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
