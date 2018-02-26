@@ -13,6 +13,8 @@
 
 Route::middleware('auth')->group(function() {
     Route::get('/dashboard', 'Backoffice\Home\IndexController@index');
+    Route::resource('/users', 'Backoffice\User\UserController');
+    Route::resource('/events', 'Backoffice\Event\EventController');
 });
 
 Auth::routes();

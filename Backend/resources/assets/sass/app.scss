@@ -5,5 +5,16 @@
 // Variables
 @import "variables";
 
+//components
+@import '/components/navigation';
+
+//helpers
+@import '/helpers/default';
+
+//pages
+@import '/pages/home';
+@import '/pages/user';
+@import '/pages/events';
+
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";

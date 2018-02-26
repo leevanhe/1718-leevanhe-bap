@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.globals.navigation')
 
 @section('content')
     <div class="container">
