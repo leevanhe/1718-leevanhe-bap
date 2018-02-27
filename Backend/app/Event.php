@@ -4,15 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Startup;
-use App\Adresses;
+use App\Adres;
 
 class Event extends Model
 {
     protected $fillable = [
         'name',
         'description',
-        'start-date',
-        'end-date',
+        'start',
+        'end',
         'adresses_id',
         'startup_id'
     ];
@@ -20,7 +20,7 @@ class Event extends Model
     /** 
      * Relationships
     */
-    public function adres()
+    public function adresses()
     {
         return $this->belongsTo(Adresses::class);
     }

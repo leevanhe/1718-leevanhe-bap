@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backoffice\User;
 
+use App\User;
+use App\Startup;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +16,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.index');
+        $users = User::where('role_id', '=' ,3)->get();
+        $startups = Startup::all(); 
+        return view('user.index', compact('users', 'startups'));
     }
 
     /**

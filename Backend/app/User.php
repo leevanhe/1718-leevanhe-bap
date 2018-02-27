@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Startup;
+use App\Role;
+
 
 class User extends Authenticatable
 {
@@ -42,8 +44,10 @@ class User extends Authenticatable
     */
     public function role () 
     {
-        return $this->belongsTo('App\Role');
+        return $this->belongsTo(Role::class);
     }
+
+    
 
     public function startup()
     {

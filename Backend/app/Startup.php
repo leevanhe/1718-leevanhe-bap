@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Adresses;
 use App\Category;
 use App\User;
+use App\Event;
 
 class Startup extends Model
 {
@@ -22,7 +23,7 @@ class Startup extends Model
     /** 
      * Relationships
     */
-    public function adres()
+    public function adresses()
     {
         return $this->belongsTo(Adresses::class);
     }
@@ -35,5 +36,10 @@ class Startup extends Model
     public function user()
     {
        return $this->hasOne(User::class); 
+    }
+
+    public function event()
+    {
+        return $this->hasMany(Event::class);
     }
 }
