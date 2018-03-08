@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Backoffice\User;
 
 use App\User;
 use App\Startup;
+use App\Adresses;
+use App\Role;
+use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,9 +19,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('role_id', '=' ,3)->get();
         $startups = Startup::all(); 
-        return view('user.index', compact('users', 'startups'));
+        return view('user.index', compact('startups'));
     }
 
     /**
@@ -28,7 +30,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+
+        return view('user.create', compact('roles'));
     }
 
     /**
@@ -39,7 +43,66 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate
+        $rules = [
+            //user
+            'username' => 'required|string|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+
+            //adress
+            'line1' => 'required|string',
+            'city' => 'required|string',
+            'ZIP' => 'required|numeric|digits_between:3,9',
+            'country' => 'required|string',
+
+            //startup
+            'name' => 'required|string',
+            'description' => 'required',
+            'website' => 'required|url',
+            'employees' => 'required|numeric',
+            'start' => 'required|date|after:2015-01-01',
+        ];
+
+        $this->validate($request, $rules);
+
+        //create
+        $role = Role::where('name', 'admin')->first();
+        
+        $user = new User;
+        $user->username = $request->username;
+        $user->password = bcrypt($request->password);
+        $user->verified = User::UNVERIFIED_USER;
+        $user->verification_token = User::generateVerificationToken();
+        $user->role_id = $role->id;
+        $user->save();
+
+        $adress = new Adresses;
+        $adress->line1 = $request->line1;
+        $adress->city = $request->city;
+        $adress->ZIP = $request->ZIP;
+        $adress->country = $request->country;
+        $adress->save();
+        
+        $startup = new startup;
+        $startup->name = $request->name;
+        $startup->description = $request->description;
+        $startup->website = $request->website;
+        $startup->image = $request->image;
+        $startup->employees = $request->employees;
+        $startup->start = $request->start;
+
+        //belongsto
+        $startup->adresses()->associate($adress);
+        $startup->user()->associate($user);
+        //hasone
+        $user->startup()->save($startup);
+
+        $startup->save();
+
+        //redirect
+        Session::flash('succes', 'The user was succesfully saved!');
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -50,7 +113,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('user.show');
     }
 
     /**
@@ -61,7 +124,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('user.edit');
     }
 
     /**

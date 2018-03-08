@@ -12,7 +12,8 @@ class Startup extends Model
 {
     protected $fillable = [
         'name',
-        'start-date',
+        'start',
+        'description',
         'website',
         'employees',
         'image',
@@ -35,7 +36,7 @@ class Startup extends Model
 
     public function user()
     {
-       return $this->hasOne(User::class); 
+       return $this->belongsTo(User::class); 
     }
 
     public function event()

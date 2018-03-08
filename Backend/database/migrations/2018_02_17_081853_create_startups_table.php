@@ -16,10 +16,11 @@ class CreateStartupsTable extends Migration
         Schema::create('startups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('description', 1000);
             $table->string('website');
             $table->string('image');
             $table->unsignedInteger('employees');
-            $table->date('start-date');
+            $table->date('start');
 
             $table->unsignedInteger('adresses_id');
             $table->unsignedInteger('user_id');

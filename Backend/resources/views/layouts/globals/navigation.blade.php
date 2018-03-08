@@ -73,7 +73,9 @@
             </div>
         </nav>
         <div id="page-wrapper">
-        @yield('content')
+            <div class="row">
+                @yield('content')
+            </div>
         </div>
 </div>
 @endsection

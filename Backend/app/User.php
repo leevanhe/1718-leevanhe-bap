@@ -51,7 +51,7 @@ class User extends Authenticatable
 
     public function startup()
     {
-        return $this->belongsTo(Startup::class);
+        return $this->hasOne(Startup::class);
     }
 
     /*+
