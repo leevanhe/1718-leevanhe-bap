@@ -7,6 +7,8 @@ use App\Adresses;
 use App\Category;
 use App\User;
 use App\Event;
+use App\Realisations;
+use App\Services;
 
 class Startup extends Model
 {
@@ -42,5 +44,15 @@ class Startup extends Model
     public function event()
     {
         return $this->hasMany(Event::class);
+    }
+
+    public function realisations()
+    {
+        return $this->hasMany(Realisations::class);
+    }
+
+    public function services()
+    {
+        return $this->hasMany(Services::class);
     }
 }

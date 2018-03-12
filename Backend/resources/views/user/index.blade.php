@@ -29,7 +29,7 @@
                         <tr>
                             <th>{{ $startup->id }}</th>
                             <td>{{ $startup->name }}</td>
-                            <td>{{ substr($startup->description, 0, 100) }}{{ strlen($startup->description) > 100 ? "..." : ""}}</td>
+                            <td>{{ substr($startup->description, 0, 90) }}{{ strlen($startup->description) > 90 ? "..." : ""}}</td>
                             <td>
                                 <a href="{{ route('users.show', $startup->id) }}" class="btn btn-default btn-sm">View</a> 
                                 <a href="{{ route('users.edit', $startup->id) }}" class="btn btn-default btn-sm">Edit</a>

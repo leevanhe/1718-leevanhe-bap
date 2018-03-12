@@ -9,6 +9,7 @@ use App\Services;
 class Realisations extends Model
 {
     protected $fillable = [
+        'name',
         'description',
         'startup_id',
         'service_id'

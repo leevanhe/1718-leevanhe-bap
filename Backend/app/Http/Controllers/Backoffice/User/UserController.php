@@ -114,8 +114,10 @@ class UserController extends Controller
     public function show($id)
     {
         $startup = Startup::find($id);
+        $realisations = Startup::find($id)->realisations;
+        $services = Startup::find($id)->services;
 
-        return view('user.show')->with('startup', $startup);
+        return view('user.show', compact('startup', 'realisations', 'services'));
     }
 
     /**
@@ -128,7 +130,7 @@ class UserController extends Controller
     {
         $startup = Startup::find($id);
 
-        return view('user.edit')->with('startup', $startup);
+        return view('user.edit', compact('startup'));
     }
 
     /**

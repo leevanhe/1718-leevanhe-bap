@@ -15,6 +15,7 @@ class CreateRealisationsTable extends Migration
     {
         Schema::create('realisations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->string('description', 1000);
 
             $table->unsignedInteger('startup_id');
