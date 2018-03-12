@@ -113,7 +113,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('user.show');
+        $startup = Startup::find($id);
+
+        return view('user.show')->with('startup', $startup);
     }
 
     /**
@@ -124,7 +126,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('user.edit');
+        $startup = Startup::find($id);
+
+        return view('user.edit')->with('startup', $startup);
     }
 
     /**

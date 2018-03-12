@@ -12,9 +12,13 @@
         <div class="row">
             <div class="col-lg-12">
                 @include('partials._messages')
+                @if(count($startups) === 0)
+                <p>No Users</p>
+                @else
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Company name</th>
                             <th>Description</th>
                             <th>Actions</th>
@@ -23,7 +27,8 @@
                     <tbody>
                         @foreach($startups as $startup)
                         <tr>
-                            <td>{{ $startup->name}}</td>
+                            <th>{{ $startup->id }}</th>
+                            <td>{{ $startup->name }}</td>
                             <td>{{ substr($startup->description, 0, 100) }}{{ strlen($startup->description) > 100 ? "..." : ""}}</td>
                             <td>
                                 <a href="{{ route('users.show', $startup->id) }}" class="btn btn-default btn-sm">View</a> 
@@ -33,6 +38,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                @endif
             </div>
         </div>
     </div>

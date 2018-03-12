@@ -11,27 +11,31 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
+                @include('partials._messages')
                 @if(count($events) === 0)
                 <p>No events</p>
                 @else
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Name</th>
-                            <th>description</th>
+                            <th>Description</th>
                             <th>date</th>
-                            <th>adres</th>
                             <th>actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($events as $event)
                         <tr>
+                            <td>{{ $event->id }}</td>
                             <td>{{ $event->name }}</td>
-                            <td>{{ $event->description }}</td>
+                            <td>{{ substr($event->description, 0, 50) }} {{strlen($event->description) > 50 ? '...' : '' }}</td>
                             <td>{{ Carbon\Carbon::parse($event->start)->format('d-m-Y') }} from {{ Carbon\Carbon::parse($event->start)->format('h:m') }}  untill {{ Carbon\Carbon::parse($event->end)->format('h:m')}}</td>
-                            <td>{{ $event->adresses->line1 }}, {{ $event->adresses->city }}</td>
-                            <td>edit | delete</td>
+                            <td>
+                                <a href="{{ route('events.show', $event->id) }}" class="btn btn-default btn-sm">View</a> 
+                                <a href="{{ route('events.edit', $event->id) }}" class="btn btn-default btn-sm">Edit</a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
