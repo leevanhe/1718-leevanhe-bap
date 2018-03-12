@@ -19,6 +19,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>avatar</th>
                             <th>Company name</th>
                             <th>Description</th>
                             <th>Actions</th>
@@ -28,8 +29,9 @@
                         @foreach($startups as $startup)
                         <tr>
                             <th>{{ $startup->id }}</th>
+                            <td><img src="uploads/avatar/{{ $startup->avatar }}" style="width:30px; height:30px; border-radius:50%;"></td>
                             <td>{{ $startup->name }}</td>
-                            <td>{{ substr($startup->description, 0, 90) }}{{ strlen($startup->description) > 90 ? "..." : ""}}</td>
+                            <td>{{ substr($startup->description, 0, 70) }}{{ strlen($startup->description) > 70 ? "..." : ""}}</td>
                             <td>
                                 <a href="{{ route('users.show', $startup->id) }}" class="btn btn-default btn-sm">View</a> 
                                 <a href="{{ route('users.edit', $startup->id) }}" class="btn btn-default btn-sm">Edit</a>

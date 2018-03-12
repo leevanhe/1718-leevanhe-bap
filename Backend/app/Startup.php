@@ -14,11 +14,11 @@ class Startup extends Model
 {
     protected $fillable = [
         'name',
+        'avatar',
         'start',
         'description',
         'website',
         'employees',
-        'image',
         'adresses_id',
         'user_id'
     ];
