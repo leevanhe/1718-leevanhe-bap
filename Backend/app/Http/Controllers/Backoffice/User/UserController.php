@@ -7,6 +7,9 @@ use App\Startup;
 use App\Adresses;
 use App\Role;
 use Session;
+use Image;
+use App\Http\Requests\UpdateStartup;
+use App\Http\Requests\CreateStartup;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -31,7 +34,6 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
-
         return view('user.create', compact('roles'));
     }
 
@@ -41,65 +43,48 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateStartup $request)
     {
-        //validate
-        $rules = [
-            //user
-            'username' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
 
-            //adress
-            'line1' => 'required|string',
-            'city' => 'required|string',
-            'ZIP' => 'required|numeric|digits_between:3,9',
-            'country' => 'required|string',
+        //Create
+        if($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatar/'.$filename));
 
-            //startup
-            'name' => 'required|string',
-            'description' => 'required',
-            'website' => 'required|url',
-            'employees' => 'required|numeric',
-            'start' => 'required|date|after:2015-01-01',
-        ];
+            //TODO
+            $role = Role::where('name', 'admin')->first();
 
-        $this->validate($request, $rules);
+            $user = new User;
+            $user->username = $request->username;
+            $user->password = bcrypt($request->password);
+            $user->avatar = $filename;
+            $user->verified = User::UNVERIFIED_USER;
+            $user->verification_token = User::generateVerificationToken();
+            $user->role_id = $role->id;
+            $user->save();
 
-        //create
-        $role = Role::where('name', 'admin')->first();
-        
-        $user = new User;
-        $user->username = $request->username;
-        $user->password = bcrypt($request->password);
-        $user->verified = User::UNVERIFIED_USER;
-        $user->verification_token = User::generateVerificationToken();
-        $user->role_id = $role->id;
-        $user->save();
+            $adress = new Adresses;
+            $adress->line1 = $request->line1;
+            $adress->city = $request->city;
+            $adress->ZIP = $request->ZIP;
+            $adress->country = $request->country;
+            $adress->save();
+            
+            $startup = new startup;
+            $startup->name = $request->name;
+            $startup->description = $request->description;
+            $startup->website = $request->website;
+            $startup->employees = $request->employees;
+            $startup->start = $request->start;
 
-        $adress = new Adresses;
-        $adress->line1 = $request->line1;
-        $adress->city = $request->city;
-        $adress->ZIP = $request->ZIP;
-        $adress->country = $request->country;
-        $adress->save();
-        
-        $startup = new startup;
-        $startup->name = $request->name;
-        $startup->description = $request->description;
-        $startup->website = $request->website;
-        $startup->image = $request->image;
-        $startup->employees = $request->employees;
-        $startup->start = $request->start;
+            $startup->adresses()->associate($adress);
+            $startup->user()->associate($user);
 
-        //belongsto
-        $startup->adresses()->associate($adress);
-        $startup->user()->associate($user);
-        //hasone
-        $user->startup()->save($startup);
+            $startup->save();
+        }
 
-        $startup->save();
-
-        //redirect
+        //Redirect
         Session::flash('succes', 'The user was succesfully saved!');
 
         return redirect()->route('users.index');
@@ -113,6 +98,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
+
         $startup = Startup::find($id);
         $realisations = Startup::find($id)->realisations;
         $services = Startup::find($id)->services;
@@ -128,7 +114,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $startup = Startup::find($id);
+        $startup = Startup::info()->find($id);
 
         return view('user.edit', compact('startup'));
     }
@@ -136,13 +122,43 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  UpdateStartup $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateStartup $request, $id)
     {
-        //
+        //Update
+        if($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatar/'.$filename));
+
+            $startup = Startup::find($id);
+            $startup->name = $request->input('name');
+            $startup->description = $request->input('description');
+            $startup->website = $request->input('website');
+            $startup->employees = $request->input('employees');
+            $startup->start = $request->input('start');
+            $startup->save();
+
+            $user = $startup->user;
+            $user->avatar = $filename;
+            $user->save();
+
+            $adress = $startup->adresses;
+            $adress->line1 = $request->input('line1');
+            $adress->city = $request->input('city');
+            $adress->ZIP = $request->input('ZIP');
+            $adress->country = $request->input('country');
+            $adress->save();     
+        }
+
+        //Redirect
+        $startup = Startup::find($id);
+        Session::flash('succes', 'The user was succesfully saved!');
+
+        return redirect()->route('users.show', $startup->id);
     }
 
     /**
@@ -153,6 +169,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $startup = Startup::find($id);
+
+        $startup->delete();
+
+        return redirect()->route('users.index');
     }
 }

@@ -1,15 +1,8 @@
-<div class="navigation">
-    <a href="/">
-        <i class="fa fa-home" aria-hidden="true"></i>
-    </a>
-</div>
-
-
 @extends('layouts.app')
 
 @section('body')
-<div id="wrapper">
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+<div id="wrapper" style="margin-top:50px; background-color: #ec6845;">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->
@@ -21,7 +14,9 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">StartMeUp</a>
+                <a class="navbar-brand" href="{{ url('/') }}" style="color: black;">
+                <img src="assets/img/logo/logo.png" width="30" height="30" style="display: inline-block;">
+                StartMeUp</a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -33,7 +28,8 @@
                         <li><a href="{{ route('register') }}">Register</a></li>
                     @else
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" style="position:relative; padding-left:50px; color: black;">
+                                <img src="assets/img/uploads/avatar/{{ Auth::user()->avatar }}" class="avatar-header">
                                 {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
 
@@ -54,21 +50,21 @@
                     @endguest
                 </ul>
 
-                <div class="navbar-default sidebar" role="navigation">
+                <!-- Sidebar navbar -->                
+                <div class="navbar-default sidebar" role="navigation" style="background-color: #ec6845;">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
-                            <li {{ (Request::is('/dashboard') ? 'class="active"' : '') }}>
+                            <li>
                                 <a href="{{ ('/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                             </li>
-                            <li {{ (Request::is('/users') ? 'class="active"' : '') }}>
+                            <li>
                                 <a href="{{ ('/users') }}"><i class="fa fa-dashboard fa-fw"></i> Users</a>
                             </li>
-                            <li {{ (Request::is('/events') ? 'class="active"' : '') }}>
+                            <li>
                                 <a href="{{ ('/events') }}"><i class="fa fa-dashboard fa-fw"></i> Events</a>
                             </li>
                         </ul>
                     </div>
-                    <!-- /.sidebar-collapse -->
                 </div>
             </div>
         </nav>

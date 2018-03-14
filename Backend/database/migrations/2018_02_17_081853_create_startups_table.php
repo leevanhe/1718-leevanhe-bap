@@ -16,7 +16,6 @@ class CreateStartupsTable extends Migration
         Schema::create('startups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('avatar')->default('default.jpg');
             $table->string('description', 1000);
             $table->string('website');
             $table->unsignedInteger('employees');
@@ -26,7 +25,7 @@ class CreateStartupsTable extends Migration
             $table->timestamps();
 
             $table->foreign('adresses_id')->references('id')->on('adresses');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

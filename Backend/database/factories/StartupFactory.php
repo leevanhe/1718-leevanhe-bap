@@ -5,7 +5,6 @@ use Faker\Generator as Faker;
 $factory->define(App\Startup::class, function (Faker $faker) {
     return [
         'name' => $faker->company,
-        'avatar' => $faker->randomElement(['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg']),
         'description' => $faker->text($maxNbChars = 1000),
         'start' => $faker->dateTime($max = 'now'),
         'website' => $faker->url,

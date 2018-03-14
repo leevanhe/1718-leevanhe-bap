@@ -19,7 +19,47 @@
                             </ul>
                         </div>
                     @endif
-                    {!! Form::open(array('route' => 'users.store')) !!}
+                    {!! Form::open(array('route' => 'users.store', 'files'=>true)) !!}
+
+                    <!--Startup-->
+                    <div class="form-group">
+                        {!! Form::label('name', 'Company name') !!}
+                        {!! Form::text('name', null, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('description', 'Description') !!}
+                        {!! Form::textarea('description', null, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('website', 'Website') !!}
+                        {!! Form::text('website', null, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('employees', 'Employees') !!}
+                        {!! Form::text('employees', null, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('start', 'Start') !!}
+                        {!! Form::date('start', \Carbon\Carbon::now()->format('Y-m-d'), ['class'=>'form-control']) !!}
+                    </div>
+
+                    <!--User-->
+                    <div class="form-group">
+                        {!! Form::label('username', 'Username') !!}
+                        {!! Form::text('username', null, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('password', 'Password') !!}
+                        {!! Form::password('password', null, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('password_confirmation', 'Confirm Password') !!}
+                        {!! Form::password('password_confirmation', null, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('avatar', 'Avatar') !!}
+                        {!! Form::file('avatar', null, ['class'=>'form-control']) !!}
+                    </div>
 
                     <!--Adress-->
                     <div class="form-group">
@@ -39,20 +79,6 @@
                         {!! Form::text('country', null, ['class'=>'form-control']) !!}
                     </div>
 
-                    <!--User-->
-                    <div class="form-group">
-                        {!! Form::label('username', 'Username') !!}
-                        {!! Form::text('username', null, ['class'=>'form-control']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('password', 'Password') !!}
-                        {!! Form::password('password', null, ['class'=>'form-control']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('password_confirmation', 'Confirm Password') !!}
-                        {!! Form::password('password_confirmation', null, ['class'=>'form-control']) !!}
-                    </div>
-
                     <!--
                     <div>
                         <label for="role">role</label>
@@ -65,33 +91,6 @@
                         </select>
                     </div>
                     -->
-
-                    <!--Startup-->
-                    <div class="form-group">
-                        {!! Form::label('name', 'Company name') !!}
-                        {!! Form::text('name', null, ['class'=>'form-control']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('description', 'Description') !!}
-                        {!! Form::textarea('description', null, ['class'=>'form-control']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('website', 'Website') !!}
-                        {!! Form::text('website', null, ['class'=>'form-control']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('image', 'image') !!}
-                        {!! Form::text('image', null, ['class'=>'form-control']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('employees', 'Employees') !!}
-                        {!! Form::text('employees', null, ['class'=>'form-control']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('start', 'Start') !!}
-                        {!! Form::date('start', \Carbon\Carbon::now()->format('Y-m-d'), ['class'=>'form-control']) !!}
-                    </div>
-                
 
                     <div class="form-group">
                         {!! Form::button('Create',['type' => 'submit', 'class' => 'btn btn-primary'])!!}

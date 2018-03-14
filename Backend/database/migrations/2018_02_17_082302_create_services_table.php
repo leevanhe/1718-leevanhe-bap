@@ -21,7 +21,7 @@ class CreateServicesTable extends Migration
             $table->unsignedInteger('startup_id');
             $table->timestamps();
 
-            $table->foreign('startup_id')->references('id')->on('startups');
+            $table->foreign('startup_id')->references('id')->on('startups')->onDelete('cascade');
         });
     }
 

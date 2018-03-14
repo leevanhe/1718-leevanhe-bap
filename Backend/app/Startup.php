@@ -14,7 +14,6 @@ class Startup extends Model
 {
     protected $fillable = [
         'name',
-        'avatar',
         'start',
         'description',
         'website',
@@ -54,5 +53,14 @@ class Startup extends Model
     public function services()
     {
         return $this->hasMany(Services::class);
+    }
+
+    /**
+     * Query
+     */
+
+    public function scopeInfo($query)
+    {
+        return $query->with('user', 'adresses');
     }
 }

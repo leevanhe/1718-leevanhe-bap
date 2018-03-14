@@ -22,8 +22,8 @@ class CreateRealisationsTable extends Migration
             $table->unsignedInteger('service_id');
             $table->timestamps();
 
-            $table->foreign('startup_id')->references('id')->on('startups');
-            $table->foreign('service_id')->references('id')->on('services');
+            $table->foreign('startup_id')->references('id')->on('startups')->onDelete('cascade');
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
         });
     }
 
