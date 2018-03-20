@@ -55,13 +55,13 @@
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li>
-                                <a href="{{ ('/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                <a href="{{ ('/dashboard') }}"><i class="fa fa-dashboard fa-lg" style="padding-left: 5px; margin-right:10px;"></i> Dashboard</a>
                             </li>
                             <li>
-                                <a href="{{ ('/users') }}"><i class="fa fa-dashboard fa-fw"></i> Users</a>
+                                <a href="{{ ('/users') }}"><i class="fa fa-users fa-lg" style="padding-left: 5px; margin-right:10px;"></i> Users</a>
                             </li>
                             <li>
-                                <a href="{{ ('/events') }}"><i class="fa fa-dashboard fa-fw"></i> Events</a>
+                                <a href="{{ ('/events') }}"><i class="fa fa-calendar fa-lg" style="padding-left: 5px; margin-right:10px;"></i> Events</a>
                             </li>
                         </ul>
                     </div>

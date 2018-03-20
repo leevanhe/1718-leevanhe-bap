@@ -17,7 +17,7 @@
                         @if(count($startups) === 0)
                         <p>No Users</p>
                         @else
-                        <table class="table table-striped table-bordered table-hover">
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -35,8 +35,8 @@
                                     <td>{{ $startup->name }}</td>
                                     <td>{{ substr($startup->description, 0, 70) }}{{ strlen($startup->description) > 70 ? "..." : ""}}</td>
                                     <td>
-                                        <a href="{{ route('users.show', $startup->id) }}" class="btn btn-default btn-sm">View</a> 
-                                        <a href="{{ route('users.edit', $startup->id) }}" class="btn btn-default btn-sm">Edit</a>
+                                        <a href="{{ route('users.show', $startup->id) }}"><i style="padding-right:10px;" class="text-info fa fa-eye fa-lg"></i></a> 
+                                        <a href="{{ route('users.edit', $startup->id) }}"><i class="text-warning fa fa-edit fa-lg"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

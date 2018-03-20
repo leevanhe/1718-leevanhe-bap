@@ -50,7 +50,7 @@ class UserController extends Controller
         if($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatar/'.$filename));
+            Image::make($avatar)->resize(300, 300)->save(public_path('/assets/img/uploads/avatar/'.$filename));
 
             //TODO
             $role = Role::where('name', 'admin')->first();
@@ -132,7 +132,7 @@ class UserController extends Controller
         if($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatar/'.$filename));
+            Image::make($avatar)->resize(300, 300)->save(public_path('/assets/img/uploads/avatar/'.$filename));
 
             $startup = Startup::find($id);
             $startup->name = $request->input('name');

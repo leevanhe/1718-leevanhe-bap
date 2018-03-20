@@ -5,17 +5,20 @@
 // Variables
 @import "variables";
 
-//components
+// Components
 @import '/components/navigation';
 
-//helpers
+// Helpers
 @import '/helpers/default';
 
-//pages
+// Pages
 @import '/pages/home';
 @import '/pages/user';
 @import '/pages/events';
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Font-awesome
+@import "~font-awesome/scss/font-awesome.scss";
 

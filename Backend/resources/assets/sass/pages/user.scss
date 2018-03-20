@@ -1,3 +1,4 @@
+// Img
 .avatar-small{
     width:32px; 
     height:32px;  
@@ -8,10 +9,37 @@
     height:100px; 
 }
 
+// Tabs
+.nav-tabs>li>a{
+    border-radius:0px !important; 
+    border: none !important;
+    color: $text-color;
+}
+
+.nav-tabs>li>a:hover{
+    background-color: white !important;
+    color: black !important;
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover{
+    color: black !important;
+    border-bottom-style: solid !important;
+    border-bottom-color: #ec6845 !important;
+}
+
+// Content tabs
 .realisations:last-child hr {
     display: none;
 }
 
 .services:last-child hr {
     display: none;
+}
+
+// Form
+
+.page-header{
+    margin: 0 !important;
 }

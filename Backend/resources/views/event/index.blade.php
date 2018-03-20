@@ -17,7 +17,7 @@
                         @if(count($events) === 0)
                         <p>No events</p>
                         @else
-                        <table class="table table-striped table-bordered table-hover">
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -35,8 +35,8 @@
                                     <td>{{ substr($event->description, 0, 50) }} {{strlen($event->description) > 50 ? '...' : '' }}</td>
                                     <td>{{ Carbon\Carbon::parse($event->start)->format('d-m-Y') }} from {{ Carbon\Carbon::parse($event->start)->format('h:m') }}  untill {{ Carbon\Carbon::parse($event->end)->format('h:m')}}</td>
                                     <td>
-                                        <a href="{{ route('events.show', $event->id) }}" class="btn btn-default btn-sm">View</a> 
-                                        <a href="{{ route('events.edit', $event->id) }}" class="btn btn-default btn-sm">Edit</a>
+                                        <a href="{{ route('events.show', $event->id) }}"><i style="padding-right:10px;" class="text-info fa fa-eye fa-lg"></i></a> 
+                                        <a href="{{ route('events.edit', $event->id) }}"><i class="text-warning fa fa-edit fa-lg"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach
