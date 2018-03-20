@@ -29,7 +29,7 @@ export const login =(credentials) => {
             response => { 
                 if(response.data != 'Invalid password'){
                     dispatch(loginSuccess(response.data)),
-                    this.saveCredentials(credentials.username, credentials.password, response.data.token, response.data.parent).then(Actions.calendar()); 
+                    this.saveCredentials(credentials.username, credentials.password, response.data.token, response.data.startup).then(Actions.calendar()); 
                 }
             })
         .catch(error => {
@@ -38,14 +38,14 @@ export const login =(credentials) => {
         });
     }
 }
-saveCredentials = (username, password, token, parent_id) => {
-        let parent = {
+saveCredentials = (username, password, token, startup_id) => {
+        let startup = {
             username: username, 
             password: password, 
             token: token, 
-            parent_id: parent_id
+            startup_id: startup_id
         } 
-        return AsyncStorage.setItem('parent', JSON.stringify(parent)); 
+        return AsyncStorage.setItem('startup', JSON.stringify(startup)); 
 }
 
 export const loginPending = () => ({
