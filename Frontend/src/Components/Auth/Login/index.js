@@ -4,7 +4,8 @@ import { connect }from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import store from '../../../Reducers/index';
-import styles from './styles';
+import Colors from '../../../Config/theme';
+import Button from '../../Button/index';
 
 class LoginService extends Component {
   constructor(props) {
@@ -27,30 +28,47 @@ class LoginService extends Component {
       render() {
         return (
           <View  style={styles.container}>
-          {this.errorActive == true ? <Text style={styles.error}>{this.error}</Text> : null}
-            <Text style={styles.label}>username</Text>
-            <TextInput
-                style={styles.textInput}
-                onChangeText={(username) => {this.setState({username})}}
-                value={this.state.username}/>
+            {this.errorActive == true ? <Text style={styles.error}>{this.error}</Text> : null}
 
-            <Text style={styles.label}>password</Text>
-            <TextInput
-                style={styles.textInput}
-                onChangeText={(password) => this.setState({password})}
-                value={this.state.password}/>
-            
-            <TouchableOpacity
-                style={styles.btn}
-                onPress={() => {
-                  this.props.login(JSON.stringify(this.state)); 
-                }}>
-                <Text style={styles.btnText}>Log in</Text>
-            </TouchableOpacity>
+            <TextInput style={styles.textInput} onChangeText={(username) => {this.setState({username})}} value={this.state.username}/>
+            <TextInput style={styles.textInput} onChangeText={(password) => this.setState({password})} value={this.state.password}/>
+
+            <Button onPress={() => {this.props.login(JSON.stringify(this.state)); }}> Log in </Button>
           </View>
         );
       }
 }
+
+const styles = StyleSheet.create({
+  container: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      margin: 10,
+  },
+  label: {
+      fontWeight: '800',
+      color: Colors.darkgrey,
+      marginBottom:0
+  },
+  textInput: {
+      marginBottom: 15,
+      height: 40,
+      width: 300,
+      borderColor: 'white',
+      borderWidth: 1,
+      padding: 10,
+      backgroundColor: 'white'
+  },
+  error: {
+      color: '#efefef',
+      textAlign: 'center',
+      fontWeight: '800',
+      marginTop: 10,
+      marginBottom: 10,
+      backgroundColor: 'red',
+      padding: 5
+  }
+});
 
 
 export default connect()(LoginService);

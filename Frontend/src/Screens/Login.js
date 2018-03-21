@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Colors from '../Config/theme';
 import LoginService from '../Actions/Login/AuthActions';
 
+const logo = require('../Assets/logo-enkel.png');
+
 class Login extends React.Component{  
     constructor(props){
         super(props);
@@ -12,7 +14,7 @@ class Login extends React.Component{
 render(){  
       return (
         <View style={styles.box}>
-            <Image style={styles.logo} source={require('../Assets/logo.png')} />
+            <Image style={styles.logo} source={require('../Assets/logo-enkel.png')} />
             <LoginService />
         </View>
       )

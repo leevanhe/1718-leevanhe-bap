@@ -5,13 +5,12 @@ import Colors from './theme';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import { View } from 'react-native';
 
-import CalendarScreen from '../Screens/Calendar/Calendar';
-import History from '../Screens/History';
-import Profile from '../Screens/Profile';
-import NewCalendarScreen from '../Screens/Calendar/NewCalendarScreen';
-import UpdateCalendarScreen from '../Screens/Calendar/UpdateCalendarScreen';
 import Login from '../Screens/Login';
-import TabIcon from '../Components/TabIcon';
+import Timeline from '../Screens/Timeline/Timeline';
+import Matchmaking from '../Screens/Matchmaking/Matchmaking';
+import Events from '../Screens/Events/Events';
+import Profile from '../Screens/Profile';
+//import TabIcon from '../Components/TabIcon';
 
 const reducerCreate = params => {
     const defaultReducer = new Reducer(params);
@@ -23,30 +22,9 @@ const reducerCreate = params => {
   const navigator = () => (
     <Router createReducer={reducerCreate} >
         <Scene key="root" tabBarPosition='bottom'>
-            <Modal key="quickAdd">
-                <Scene   
-                    key="quickAdd"
-                    hideNavBar={true}
-                    component={NewCalendarScreen}  />
-            </Modal>
-            <Modal key="updateCalendar">
-                <Scene   
-                    key="updateCalendar"
-                    hideNavBar={true}
-                    component={UpdateCalendarScreen}  />
-             </Modal>
 
-
-
-
-            <Scene
-                initial={true}
-                key="login"
-                component={Login}
-                hideNavBar={true}/>
-
-
-                
+            <Scene initial={true} key="login" component={Login} hideNavBar={true}/> 
+  
             <Scene 
                 key="tabbar"
                 tabs={true}
@@ -54,29 +32,15 @@ const reducerCreate = params => {
                 swipeEnabled={false}
                 activeBackgroundColor={Colors.deeppink}
                 labelStyle={{display: 'none'}}
-                activeTintColor={Colors.white}
-                tabBarStyle={{ backgroundColor: Colors.white }}>
-                <Scene
-                    iconName="calendar"
-                    tabBarLabel=" "
-                    icon={TabIcon}
-                    key="calendar"
-                    hideNavBar={true}
-                    component={CalendarScreen}/>
-                <Scene
-                    key="history"
-                    tabBarLabel=" "
-                    iconName="history"
-                    icon={TabIcon}
-                    hideNavBar={true}
-                    component={History}/>
-                <Scene
-                    key="profile"
-                    iconName="user"
-                    icon={TabIcon}
-                    tabBarLabel=" "
-                    hideNavBar={true}
-                    component={Profile}/>
+                activeTintColor={Colors.orange}
+                activeBackgroundColor = {Colors.red}
+                tabBarStyle={{ backgroundColor: Colors.orange }}>
+                
+                <Scene key="timeline" component={Timeline}/>
+                <Scene key="matchmaking" component={Matchmaking}/>
+                <Scene key="events" component={Events}/>
+                <Scene key="profile" component={Profile}/>
+
             </Scene>
         </Scene>
     </Router>

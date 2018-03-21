@@ -1,4 +1,4 @@
-import * as ActionTypes from '../ActionTypes';
+import * as ActionTypes from '../actionTypes';
 import axios from 'axios';
 import LoginService from '../../Components/Auth/Login/index';
 
