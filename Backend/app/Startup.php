@@ -11,6 +11,7 @@ use App\Event;
 use App\Realisations;
 use App\Services;
 use App\Post;
+use App\Startup;
 
 class Startup extends Model
 {
@@ -61,6 +62,42 @@ class Startup extends Model
     {
         return $this->hasMany(Post::class);
     }
+
+    /**
+     * Connections
+     */
+    public function connections()
+	{
+		return $this->belongsToMany(Startup::class, 'connection_startup', 'startup_id', 'connection_id');
+	}
+
+	public function addConnection(Startup $startup)
+	{
+		$this->connections()->attach($startup->id);
+	}
+
+	public function removeConnection(Startup $startup)
+	{
+		$this->connections()->detach($startup->id);
+    }
+    
+    /**
+     * Recommendations
+     */
+    public function recommendations()
+	{
+		return $this->belongsToMany(Startup::class, 'recommendation_startup', 'startup_id', 'recommendation_id');
+	}
+
+	public function addRecommendation(Startup $startup)
+	{
+		$this->recommendations()->attach($startup->id);
+	}
+
+	public function removeRecommendation(Startup $startup)
+	{
+		$this->recommendations()->detach($startup->id);
+	}
 
     /**
      * Query

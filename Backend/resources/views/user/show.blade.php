@@ -59,13 +59,15 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#menu2">Realisations</a></li>
-                            <li><a data-toggle="tab" href="#menu3">Services</a></li>
+                            <li class="active"><a data-toggle="tab" href="#realisations">Realisations</a></li>
+                            <li><a data-toggle="tab" href="#services">Services</a></li>
+                            <li><a data-toggle="tab" href="#connections">Connections</a></li>
+                            <li><a data-toggle="tab" href="#recommendations">Recommendations</a></li>
                         </ul>
 
                         <div class="tab-content" style="margin-top: 10px;">
 
-                            <div id="menu2" class="tab-pane fade in active">
+                            <div id="realisations" class="tab-pane fade in active">
                                 @if(count($realisations) === 0)
                                 <p>No realisations</p>
                                 @else
@@ -88,7 +90,8 @@
                                     @endforeach
                                 @endif    
                             </div>
-                            <div id="menu3" class="tab-pane fade">
+
+                            <div id="services" class="tab-pane fade">
                                 @if(count($services) === 0)
                                 <p>No services</p>
                                 @else
@@ -107,6 +110,40 @@
                                     </div>
                                     @endforeach
                                 @endif
+                            </div>
+
+                            <div id="connections" class="tab-pane fade">
+                                @if(count($connections) === 0)
+                                <p>No connections</p>
+                                @else
+                                    @foreach($connections as $connection)
+                                    <div class="connections">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p><strong>Name:</strong> <br>{{ $connection->name}}</p>
+                                                <img src="../assets/img/uploads/avatar/{{ $connection->user->avatar }}" class="avatar-small">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    @endforeach
+                                @endif  
+                            </div>
+                            <div id="recommendations" class="tab-pane fade">
+                                @if(count($recommendations) === 0)
+                                <p>No recommendations</p>
+                                @else
+                                    @foreach($recommendations as $recommendation)
+                                    <div class="recommendations">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <p><strong>Name:</strong> <br>{{ $recommendation->name}}</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    @endforeach
+                                @endif  
                             </div>
                         </div>
                     </div>

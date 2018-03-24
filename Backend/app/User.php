@@ -53,42 +53,6 @@ class User extends Authenticatable
         return $this->hasOne(Startup::class);
     }
 
-    /**
-     * Connections
-     */
-    public function connections()
-	{
-		return $this->belongsToMany('User', 'connections_users', 'user_id', 'connection_id');
-	}
-
-	public function addConnection(User $user)
-	{
-		$this->connections()->attach($user->id);
-	}
-
-	public function removeConnection(User $user)
-	{
-		$this->connections()->detach($user->id);
-    }
-    
-    /**
-     * Recommendations
-     */
-    public function recommendations()
-	{
-		return $this->belongsToMany('User', 'recommendations_users', 'user_id', 'recommendation_id');
-	}
-
-	public function addRecommendation(User $user)
-	{
-		$this->recommendations()->attach($user->id);
-	}
-
-	public function removeRecommendation(User $user)
-	{
-		$this->recommendations()->detach($user->id);
-	}
-
     /*+
      * Method verified
     */

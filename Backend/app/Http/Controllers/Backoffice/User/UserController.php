@@ -101,10 +101,12 @@ class UserController extends Controller
 
         $startup = Startup::find($id);
         $categories = Startup::find($id)->categories;
+        $connections = Startup::find($id)->connections;
+        $recommendations = Startup::find($id)->recommendations;
         $realisations = Startup::find($id)->realisations;
         $services = Startup::find($id)->services;
 
-        return view('user.show', compact('startup', 'realisations', 'services', 'categories'));
+        return view('user.show', compact('startup', 'realisations', 'services', 'categories', 'recommendations', 'connections'));
     }
 
     /**
