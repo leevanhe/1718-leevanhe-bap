@@ -14,11 +14,13 @@ class CategoryServiceTable extends Migration
     public function up()
     {
         Schema::create('category_service', function (Blueprint $table) {
-            $table->unsignedInteger('category_id');
-            $table->unsignedInteger('service_id');
+            $table->integer('category_id')->unsigned();
+            $table->integer('service_id')->unsigned();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');  
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade'); 
+            
+            $table->primary(['category_id', 'service_id']);
         });
     }
 

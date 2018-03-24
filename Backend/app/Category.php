@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Startup;
 use App\Services;
+use App\CategoryStartup;
 
 class Category extends Model
 {
@@ -16,7 +17,7 @@ class Category extends Model
     /** 
      * Relationships
     */
-    public function startup()
+    public function startups()
     {
         return $this->belongsToMany(Startup::class);
     }

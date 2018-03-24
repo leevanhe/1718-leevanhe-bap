@@ -14,11 +14,13 @@ class CategoryStartupTable extends Migration
     public function up()
     {
         Schema::create('category_startup', function (Blueprint $table) {
-            $table->unsignedInteger('category_id');
-            $table->unsignedInteger('startup_id');
+            $table->integer('startup_id')->unsigned();
+            $table->integer('category_id')->unsigned();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('startup_id')->references('id')->on('startups')->onDelete('cascade');            
+            $table->foreign('startup_id')->references('id')->on('startups')->onDelete('cascade');
+            
+            $table->primary(['startup_id', 'category_id']);
         });
     }
 

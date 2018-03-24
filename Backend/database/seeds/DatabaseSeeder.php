@@ -15,12 +15,14 @@ class DatabaseSeeder extends Seeder
             RoleTableSeeder::class,
             UsersTableSeeder::class,
             AdressesTableSeeder::class,
-            StartupTableSeeder::class,
             CategoryTableSeeder::class,
+            StartupTableSeeder::class,
             EventTableSeeder::class,
             PostTableSeeder::class,
             ServicesTableSeeder::class,
             RealisationsTableSeeder::class,
+            CategoryStartupTableSeeder::class,
+            CategoryServiceTableSeeder::class,
         ]);
     }
 }

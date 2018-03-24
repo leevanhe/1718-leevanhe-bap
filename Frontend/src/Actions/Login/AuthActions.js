@@ -29,7 +29,7 @@ export const login =(credentials) => {
             response => { 
                 if(response.data != 'Invalid password'){
                     dispatch(loginSuccess(response.data)),
-                    this.saveCredentials(credentials.username, credentials.password, response.data.token, response.data.startup).then(Actions.calendar()); 
+                    this.saveCredentials(credentials.username, credentials.password, response.data.token, response.data.startup).then(Actions.timeline()); 
                 }
             })
         .catch(error => {

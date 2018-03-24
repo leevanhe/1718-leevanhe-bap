@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Adresses;
 use App\Category;
+use App\CategoryStartup;
 use App\User;
 use App\Event;
 use App\Realisations;
 use App\Services;
+use App\Post;
 
 class Startup extends Model
 {
@@ -30,7 +32,7 @@ class Startup extends Model
         return $this->belongsTo(Adresses::class);
     }
 
-    public function category()
+    public function categories()
     {
         return $this->belongsToMany(Category::class);
     }
@@ -53,6 +55,11 @@ class Startup extends Model
     public function services()
     {
         return $this->hasMany(Services::class);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 
     /**

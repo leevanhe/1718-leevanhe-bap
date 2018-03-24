@@ -100,10 +100,11 @@ class UserController extends Controller
     {
 
         $startup = Startup::find($id);
+        $categories = Startup::find($id)->categories;
         $realisations = Startup::find($id)->realisations;
         $services = Startup::find($id)->services;
 
-        return view('user.show', compact('startup', 'realisations', 'services'));
+        return view('user.show', compact('startup', 'realisations', 'services', 'categories'));
     }
 
     /**

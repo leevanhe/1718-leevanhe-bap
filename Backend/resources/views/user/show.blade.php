@@ -42,7 +42,15 @@
                             </div>
                             <div class="col-md-6 col-xs-12">
                                 <p><strong>Startdate:</strong> <br>{{ $startup->start }}</p>
-                                <p><strong>Categories:</strong> <br> #category #category #category #category #category #category #category</p>
+                                <p><strong>Categories:</strong><br>
+                                @if(count($categories) === 0)
+                                    <p>No categories</p>
+                                @else
+                                    @foreach($categories as $category)
+                                        #{{ $category->name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    @endforeach
+                                @endif
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -87,6 +95,14 @@
                                     @foreach($services as $service)
                                     <div class="services">
                                         <p><strong>Description</strong> <br>{{ $service->description }}</p>
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#demo">Read more</button>
+                                        </div>
+                                        <div id="demo" class="collapse">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        </div>
                                         <hr>
                                     </div>
                                     @endforeach
