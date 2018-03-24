@@ -60,7 +60,7 @@
                     <div class="panel-body">
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#realisations">Realisations</a></li>
-                            <li><a data-toggle="tab" href="#services">Services</a></li>
+                            <li><a data-toggle="tab" href="#services">Services test</a></li>
                             <li><a data-toggle="tab" href="#connections">Connections</a></li>
                             <li><a data-toggle="tab" href="#recommendations">Recommendations</a></li>
                         </ul>
