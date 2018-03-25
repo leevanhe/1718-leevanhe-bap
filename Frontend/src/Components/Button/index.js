@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
+import Colors from '../../Config/theme';
 
 const Button = ({onPress, children}) => {
     return (
@@ -14,14 +15,14 @@ const Button = ({onPress, children}) => {
 const styles = StyleSheet.create({
     button: {
         alignItems: 'center',
-        backgroundColor: '#FFA734',
+        backgroundColor: Colors.white,
         padding: 10,
         marginTop: 20,
         width: 300,
       },
       buttonText: {
         fontSize: 20,
-        color: 'white',
+        color: Colors.red,
       },
 })
 

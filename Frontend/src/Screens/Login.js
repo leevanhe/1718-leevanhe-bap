@@ -14,12 +14,10 @@ class Login extends React.Component{
 
 render(){  
       return (
-        <LinearGradient colors={['#EC6845', '#E94F43']}>
         <View style={styles.box}>
             <Image style={styles.logo} source={require('../Assets/logo-enkel.png')} />
             <LoginService />
         </View>
-        </LinearGradient>
       )
 
   }
@@ -27,11 +25,12 @@ render(){
 const styles = StyleSheet.create({
     box: {
         flex: 1,
-        padding: 30,
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: Colors.orange,
     },
     logo: {
-      marginBottom: 15
+        marginTop: 45,
+        marginBottom: 20
     }
 });
     

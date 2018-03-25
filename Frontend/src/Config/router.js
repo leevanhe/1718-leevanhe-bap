@@ -23,23 +23,23 @@ const reducerCreate = params => {
     <Router createReducer={reducerCreate} >
         <Scene key="root" tabBarPosition='bottom'>
 
-            <Scene initial={true} key="login" component={Login} hideNavBar={true}/> 
+            {/*<Scene initial={true} key="login"component={Login} hideNavBar={true}/>*/}
   
             <Scene 
                 key="tabbar"
+                lazy={true}
                 tabs={true}
                 hideNavBar={true}
                 swipeEnabled={false}
-                activeBackgroundColor={Colors.deeppink}
-                labelStyle={{display: 'none'}}
-                activeTintColor={Colors.orange}
-                activeBackgroundColor = {Colors.red}
-                tabBarStyle={{ backgroundColor: Colors.orange }}>
+                activeBackgroundColor={Colors.red}
+                activeTintColor={Colors.white}
+                tabBarStyle={{ backgroundColor: Colors.orange }}
+                labelStyle={{flex: 1, alignSelf: 'center', fontSize: 12, marginBottom: 15, color: Colors.white}}>
                 
-                <Scene key="timeline" component={Timeline}/>
-                <Scene key="matchmaking" component={Matchmaking}/>
-                <Scene key="events" component={Events}/>
-                <Scene key="profile" component={Profile}/>
+                <Scene key="timeline" component={Timeline} tabBarLabel="Timeline" hideNavBar={true}/>
+                <Scene key="matchmaking" component={Matchmaking} tabBarLabel="Match" hideNavBar={true}/>
+                <Scene key="events" component={Events} tabBarLabel="Events" hideNavBar={true}/>
+                <Scene key="profile" component={Profile} tabBarLabel="Profile" hideNavBar={true}/>
 
             </Scene>
         </Scene>
