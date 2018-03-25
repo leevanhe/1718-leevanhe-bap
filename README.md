@@ -1,24 +1,14 @@
 StartMeUp
 ==================================
 
-StartMeUp/
-	├── Backend/
-	├── Docs/
-    │	├── Productiedossier
-	│	├── Timesheet
-    │	└── Academische poster
-	├── Frontend/
-	└── README.md
-
     .
-    ├── build                   # Compiled files (alternatively `dist`)
-	│   ├── benchmarks
-    ├── docs                    # Documentation files (alternatively `doc`)
-    ├── src                     # Source files (alternatively `lib` or `app`)
-    ├── test                    # Automated tests (alternatively `spec` or `tests`)
-    ├── tools                   # Tools and utilities
-    ├── LICENSE
-    └── README.md
+    ├── Backend/
+    ├── Docs/
+	│   ├── Productiedossier
+	│   ├── Timesheet
+	│	└── Academische poster
+    ├── Frontend/
+    └──  README.md
 
 ## Info
 
