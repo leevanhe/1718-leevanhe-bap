@@ -12,6 +12,7 @@ use Tymon\JWTAuth\JWT;
 use Tymon\JWTAuth\JWTGuard;
 use App\User;
 use App\Startup;
+use App\Adresses;
 use Carbon\Carbon;
 
 class AuthController extends Controller
@@ -26,20 +27,23 @@ class AuthController extends Controller
     {
         // Take the credentials
         $user = User::where('username', '=', $request['username'])->first();
+
         if($user != null){
             // Check is password is valid.
             if (password_verify($request['password'], $user['password'])) {
+
                 $token = JWTAuth::fromUser($user);
 
-                // return token and parent id for later use.  
+                // return token and startup id for later use.  
                 $startup = Startup::where('user_id', '=', $user->id)->first();
+                
                 $response = [
                     "token" => $token,
-                    "startup" => $startup->id
+                    "startup" => $startup->id,
                 ];
+
                 return $response;
 
-                return $token;
             } else {
                 abort(403, 'Invalid password'); 
             }
