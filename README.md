@@ -2,12 +2,12 @@ StartMeUp
 ==================================
 
     .
-    ├── Backend/
+    ├── Backend/					# Backend created with Laravel 5.5
     ├── Docs/
 	│   ├── Productiedossier
 	│   ├── Timesheet
 	│	└── Academische poster
-    ├── Frontend/
+    ├── Frontend/					# Clienside created with React Native 0.54
     └──  README.md
 
 ## Info
