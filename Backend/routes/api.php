@@ -24,4 +24,6 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     
 });
 
+Route::get('/startup/profile', 'API\Profile\ProfileController@index');
+
 Route::post('/auth', 'API\Auth\AuthController@authenticate');

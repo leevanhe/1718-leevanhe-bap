@@ -22,7 +22,7 @@ const reducerCreate = params => {
     <Router createReducer={reducerCreate} >
         <Scene key="root" tabBarPosition='bottom'>
 
-            {/*<Scene initial={true} key="login"component={Login} hideNavBar={true}/>*/}
+            <Scene initial={true} key="login"component={Login} hideNavBar={true}/>
   
             <Scene 
                 key="tabbar"
