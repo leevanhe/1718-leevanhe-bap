@@ -11,6 +11,7 @@ class Timeline extends Component {
         <Header/>
         <Text>Timeline</Text>
         <Icon name="home" size={30} color="#900"/>
+        <Text>Flatlist gebruiken voor lazy loading</Text>
       </View>
     );
   }

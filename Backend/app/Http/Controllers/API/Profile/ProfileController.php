@@ -36,7 +36,7 @@ class ProfileController extends Controller
         }
 
         // 2. Retreive all info
-        $startup = Startup::where('user_id', $id)->get(['id','name']);
+        $startup = Startup::where('user_id', $id)->get(['id','name','description','website','employees','start']);
 
         // Merge all info into one pretty object.
         $data['startups'] =  $startup;

@@ -12,7 +12,8 @@ const Header = (props) => (
 
 const style = StyleSheet.create ({
     container: {
-        height: 100,
+        flex: 1,
+        maxHeight: 100,
         paddingTop: 25,
         alignItems: 'center',
         backgroundColor: Colors.orange,

@@ -5,7 +5,6 @@ import { Actions } from 'react-native-router-flux';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import store from '../../../Reducers/index';
 import Colors from '../../../Config/theme';
-import Button from '../../Button/index';
 
 class LoginService extends Component {
   constructor(props) {
@@ -30,10 +29,12 @@ class LoginService extends Component {
           <View  style={styles.container}>
             {this.errorActive == true ? <Text style={styles.error}>{this.error}</Text> : null}
 
-            <TextInput style={styles.textInput} onChangeText={(username) => {this.setState({username})}} value={this.state.username}/>
-            <TextInput style={styles.textInput} onChangeText={(password) => this.setState({password})} value={this.state.password}/>
+            <TextInput placeholder="username" autoCapitalize="none" style={styles.textInput} onChangeText={(username) => {this.setState({username})}} value={this.state.username}/>
+            <TextInput placeholder="password" autoCapitalize="none" secureTextEntry={true} style={styles.textInput} onChangeText={(password) => this.setState({password})} value={this.state.password}/>
 
-            <Button onPress={() => {this.props.login(JSON.stringify(this.state)); }}> Log in </Button>
+            <TouchableOpacity style={styles.btn} onPress={() => {this.props.login(JSON.stringify(this.state)); }}>
+              <Text style={styles.btnText}>Login</Text>
+            </TouchableOpacity>
           </View>
         );
       }
@@ -67,6 +68,17 @@ const styles = StyleSheet.create({
       marginBottom: 10,
       backgroundColor: 'red',
       padding: 5
+  },
+  btn: {
+      alignItems: 'center',
+      backgroundColor: Colors.white,
+      padding: 10,
+      marginTop: 20,
+      width: 300,
+  },
+  btnText: {
+      fontSize: 20,
+      color: Colors.red,
   }
 });
 

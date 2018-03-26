@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Header from '../Components/Header/index';
 import ProfileSevice from '../Actions/Profile/ProfileActions';
 
 class Profile extends Component {
   render() {
     return (
-      <View>
+      <View style={{flex: 1}}>
 		    <Header/>
         <ProfileSevice />
       </View>
