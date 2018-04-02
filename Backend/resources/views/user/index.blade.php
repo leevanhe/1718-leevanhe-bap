@@ -31,7 +31,7 @@
                                 @foreach($startups as $startup)
                                 <tr>
                                     <th>{{ $startup->id }}</th>
-                                    <td><img src="assets/img/uploads/avatar/{{ $startup->user->avatar }}" class="avatar-small"></td>
+                                    <td><img src="assets/img/uploads/avatar/{{ $startup->avatar }}" class="avatar-small"></td>
                                     <td>{{ $startup->name }}</td>
                                     <td>{{ substr($startup->description, 0, 70) }}{{ strlen($startup->description) > 70 ? "..." : ""}}</td>
                                     <td>

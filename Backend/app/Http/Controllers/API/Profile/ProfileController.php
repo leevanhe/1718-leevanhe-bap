@@ -36,10 +36,39 @@ class ProfileController extends Controller
         }
 
         // 2. Retreive all info
-        $startup = Startup::where('user_id', $id)->get(['id','name','description','website','employees','start']);
+        $startup = Startup::where('user_id', $id)->get(['id','name','description','website','avatar','employees','start']);
+        $connections= [];
+        $realisations= [];
+        $recommendations= [];
+        
+        //TODO
+        $realisations = Startup::with('realisations')->where('user_id', $id)->first()->realisations()->get(['id','name']);
+
+        //Realisations
+        //Connections
+        foreach ($startup as $s) {
+            $connection = $s->connections()->get(['id', 'name','description']);
+            $recommendation = $s->recommendations()->get(['id', 'name','description']);
+            $realisation = $s->realisations()->get(['id', 'name', 'description']);
+            
+            if(Count($connection) > 0){
+                $connections = $connection;
+            }
+
+            if(Count($recommendation) > 0){
+                $recommendations = $recommendation;
+            }
+
+            if(Count($realisation) > 0){
+                $realisations = $realisation;
+            }
+        }
 
         // Merge all info into one pretty object.
         $data['startups'] =  $startup;
+        $data['connections'] =  $connections;
+        $data['realisations'] =  $realisations;
+        $data['recommendations'] =  $recommendations;
 
         return $data;
     }

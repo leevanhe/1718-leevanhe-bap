@@ -9,7 +9,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-12 col-md-4">
-                                <img style="padding-top: 30px; width:100%;" src="../assets/img/uploads/avatar/{{ $startup->user->avatar }}">
+                                <img style="padding-top: 30px; width:100%;" src="../assets/img/uploads/avatar/{{ $startup->avatar }}">
                             </div>
                             <div class="col-xs-12 col-md-8">
                                 <div class="col-md-8">
@@ -121,7 +121,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <p><strong>Name:</strong> <br>{{ $connection->name}}</p>
-                                                <img src="../assets/img/uploads/avatar/{{ $connection->user->avatar }}" class="avatar-small">
+                                                <img src="../assets/img/uploads/avatar/{{ $connection->avatar }}" class="avatar-small">
                                             </div>
                                         </div>
                                         <hr>

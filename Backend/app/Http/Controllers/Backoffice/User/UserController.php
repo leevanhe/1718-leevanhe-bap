@@ -58,7 +58,6 @@ class UserController extends Controller
             $user = new User;
             $user->username = $request->username;
             $user->password = bcrypt($request->password);
-            $user->avatar = $filename;
             $user->verified = User::UNVERIFIED_USER;
             $user->verification_token = User::generateVerificationToken();
             $user->role_id = $role->id;
@@ -74,6 +73,7 @@ class UserController extends Controller
             $startup = new startup;
             $startup->name = $request->name;
             $startup->description = $request->description;
+            $startup->avatar = $filename;
             $startup->website = $request->website;
             $startup->employees = $request->employees;
             $startup->start = $request->start;
@@ -140,13 +140,13 @@ class UserController extends Controller
             $startup = Startup::find($id);
             $startup->name = $request->input('name');
             $startup->description = $request->input('description');
+            $startup->avatar = $filename;
             $startup->website = $request->input('website');
             $startup->employees = $request->input('employees');
             $startup->start = $request->input('start');
             $startup->save();
 
             $user = $startup->user;
-            $user->avatar = $filename;
             $user->save();
 
             $adress = $startup->adresses;

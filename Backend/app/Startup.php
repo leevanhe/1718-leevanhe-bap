@@ -18,6 +18,7 @@ class Startup extends Model
     protected $fillable = [
         'name',
         'start',
+        'avatar',
         'description',
         'website',
         'employees',

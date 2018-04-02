@@ -16,7 +16,6 @@ class UsersTableSeeder extends Seeder
         $role = Role::where(['name' => 'admin'])->first();
         DB::table('users')->insert([
             'username' => 'leevanhe',
-            'avatar' => '1.jpg',
             'password' => bcrypt('n64MJ6H2'),
             'role_id' => $role->id
         ]);

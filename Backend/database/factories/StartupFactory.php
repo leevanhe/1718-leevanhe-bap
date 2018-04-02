@@ -6,6 +6,7 @@ $factory->define(App\Startup::class, function (Faker $faker) {
     return [
         'name' => $faker->company,
         'description' => $faker->text($maxNbChars = 1000),
+        'avatar' => $faker->randomElement(['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg']),
         'start' => $faker->dateTime($max = 'now'),
         'website' => $faker->url,
         'employees' => $faker->numberBetween($min = 4, $max = 30),

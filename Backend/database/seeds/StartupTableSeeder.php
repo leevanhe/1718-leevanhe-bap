@@ -19,6 +19,7 @@ class StartupTableSeeder extends Seeder
         DB::table('startups')->insert([
             'name' => 'SeakClothing',
             'description' => 'dit is een beschrijving',
+            'avatar' => '1.jpg',
             'website' => 'http://www.seak-clothing.be',
             'employees' => 2,
             'start' => '2016-06-16',

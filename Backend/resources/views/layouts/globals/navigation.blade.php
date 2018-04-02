@@ -29,7 +29,7 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" style="position:relative; padding-left:50px; color: black;">
-                                <img src="assets/img/uploads/avatar/{{ Auth::user()->avatar }}" class="avatar-header">
+                                <img src="assets/img/uploads/avatar/{{ Auth::user()->startup->avatar }}" class="avatar-header">
                                 {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
 
