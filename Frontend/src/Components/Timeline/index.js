@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, ScrollView, View, ActivityIndicator, TextInput,ListView,  TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, ScrollView, View, ActivityIndicator, TextInput,ListView,  TouchableOpacity, Image } from 'react-native';
 import { connect }from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import moment from 'moment';
@@ -32,7 +32,14 @@ class TimelineService extends Component {
           <ScrollView style={{flex: 1}}>
             {this.state.data != undefined? this.state.data.map((a, i) => {
               return (
-                <View key={i}>
+                <View key={i} style={styles.container}>
+                  <View style={{marginRight: 10}}>
+                    <Image source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
+                  </View>
+                  <View style={{flex:1, justifyContent:'center'}}>
+                    <Text>Gebruikersnaam</Text>
+                  </View>
+                  <Text>Flatlist gebruiken voor lazy loading</Text>
                   <Text>{a.description}</Text>
                 </View>
               );
@@ -41,5 +48,15 @@ class TimelineService extends Component {
         );
     }
 }
+
+const styles = StyleSheet.create ({
+  container: {
+        flex: 1,
+        padding: 20,
+        marginTop: 20,
+        backgroundColor: Colors.white,
+        alignItems: 'center'
+  },
+});
 
 export default connect()(TimelineService);
