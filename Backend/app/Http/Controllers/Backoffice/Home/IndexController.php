@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backoffice\Home;
 use App\User;
 use App\Event;
 use App\Post;
+use App\Services;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -20,7 +21,8 @@ class IndexController extends Controller
         $getuserscount = User::all()->count();
         $geteventscount = Event::all()->count();
         $getpostscount = Post::all()->count();
-        return view ('home.index', compact('getuserscount', 'geteventscount', 'getpostscount'));
+        $getservicescount = Services::all()->count();
+        return view ('home.index', compact('getuserscount', 'geteventscount', 'getservicescount', 'getpostscount'));
     }
 
     /**

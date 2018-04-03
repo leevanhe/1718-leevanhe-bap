@@ -36,7 +36,7 @@ class ProfileController extends Controller
         }
 
         // 2. Retreive all info
-        $startup = Startup::where('user_id', $id)->get(['id','name','description','website','avatar','employees','start']);
+        $startup = Startup::where('user_id', $id)->select('id','name','description','website','avatar','employees','start')->get();
         $connections= [];
         $realisations= [];
         $recommendations= [];
@@ -47,9 +47,9 @@ class ProfileController extends Controller
         //Realisations
         //Connections
         foreach ($startup as $s) {
-            $connection = $s->connections()->get(['id', 'name','description']);
-            $recommendation = $s->recommendations()->get(['id', 'name','description']);
-            $realisation = $s->realisations()->get(['id', 'name', 'description']);
+            $connection = $s->connections()->select('id', 'name','description')->get();
+            $recommendation = $s->recommendations()->select('id', 'name','description')->get();
+            $realisation = $s->realisations()->select('id', 'name','description')->get();
             
             if(Count($connection) > 0){
                 $connections = $connection;

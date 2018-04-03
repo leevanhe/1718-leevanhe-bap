@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Startup;
+use App\Post;
 
 class ConnectionStartup extends Model
 {

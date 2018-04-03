@@ -35,8 +35,8 @@
                                     <td>{{ $startup->name }}</td>
                                     <td>{{ substr($startup->description, 0, 70) }}{{ strlen($startup->description) > 70 ? "..." : ""}}</td>
                                     <td>
-                                        <a href="{{ route('users.show', $startup->id) }}"><i style="padding-right:10px;" class="text-info fa fa-eye fa-lg"></i></a> 
-                                        <a href="{{ route('users.edit', $startup->id) }}"><i class="text-warning fa fa-edit fa-lg"></i></a>
+                                        <a href="{{ route('users.show', $startup->id) }}" class="btn btn-success btn-sm">View</a> 
+                                        <a href="{{ route('users.edit', $startup->id) }}" class="btn btn-info btn-sm">Edit</a>
                                     </td>
                                 </tr>
                                 @endforeach

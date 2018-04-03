@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('body')
-<div id="wrapper" style="margin-top:50px; background-color: #ec6845;">
+<div id="wrapper" style="margin-top:50px; background: linear-gradient(#ec6845, #E94F43);">
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
 
@@ -51,7 +51,7 @@
                 </ul>
 
                 <!-- Sidebar navbar -->                
-                <div class="navbar-default sidebar" role="navigation" style="background-color: #ec6845;">
+                <div class="navbar-default sidebar" role="navigation" style="background: none;">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li>

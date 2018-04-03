@@ -35,8 +35,8 @@
                                     <td>{{ substr($event->description, 0, 50) }} {{strlen($event->description) > 50 ? '...' : '' }}</td>
                                     <td>{{ Carbon\Carbon::parse($event->start)->format('d-m-Y') }} from {{ Carbon\Carbon::parse($event->start)->format('h:m') }}  untill {{ Carbon\Carbon::parse($event->end)->format('h:m')}}</td>
                                     <td>
-                                        <a href="{{ route('events.show', $event->id) }}"><i style="padding-right:10px;" class="text-info fa fa-eye fa-lg"></i></a> 
-                                        <a href="{{ route('events.edit', $event->id) }}"><i class="text-warning fa fa-edit fa-lg"></i></a>
+                                        <a href="{{ route('events.show', $event->id) }}" class="btn btn-success btn-sm">View</a> 
+                                        <a href="{{ route('events.edit', $event->id) }}" class="btn btn-info btn-sm">Edit</a>
                                     </td>
                                 </tr>
                                 @endforeach

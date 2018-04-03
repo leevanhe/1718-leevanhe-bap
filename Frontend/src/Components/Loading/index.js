@@ -11,7 +11,7 @@ import Colors from '../../Config/theme';
 const GenerateLoading = (props) => {
   return (
       <View style={styles.container}>
-        <ActivityIndicator size="large" color={Colors.darkgrey} />
+        <ActivityIndicator size="large" color={Colors.orange} />
       </View>
   );
 }
@@ -19,7 +19,10 @@ const GenerateLoading = (props) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
       justifyContent: 'center'
+
     },
 })
 

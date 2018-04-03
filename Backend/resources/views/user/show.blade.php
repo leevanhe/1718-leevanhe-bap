@@ -18,12 +18,12 @@
                                 <div class="col-md-4">
                                     <div style="float:right;">
                                         <div style="display: inline-block; margin-top: 30px;">
-                                            <a href="{{ route('users.edit', $startup->id) }}"><i style="padding-right:10px;" class="text-warning fa fa-edit fa-lg"></i></a>
+                                            <a href="{{ route('users.edit', $startup->id) }}" class="btn btn-info btn-sm">Edit</a>
                                         </div>
                                         <div style="display: inline-block;">
                                             {!! Form::open(['route'=>['users.destroy', $startup->id],'method'=> 'DELETE'])!!}
 
-                                            {!! Form::submit('delete',['class'=>'btn btn-danger'])!!}
+                                            {!! Form::submit('delete',['class'=>'btn btn-danger btn-sm'])!!}
 
                                             {!! Form::close() !!} 
                                         </div>
@@ -60,7 +60,7 @@
                     <div class="panel-body">
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#realisations">Realisations</a></li>
-                            <li><a data-toggle="tab" href="#services">Services test</a></li>
+                            <li><a data-toggle="tab" href="#services">Services</a></li>
                             <li><a data-toggle="tab" href="#connections">Connections</a></li>
                             <li><a data-toggle="tab" href="#recommendations">Recommendations</a></li>
                         </ul>
@@ -79,8 +79,8 @@
                                             </div>
                                             <div class="col-md-4" style="margin-top:15px;">
                                                 <div style="float:right;">
-                                                <a href="#"><i style="padding-right:10px;" class="text-warning fa fa-edit fa-lg"></i></a> 
-                                                <a href="#"><i class="text-danger fa fa-trash fa-lg"></i></a>
+                                                <a href="#" class="btn btn-info btn-sm">Edit</a>
+                                                <a href="#" class="btn btn-danger btn-sm">Delete</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -98,14 +98,6 @@
                                     @foreach($services as $service)
                                     <div class="services">
                                         <p><strong>Description</strong> <br>{{ $service->description }}</p>
-                                        <div class="text-center">
-                                            <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#demo">Read more</button>
-                                        </div>
-                                        <div id="demo" class="collapse">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                        </div>
                                         <hr>
                                     </div>
                                     @endforeach
@@ -116,33 +108,43 @@
                                 @if(count($connections) === 0)
                                 <p>No connections</p>
                                 @else
-                                    @foreach($connections as $connection)
-                                    <div class="connections">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <p><strong>Name:</strong> <br>{{ $connection->name}}</p>
-                                                <img src="../assets/img/uploads/avatar/{{ $connection->avatar }}" class="avatar-small">
+                                <div class="row">
+                                @foreach($connections as $connection)
+                                    <div class="col-md-3">
+                                        <div class="panel panel-default" style="margin-bottom:20px; margin-top:20px;">
+                                            <a href="{{ route('users.show', $connection->id) }}">
+                                                <div class="panel-heading" style="padding: 0px;">
+                                                    <h4 class="panel-title"><img src="../assets/img/uploads/avatar/{{ $connection->avatar }}" style="width:100%; max-height: 120px;"></h4>
+                                                </div>
+                                            </a>
+                                            <div class="panel-body">
+                                                <p><strong>{{ $connection->name}}</strong></p>
+                                                <p>{{ substr($connection->description, 0, 50) }}{{ strlen($connection->description) > 50 ? "..." : ""}}</p>
                                             </div>
                                         </div>
-                                        <hr>
                                     </div>
                                     @endforeach
+                                </div>
                                 @endif  
                             </div>
                             <div id="recommendations" class="tab-pane fade">
                                 @if(count($recommendations) === 0)
                                 <p>No recommendations</p>
                                 @else
+                                <div class="row">
                                     @foreach($recommendations as $recommendation)
-                                    <div class="recommendations">
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <p><strong>Name:</strong> <br>{{ $recommendation->name}}</p>
+                                    <div class="col-md-3">
+                                         <div class="panel panel-default" style="margin-bottom:20px; margin-top:20px;">
+                                             <div class="panel-heading" style="padding: 0px;">
+                                                 <h4 class="panel-title"><img src="../assets/img/uploads/avatar/{{ $recommendation->avatar }}" style="width:100%; max-height: 120px;"></h4>
+                                             </div>
+                                            <div class="panel-body">
+                                                <p><strong>{{ $recommendation->name}}</strong></p>
                                             </div>
-                                        </div>
-                                        <hr>
+                                         </div>
                                     </div>
                                     @endforeach
+                                </div>
                                 @endif  
                             </div>
                         </div>

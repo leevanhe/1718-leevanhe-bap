@@ -19,9 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Check for bearer token
 Route::group(['middleware' => ['jwt.auth']], function () {
-    //Events
-    Route::resource('events', 'API\Event\EventController',['only' => ['index', 'show']] );
-    
+    Route::group(['middleware' => ['credentials']], function () {
+        //Events
+        Route::resource('events', 'API\Event\EventController',['only' => ['index', 'show']] );
+    });
 });
 
 Route::get('/startup/profile', 'API\Profile\ProfileController@index');

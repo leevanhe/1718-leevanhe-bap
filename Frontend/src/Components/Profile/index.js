@@ -34,7 +34,6 @@ class ProfileService extends Component {
   render() {
     return (
         <ScrollView style={{flex: 1}}>
-            {this.loading == true? <GenerateLoading />:<View>
                 {this.state.data.startups != undefined ? this.state.data.startups.map((startup, i) => {
                     return (
                         <View key={i} style={styles.info}>
@@ -102,7 +101,6 @@ class ProfileService extends Component {
                         )
                     }): null}
                 </View>
-            </View>}
         </ScrollView>
         );
     }
