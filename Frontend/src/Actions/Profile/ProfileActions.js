@@ -15,7 +15,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     fetchProfile: (token) => dispatch(fetchProfile(token)),
-    UpdateProfile: (token, data) => dispatch(UpdateProfile(token, data)),
 })
 
 export const profilePending = () => ({

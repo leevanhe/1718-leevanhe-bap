@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
 import authReducer from './auth';
+import TimelineReducer from './timeline';
 import ProfileReducer from './profile';
 
 const AppReducers = combineReducers({
     auth: authReducer,
+    timeline: TimelineReducer,
     profile: ProfileReducer,
 });
 

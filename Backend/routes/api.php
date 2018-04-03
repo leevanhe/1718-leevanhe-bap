@@ -22,6 +22,9 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::group(['middleware' => ['credentials']], function () {
         //Events
         Route::resource('events', 'API\Event\EventController',['only' => ['index', 'show']] );
+
+        //Timeline
+        Route::get('/{startup_id}/timeline', 'API\Timeline\TimelineController@index');
     });
 });
 

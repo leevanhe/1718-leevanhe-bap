@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\Profile;
+namespace App\Http\Controllers\API\Timeline;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,17 +16,16 @@ class TimelineController extends Controller
      */
     public function index($id)
     {
-        $connections = Startup::with('connections')->where('id', $id)->first()->connections;
-        $id = [];
-       
-        foreach($connections as $connection){
-            array_push($id, $connection->id);
+        $connections = Startup::where('id',$id)->first()->connections;
+
+        foreach($connections as $c) {
+            $post = $c->posts()->get();
+
+            if(Count($post) > 0){
+                $posts = $post;
+            }
         }
 
-        $p = Startup::whereIn('startup.id', $id)->posts()->get(
-            ['pa.date as date', 'children.name as child', 'pa.type as type', 'pa.id as id', 'pa.parent_notes as note']
-        );
-        
-        return $p;
+        return $posts;
     }
 }
