@@ -33,13 +33,14 @@ class TimelineService extends Component {
             {this.state.data != undefined? this.state.data.map((a, i) => {
               return (
                 <View key={i} style={styles.container}>
-                  <View style={{marginRight: 10}}>
-                    <Image source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
+                  <View style={{flex :1, flexDirection: 'row', marginBottom: 20}}>
+                    <View style={{marginRight: 10}}>
+                      <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
+                    </View>
+                    <View style={{flex:1, justifyContent:'center'}}>
+                      <Text>{a.startup.name}</Text>
+                    </View>
                   </View>
-                  <View style={{flex:1, justifyContent:'center'}}>
-                    <Text>Gebruikersnaam</Text>
-                  </View>
-                  <Text>Flatlist gebruiken voor lazy loading</Text>
                   <Text>{a.description}</Text>
                 </View>
               );
@@ -55,7 +56,10 @@ const styles = StyleSheet.create ({
         padding: 20,
         marginTop: 20,
         backgroundColor: Colors.white,
-        alignItems: 'center'
+  },
+  avatarSmall: {
+        width: 40,
+        height: 40,
   },
 });
 
