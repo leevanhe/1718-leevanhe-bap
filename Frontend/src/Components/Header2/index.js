@@ -23,7 +23,7 @@ const style = StyleSheet.create ({
         backgroundColor: Colors.white,
       },
       logo : {
-        width: 38,
+        width: 30,
         height: 62
       }
 })

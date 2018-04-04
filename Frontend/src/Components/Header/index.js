@@ -13,14 +13,14 @@ const Header = (props) => (
 const style = StyleSheet.create ({
     container: {
         flex: 1,
-        maxHeight: 100,
+        maxHeight: 70,
         paddingTop: 25,
         alignItems: 'center',
         backgroundColor: Colors.orange,
       },
       logo : {
-        width: 38,
-        height: 62
+        width: 22,
+        height: 36
       }
 })
 
