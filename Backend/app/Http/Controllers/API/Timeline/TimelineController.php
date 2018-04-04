@@ -16,17 +16,10 @@ class TimelineController extends Controller
      */
     public function index($id)
     {
-        $connections = Startup::where('id',$id)->first()->connections;
-        
 
-        foreach($connections as $c) {
-            $post = $c->posts()->with('startup')->get();
+        //krijgt alle connections met de posts maar return enkel maar de eerste post binnen het object posts
+        $connections = Startup::where('id',$id)->first()->connections()->with('posts')->get();
 
-            if(Count($post) > 0){
-                $posts = $post;
-            }
-        }
-
-        return $posts;
+        return $connections;
     }
 }

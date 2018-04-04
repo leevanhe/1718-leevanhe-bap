@@ -38,10 +38,10 @@ class TimelineService extends Component {
                       <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
                     </View>
                     <View style={{flex:1, justifyContent:'center'}}>
-                      <Text>{a.startup.name}</Text>
+                      <Text>{a.name}</Text>
                     </View>
                   </View>
-                  <Text>{a.description}</Text>
+                  <Text>{a.posts[0].description}</Text>
                 </View>
               );
             }): null}

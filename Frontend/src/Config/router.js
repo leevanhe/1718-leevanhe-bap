@@ -10,6 +10,7 @@ import Matchmaking from '../Screens/Matchmaking/Matchmaking';
 import Events from '../Screens/Events/Events';
 import Profile from '../Screens/Profile';
 import TabIcon from '../Components/TabIcon/index';
+import Icon  from 'react-native-vector-icons/FontAwesome';
 
 const reducerCreate = params => {
     const defaultReducer = new Reducer(params);
@@ -33,12 +34,13 @@ const reducerCreate = params => {
                 activeBackgroundColor={Colors.red}
                 activeTintColor={Colors.white}
                 tabBarStyle={{ backgroundColor: Colors.orange }}
+                labelStyle={{display: 'none'}}
                 >
 
-                <Scene key="timeline" component={Timeline} hideNavBar={true} icon={TabIcon} iconName="home" tabBarLabel="test"/>
-                <Scene key="matchmaking" component={Matchmaking} hideNavBar={true} icon={TabIcon} tabBarLabel=" "/>
-                <Scene key="events" component={Events} tabBarLabel="Events" hideNavBar={true} icon={TabIcon} tabBarLabel=" "/>
-                <Scene key="profile" component={Profile} tabBarLabel="Profile" hideNavBar={true} icon={TabIcon} tabBarLabel=" "/>
+                <Scene key="timeline" component={Timeline} hideNavBar={true} icon={TabIcon} iconName="home"/>
+                <Scene key="matchmaking" component={Matchmaking} hideNavBar={true} icon={TabIcon}/>
+                <Scene key="events" component={Events} tabBarLabel="Events" hideNavBar={true} icon={TabIcon}/>
+                <Scene key="profile" component={Profile} tabBarLabel="Profile" hideNavBar={true} icon={TabIcon}/>
 
             </Scene>
         </Scene>

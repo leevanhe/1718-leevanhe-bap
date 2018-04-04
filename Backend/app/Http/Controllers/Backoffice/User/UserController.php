@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $startups = Startup::all(); 
+        $startups = Startup::get(); 
         return view('user.index', compact('startups'));
     }
 

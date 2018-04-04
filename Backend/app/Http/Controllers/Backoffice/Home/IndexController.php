@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Backoffice\Home;
 use App\User;
 use App\Event;
 use App\Post;
+use App\Startup;
 use App\Services;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Charts;
+use DB;
 
 class IndexController extends Controller
 {
@@ -18,76 +21,26 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $getuserscount = User::all()->count();
-        $geteventscount = Event::all()->count();
-        $getpostscount = Post::all()->count();
-        $getservicescount = Services::all()->count();
-        return view ('home.index', compact('getuserscount', 'geteventscount', 'getservicescount', 'getpostscount'));
-    }
+        //count for topcards
+        $getUsersCount = User::all()->count();
+        $getEventsCount = Event::all()->count();
+        $getPostsCount = Post::all()->count();
+        $getServicesCount = Services::all()->count();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        //Monthly registerd users
+        $users = User::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))->get();
+        $chart = Charts::database($users, 'area', 'highcharts')->title("Monthly new Register Users")->elementLabel("Total Users")->dimensions(0, 500)->colors(['#EC6845','#E94F43'])->responsive(true)->groupByMonth(date('Y'), true);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        //Recent users
+        $getRecentUsers = Startup::orderBy('created_at', 'desc')->take(5)->get();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        //most active user
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        //latest posts
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        //latest matchmakings
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        //return view with data
+        return view ('home.index', compact('getUsersCount', 'getEventsCount', 'getServicesCount', 'getPostsCount', 'getRecentUsers','chart'));
     }
 }
