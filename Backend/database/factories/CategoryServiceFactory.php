@@ -9,6 +9,6 @@ $factory->define(App\CategoryService::class, function (Faker $faker) {
     $service = App\Services::pluck('id')->all();
     return [
         'service_id' => $faker->randomElement($service),
-        'category_id' => $faker->randomElement($category)
+        'category_id' => $faker->unique()->randomElement($category)
     ];
 });

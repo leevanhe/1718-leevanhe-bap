@@ -14,9 +14,15 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $events = Event::all();
+        if($name = $request->input('name')) {
+            $events= Event::where('name', 'like', '%' . $name . '%')->paginate(15);
+        }
+        else{
+            $events = Event::paginate(15);
+        } 
+        
         return view ('event.index', compact('events'));
     }
 

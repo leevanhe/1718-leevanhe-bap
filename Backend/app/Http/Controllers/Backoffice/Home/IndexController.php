@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Charts;
 use DB;
+use Auth;
 
 class IndexController extends Controller
 {

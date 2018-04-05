@@ -15,7 +15,6 @@ Route::middleware('auth')->group(function() {
     Route::get('/dashboard', 'Backoffice\Home\IndexController@index');
 
     Route::resource('/users', 'Backoffice\User\UserController');
-    Route::get('/users', 'Backoffice\User\UserController@index');
     Route::resource('/events', 'Backoffice\Event\EventController');
     Route::resource('/test', 'Backoffice\Test\TestController');
 });

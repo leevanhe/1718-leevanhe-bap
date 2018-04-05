@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 $factory->define(App\ConnectionStartup::class, function (Faker $faker) {
     $startup = App\Startup::pluck('id')->all();
     return [
-        'connection_id' => $faker->unique()->randomElement($startup),
+        'connection_id' => $faker->randomElement($startup),
         'startup_id' => $faker->randomElement($startup)
     ];
 });

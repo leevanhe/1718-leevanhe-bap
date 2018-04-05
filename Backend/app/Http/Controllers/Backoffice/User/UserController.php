@@ -145,27 +145,26 @@ class UserController extends Controller
             Image::make($avatar)->resize(300, 300)->save(public_path('/assets/img/uploads/avatar/'.$filename));
 
             $startup = Startup::find($id);
-            $startup->name = $request->input('name');
-            $startup->description = $request->input('description');
+            $startup->name = $request->name;
+            $startup->description = $request->description;
             $startup->avatar = $filename;
-            $startup->website = $request->input('website');
-            $startup->employees = $request->input('employees');
-            $startup->start = $request->input('start');
+            $startup->website = $request->website;
+            $startup->employees = $request->employees;
+            $startup->start = $request->start;
             $startup->save();
 
             $user = $startup->user;
             $user->save();
 
             $adress = $startup->adresses;
-            $adress->line1 = $request->input('line1');
-            $adress->city = $request->input('city');
-            $adress->ZIP = $request->input('ZIP');
-            $adress->country = $request->input('country');
+            $adress->line1 = $request->line1;
+            $adress->city = $request->city;
+            $adress->ZIP = $request->ZIP;
+            $adress->country = $request->country;
             $adress->save();     
         }
 
         //Redirect
-        $startup = Startup::find($id);
         Session::flash('succes', 'The user was succesfully saved!');
 
         return redirect()->route('users.show', $startup->id);

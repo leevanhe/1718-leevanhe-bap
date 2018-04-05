@@ -3,26 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Startup;
 
-class Post extends Model
+class Comment extends Model
 {
     protected $fillable = [
         'description',
-        'startup_id'
+        'post_id'
     ];
 
     /** 
      * Relationships
     */
-    public function startup()
+    public function post()
     {
-        return $this->belongsTo(Startup::class);
-    }
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
+        return $this->belongsTo(Post::class);
     }
 
     public function likes()

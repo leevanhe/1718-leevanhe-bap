@@ -3,22 +3,29 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <h1 style="color: black;">Users
-                {{ link_to_route('users.create', 'Add new User',null , ['class'=>'btn btn-primary', 'style'=>'float:right;']) }}
-                </h1>
+            <div class="col-md-6 col-xs-12">
+                <h3 style="color: black; padding-bottom: 10px;">Users</h3>     
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                    <div class="input-group">
-                    <form action="" method="GET">
-                        <input type="text" name="name" required/>
-                        <button type="submit">Submit</button>
-                    </form>
-                    </div>
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                            {{ link_to_route('users.create', 'Add new User',null , ['class'=>'btn btn-primary','style'=>'background-color:#E94F43;border-color:#E94F43;']) }}
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <form class="navbar-form" role="search" action="" method="GET">
+                                    <div class="input-group" style="float: right;">
+                                        <input type="text" class="form-control" placeholder="Search" name="name">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         @include('partials._messages')
                         @if(count($startups) === 0)
                         <p>No Users</p>
@@ -41,8 +48,8 @@
                                     <td>{{ $startup->name }}</td>
                                     <td>{{ substr($startup->description, 0, 70) }}{{ strlen($startup->description) > 70 ? "..." : ""}}</td>
                                     <td>
-                                        <a href="{{ route('users.show', $startup->id) }}" class="btn btn-success btn-sm">View</a> 
-                                        <a href="{{ route('users.edit', $startup->id) }}" class="btn btn-info btn-sm">Edit</a>
+                                        <a href="{{ route('users.show', $startup->id) }}" class="btn btn-success btn-sm" style='background-color:#5cb85c;border-color:#5cb85c;'>View</a> 
+                                        <a href="{{ route('users.edit', $startup->id) }}" class="btn btn-info btn-sm" style='background-color:#f0ad4e;border-color:#f0ad4e;'>Edit</a>
                                     </td>
                                 </tr>
                                 @endforeach

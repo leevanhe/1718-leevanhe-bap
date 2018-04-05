@@ -11,6 +11,6 @@ class CategoryServiceTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\CategoryService::class, 30)->create();
+        factory(App\CategoryService::class, 20)->create();
     }
 }
