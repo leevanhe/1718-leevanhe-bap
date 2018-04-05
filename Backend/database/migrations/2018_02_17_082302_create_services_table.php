@@ -17,10 +17,11 @@ class CreateServicesTable extends Migration
             $table->increments('id');
             $table->string('description', 1000);
             $table->string('city');
-
             $table->unsignedInteger('startup_id');
             $table->timestamps();
+        });
 
+        Schema::table('services', function (Blueprint $table) {
             $table->foreign('startup_id')->references('id')->on('startups')->onDelete('cascade');
         });
     }

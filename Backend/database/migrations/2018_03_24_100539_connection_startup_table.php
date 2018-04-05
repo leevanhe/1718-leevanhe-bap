@@ -16,7 +16,9 @@ class ConnectionStartupTable extends Migration
         Schema::create('connection_startup', function (Blueprint $table) {
             $table->integer('connection_id')->unsigned();
             $table->integer('startup_id')->unsigned();
+        });
 
+        Schema::table('connection_startup', function (Blueprint $table) {
             $table->foreign('connection_id')->references('id')->on('startups')->onDelete('cascade');
             $table->foreign('startup_id')->references('id')->on('startups')->onDelete('cascade'); 
             

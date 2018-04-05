@@ -13,6 +13,14 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
+                    <div class="input-group">
+                    {!! Form::open(['method'=>'GET','url'=>'users','class'=>'navbar-form navbar-left','role'=>'search'])  !!}                    
+                    <div class="input-group custom-search-form">
+                        <input type="text" class="form-control" name="search" placeholder="Search...">
+                        <button class="btn btn-default-sm" type="submit">zoek</button>
+                    </div>
+                    {!! Form::close() !!}
+                    </div>
                         @include('partials._messages')
                         @if(count($startups) === 0)
                         <p>No Users</p>

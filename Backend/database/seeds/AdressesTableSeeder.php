@@ -18,6 +18,6 @@ class AdressesTableSeeder extends Seeder
             'country' => 'Belgium'
         ]);
 
-        factory(App\Adresses::class, 10)->create();
+        factory(App\Adresses::class, 50)->create();
     }
 }

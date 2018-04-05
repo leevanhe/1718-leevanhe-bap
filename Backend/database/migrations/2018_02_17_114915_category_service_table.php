@@ -16,7 +16,9 @@ class CategoryServiceTable extends Migration
         Schema::create('category_service', function (Blueprint $table) {
             $table->integer('category_id')->unsigned();
             $table->integer('service_id')->unsigned();
+        });
 
+        Schema::table('category_service', function (Blueprint $table) {
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade'); 
             

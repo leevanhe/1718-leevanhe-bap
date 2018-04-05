@@ -27,6 +27,6 @@ class StartupTableSeeder extends Seeder
             'user_id' => $user->id,
         ]);
 
-        factory(App\Startup::class, 10)->create();
+        factory(App\Startup::class, 60)->create();
     }
 }

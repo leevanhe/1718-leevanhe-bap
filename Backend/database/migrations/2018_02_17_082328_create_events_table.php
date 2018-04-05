@@ -19,11 +19,12 @@ class CreateEventsTable extends Migration
             $table->string('description', 1000);
             $table->dateTime('start');
             $table->dateTime('end');
-
             $table->unsignedInteger('adresses_id');
             $table->unsignedInteger('startup_id');
             $table->timestamps();
+        });
 
+        Schema::table('events', function (Blueprint $table) {
             $table->foreign('adresses_id')->references('id')->on('adresses');
             $table->foreign('startup_id')->references('id')->on('startups')->onDelete('cascade');
         });

@@ -11,6 +11,6 @@ class RecommendationStartupTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\RecommendationStartup::class, 5)->create();
+        factory(App\RecommendationStartup::class, 20)->create();
     }
 }

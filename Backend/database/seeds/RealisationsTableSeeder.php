@@ -11,6 +11,6 @@ class RealisationsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Realisations::class, 40)->create();
+        factory(App\Realisations::class, 20)->create();
     }
 }

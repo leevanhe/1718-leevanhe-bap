@@ -11,6 +11,6 @@ class ConnectionStartupTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\ConnectionStartup::class, 5)->create();
+        factory(App\ConnectionStartup::class, 40)->create();
     }
 }

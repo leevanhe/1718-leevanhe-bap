@@ -23,7 +23,13 @@ class UserController extends Controller
     public function index()
     {
         $startups = Startup::get(); 
-        return view('user.index', compact('startups'));
+
+        $search = \Request::get('search'); //<-- we use global request to get the param of URI
+ 
+        $users = Startup::where('name','like','%'.$search.'%')
+        ->orderBy('name');
+
+        return view('user.index', compact('startups','users'));
     }
 
     /**

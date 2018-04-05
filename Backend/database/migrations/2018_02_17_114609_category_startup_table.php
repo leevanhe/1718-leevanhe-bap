@@ -16,7 +16,9 @@ class CategoryStartupTable extends Migration
         Schema::create('category_startup', function (Blueprint $table) {
             $table->integer('startup_id')->unsigned();
             $table->integer('category_id')->unsigned();
+        });
 
+        Schema::table('category_startup', function (Blueprint $table) {
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('startup_id')->references('id')->on('startups')->onDelete('cascade');
             

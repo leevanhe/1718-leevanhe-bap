@@ -16,7 +16,9 @@ class RecommendationStartupTable extends Migration
         Schema::create('recommendation_startup', function (Blueprint $table) {
             $table->integer('recommendation_id')->unsigned();
             $table->integer('startup_id')->unsigned();
+        });
 
+        Schema::table('recommendation_startup', function (Blueprint $table) {
             $table->foreign('recommendation_id')->references('id')->on('startups')->onDelete('cascade');
             $table->foreign('startup_id')->references('id')->on('startups')->onDelete('cascade'); 
             

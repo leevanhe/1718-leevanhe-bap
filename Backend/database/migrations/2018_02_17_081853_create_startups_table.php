@@ -24,7 +24,9 @@ class CreateStartupsTable extends Migration
             $table->unsignedInteger('adresses_id');
             $table->unsignedInteger('user_id');
             $table->timestamps();
+        });
 
+        Schema::table('startups', function (Blueprint $table) {
             $table->foreign('adresses_id')->references('id')->on('adresses');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
