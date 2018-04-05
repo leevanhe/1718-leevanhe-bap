@@ -20,16 +20,17 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $startups = Startup::get(); 
 
-        $search = \Request::get('search'); //<-- we use global request to get the param of URI
- 
-        $users = Startup::where('name','like','%'.$search.'%')
-        ->orderBy('name');
+        if($name = $request->input('name')) {
+            $startups= Startup::where('name', 'like', '%' . $name . '%')->paginate(15);
+        }
+        else{
+            $startups = Startup::paginate(15);
+        } 
 
-        return view('user.index', compact('startups','users'));
+        return view('user.index', compact('startups'));
     }
 
     /**
