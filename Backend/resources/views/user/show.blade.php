@@ -7,9 +7,11 @@
                 @include('partials._messages')
                 <div class="panel panel default">
                     <div class="panel-body">
-                        <div class="row">
+                        <div class="row" style="margin-bottom:20px;">
                             <div class="col-xs-12 col-md-4">
-                                <img style="padding-top: 30px; width:100%;" src="../assets/img/uploads/avatar/{{ $startup->avatar }}">
+                                <div style="height: 200px; width: 350px; overflow: hidden; margin-top: 30px;">
+                                    <img style="height: auto; width: 350px;" src="../assets/img/uploads/avatar/{{ $startup->avatar }}">
+                                </div>
                             </div>
                             <div class="col-xs-12 col-md-8">
                                 <div class="col-md-8">
@@ -18,12 +20,12 @@
                                 <div class="col-md-4">
                                     <div style="float:right;">
                                         <div style="display: inline-block; margin-top: 30px;">
-                                            <a href="{{ route('users.edit', $startup->id) }}" class="btn btn-info btn-sm">Edit</a>
+                                            <a href="{{ route('users.edit', $startup->id) }}" class="btn btn-info btn-sm" style='background-color:#f0ad4e;border-color:#f0ad4e;'>Edit</a>
                                         </div>
                                         <div style="display: inline-block;">
                                             {!! Form::open(['route'=>['users.destroy', $startup->id],'method'=> 'DELETE'])!!}
 
-                                            {!! Form::submit('delete',['class'=>'btn btn-danger btn-sm'])!!}
+                                            {!! Form::submit('delete',['class'=>'btn btn-danger btn-sm', 'style'=>'background-color:#E94F43;border-color:#E94F43;'])!!}
 
                                             {!! Form::close() !!} 
                                         </div>
@@ -79,8 +81,14 @@
                                             </div>
                                             <div class="col-md-4" style="margin-top:15px;">
                                                 <div style="float:right;">
-                                                <a href="#" class="btn btn-info btn-sm">Edit</a>
-                                                <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                                    <a href="{{ route('realisations.edit', $realisation->id) }}" class="btn btn-info btn-sm" style='background-color:#f0ad4e;border-color:#f0ad4e;'>Edit</a>
+                                                    <div style="display: inline-block;">
+                                                        {!! Form::open(['route'=>['realisations.destroy', $realisation->id],'method'=> 'DELETE'])!!}
+
+                                                        {!! Form::submit('delete',['class'=>'btn btn-danger btn-sm', 'style'=>'background-color:#E94F43;border-color:#E94F43;'])!!}
+
+                                                        {!! Form::close() !!} 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -113,8 +121,8 @@
                                     <div class="col-md-3">
                                         <div class="panel panel-default" style="margin-bottom:20px; margin-top:20px;">
                                             <a href="{{ route('users.show', $connection->id) }}">
-                                                <div class="panel-heading" style="padding: 0px;">
-                                                    <h4 class="panel-title"><img src="../assets/img/uploads/avatar/{{ $connection->avatar }}" style="width:100%; max-height: 120px;"></h4>
+                                                <div class="panel-heading" style="padding: 0px; width:100%; height: 150px; overflow: hidden;">
+                                                    <h4 class="panel-title"><img src="../assets/img/uploads/avatar/{{ $connection->avatar }}" style="width:100%; height: auto;"></h4>
                                                 </div>
                                             </a>
                                             <div class="panel-body">
@@ -135,8 +143,8 @@
                                     @foreach($recommendations as $recommendation)
                                     <div class="col-md-3">
                                          <div class="panel panel-default" style="margin-bottom:20px; margin-top:20px;">
-                                             <div class="panel-heading" style="padding: 0px;">
-                                                 <h4 class="panel-title"><img src="../assets/img/uploads/avatar/{{ $recommendation->avatar }}" style="width:100%; max-height: 120px;"></h4>
+                                             <div class="panel-heading" style="padding: 0px;width:100%; height: 150px; overflow: hidden;">
+                                                 <h4 class="panel-title"><img src="../assets/img/uploads/avatar/{{ $recommendation->avatar }}" style="width:100%; height: auto;"></h4>
                                              </div>
                                             <div class="panel-body">
                                                 <p><strong>{{ $recommendation->name}}</strong></p>

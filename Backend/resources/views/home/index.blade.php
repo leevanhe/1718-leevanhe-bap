@@ -123,6 +123,7 @@
                         <h1 class="panel-title">Most active users</h1>
                     </div>
                     <div class="panel-body">
+                        
                     </div>
                 </div>
             </div>

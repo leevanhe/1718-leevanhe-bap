@@ -37,11 +37,16 @@ class IndexController extends Controller
 
         //most active user
 
+        //get users with posts
+        $activeUsers = Startup::with('posts')->get();
+
+        
+
         //latest posts
 
         //latest matchmakings
 
         //return view with data
-        return view ('home.index', compact('getUsersCount', 'getEventsCount', 'getServicesCount', 'getPostsCount', 'getRecentUsers','chart'));
+        return view ('home.index', compact('getUsersCount', 'getEventsCount', 'getServicesCount', 'getPostsCount', 'getRecentUsers', 'posts','chart'));
     }
 }

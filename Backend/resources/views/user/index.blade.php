@@ -11,6 +11,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
+                        @include('partials._messages')
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
                             {{ link_to_route('users.create', 'Add new User',null , ['class'=>'btn btn-primary','style'=>'background-color:#E94F43;border-color:#E94F43;']) }}
@@ -26,7 +27,6 @@
                                 </form>
                             </div>
                         </div>
-                        @include('partials._messages')
                         @if(count($startups) === 0)
                         <p>No Users</p>
                         @else
@@ -44,7 +44,11 @@
                                 @foreach($startups as $startup)
                                 <tr>
                                     <th>{{ $startup->id }}</th>
-                                    <td><img src="assets/img/uploads/avatar/{{ $startup->avatar }}" class="avatar-small"></td>
+                                    <td>
+                                        <div style="width:32px; height:32px; overflow: hidden;  ">
+                                            <img style="width: 32px; height: auto;" src="assets/img/uploads/avatar/{{ $startup->avatar }}">
+                                        </div>
+                                    </td>
                                     <td>{{ $startup->name }}</td>
                                     <td>{{ substr($startup->description, 0, 70) }}{{ strlen($startup->description) > 70 ? "..." : ""}}</td>
                                     <td>

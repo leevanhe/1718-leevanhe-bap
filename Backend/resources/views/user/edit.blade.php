@@ -3,8 +3,8 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <h1 style="color: black;">Edit {{ $startup->name }} </h1>
+            <div class="col-md-6 col-xs-12">
+                <h3 style="color: black; padding-bottom: 10px;">Edit {{ $startup->name }}</h3>     
             </div>
         </div>
         <div class="row">
@@ -23,7 +23,7 @@
                             @endif
                             {!! Form::model($startup , ['method'=>'PUT','route' => ['users.update', $startup->id]]) !!}
 
-                            <h4 class="page-header">About company</h4>
+                            <h4 class="page-header"><i class="fa fa-info" style="padding-right: 10px"></i>About company</h4>
 
                             <div style="margin-top: 20px;" class="row">
                                 <div class="col-md-6 col-xs-12">
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
 
-                            <h4 class="page-header" style="margin-top: 40px;">About user</h4>
+                            <h4 class="page-header" style="margin-top: 40px;"><i class="fa fa-user" style="padding-right: 10px"></i>About user</h4>
 
                             <div style="margin-top: 20px;">
                                 <div class="form-group">

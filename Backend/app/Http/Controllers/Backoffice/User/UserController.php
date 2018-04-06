@@ -124,7 +124,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $startup = Startup::info()->find($id);
+        $startup = Startup::find($id);
 
         return view('user.edit', compact('startup'));
     }
@@ -181,6 +181,9 @@ class UserController extends Controller
         $startup = Startup::find($id);
 
         $startup->delete();
+
+        //Redirect
+        Session::flash('deleted', 'The user was succesfully deleted!');
 
         return redirect()->route('users.index');
     }
