@@ -6,6 +6,10 @@ export const TIMELINE_PENDING   = 'timeline_pending';
 export const TIMELINE_ERROR     = 'timeline_error';
 export const TIMELINE_SUCCESS   = 'timeline_success';
 
+export const MATCHMAKING_PENDING   = 'matchmaking_pending';
+export const MATCHMAKING_ERROR     = 'matchmaking_error';
+export const MATCHMAKING_SUCCESS   = 'matchmaking_success';
+
 export const PROFILE_PENDING = 'profile_pending';
 export const PROFILE_SUCCESS = 'profile_success';
 export const PROFILE_ERROR = 'profile_error';

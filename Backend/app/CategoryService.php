@@ -8,14 +8,14 @@ class CategoryService extends Model
 {
     protected $fillable = [
         'category_id',
-        'service_id'
+        'services_id'
     ];
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'category_service';
+    protected $table = 'category_services';
 
      /**
      * Indicates if the model should be timestamped.

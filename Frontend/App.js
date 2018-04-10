@@ -16,8 +16,7 @@ import PropTypes from 'prop-types';
 
 const ReduxRouter = connect()(Router);
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component<{}> {
   render() {
     return (
       <Provider store={store}>

@@ -13,16 +13,16 @@ class CategoryServiceTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_service', function (Blueprint $table) {
+        Schema::create('category_services', function (Blueprint $table) {
             $table->integer('category_id')->unsigned();
-            $table->integer('service_id')->unsigned();
+            $table->integer('services_id')->unsigned();
         });
 
-        Schema::table('category_service', function (Blueprint $table) {
+        Schema::table('category_services', function (Blueprint $table) {
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade'); 
+            $table->foreign('services_id')->references('id')->on('services')->onDelete('cascade'); 
             
-            $table->primary(['category_id', 'service_id']);
+            $table->primary(['category_id', 'services_id']);
         });
     }
 
@@ -33,6 +33,6 @@ class CategoryServiceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_service');
+        Schema::dropIfExists('category_services');
     }
 }
