@@ -8,7 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Undertake</title>
+    <title>StartMeUp</title>
+    {{ Html::favicon( '/assets/img//logo/logo.ico' ) }}
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
