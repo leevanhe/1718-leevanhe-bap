@@ -16,10 +16,18 @@ class TimelineController extends Controller
      */
     public function index($id)
     {
-
-        //krijgt alle connections met de posts maar return enkel maar de eerste post binnen het object posts
         $connections = Startup::where('id',$id)->first()->connections()->with('posts')->get();
-
+        
         return $connections;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create($id, Request $request) 
+    {
+
     }
 }

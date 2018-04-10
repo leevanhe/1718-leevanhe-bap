@@ -29,7 +29,9 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" style="position:relative; padding-left:50px; color: black;">
-                                <img src="/assets/img/uploads/avatar/{{ Auth::user()->startup->avatar }}" class="avatar-header">
+                                <div style="width:32px; height:32px; overflow: hidden;position:absolute; top:10px; left:10px;">
+                                    <img style="width: auto; height: 32px;" src="/assets/img/uploads/avatar/{{ Auth::user()->startup->avatar }}">
+                                </div>
                                 {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
 

@@ -45,8 +45,8 @@
                                 <tr>
                                     <th>{{ $startup->id }}</th>
                                     <td>
-                                        <div style="width:32px; height:32px; overflow: hidden;  ">
-                                            <img style="width: 32px; height: auto;" src="assets/img/uploads/avatar/{{ $startup->avatar }}">
+                                        <div style="width:32px; height:32px; overflow: hidden;">
+                                            <img style="width: auto; height: 32px;" src="assets/img/uploads/avatar/{{ $startup->avatar }}">
                                         </div>
                                     </td>
                                     <td>{{ $startup->name }}</td>

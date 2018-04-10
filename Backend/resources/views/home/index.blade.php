@@ -120,10 +120,33 @@
             <div class="col-md-6 col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h1 class="panel-title">Most active users</h1>
+                        <h1 class="panel-title">Latest posts</h1>
                     </div>
                     <div class="panel-body">
-                        
+
+
+                        <div id="quote-carousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner text-center">
+                                @foreach($latestPosts as $latestPost)
+                                @if($loop->first)
+                                <div class="item active">
+                                @else
+                                <div class="item">
+                                @endif
+                                    <blockqoute>
+                                        <div class="row">
+                                            <div style="padding: 0 100px;">
+                                                <img style="width: 70px; height: 70px; margin-bottom: 10px;  border-radius: 50%;" src="/assets/img/uploads/avatar/{{ $latestPost->startup->avatar }}">
+                                                <p>"{{ substr($latestPost->description, 0, 300) }}{{ strlen($latestPost->description) > 300 ? "..." : ""}}"</p>
+                                                <p><strong>{{ $latestPost->startup->name }}</strong></p>
+                                            </div>
+                                        </div>
+                                    </blockqoute> 
+                                </div> 
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>

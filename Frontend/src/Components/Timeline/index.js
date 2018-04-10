@@ -28,22 +28,27 @@ class TimelineService extends Component {
   }
 
   render() {
+
         return (
           <ScrollView style={{flex: 1}}>
             {this.state.data != undefined? this.state.data.map((a, i) => {
               return (
-                <View key={i} style={styles.container}>
-                  <View style={{flex :1, flexDirection: 'row', marginBottom: 20}}>
-                    <View style={{marginRight: 10}}>
-                      <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
+                a.posts.map((p,i) => {
+                  return (
+                  <View key={i} style={styles.container}>
+                    <View style={{flex :1, flexDirection: 'row', marginBottom: 20}}>
+                      <View style={{marginRight: 10}}>
+                        <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
+                      </View>
+                      <View style={{flex:1, justifyContent:'center'}}>
+                        <Text>{a.name}</Text>
+                      </View>
                     </View>
-                    <View style={{flex:1, justifyContent:'center'}}>
-                      <Text>{a.name}</Text>
-                    </View>
+                    <Text>{p.description}</Text>
                   </View>
-                  <Text>{a.posts[0].description}</Text>
-                </View>
-              );
+                  )
+                })
+              )
             }): null}
           </ScrollView>
         );

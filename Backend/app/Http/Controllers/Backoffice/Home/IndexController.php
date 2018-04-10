@@ -40,13 +40,12 @@ class IndexController extends Controller
         //get users with posts
         $activeUsers = Startup::with('posts')->get();
 
-        
-
         //latest posts
+        $latestPosts = Post::orderBy('created_at', 'desc')->with('startup')->take(3)->get();
 
         //latest matchmakings
 
         //return view with data
-        return view ('home.index', compact('getUsersCount', 'getEventsCount', 'getServicesCount', 'getPostsCount', 'getRecentUsers', 'posts','chart'));
+        return view ('home.index', compact('getUsersCount', 'getEventsCount', 'getServicesCount', 'getPostsCount', 'getRecentUsers', 'latestPosts','chart'));
     }
 }
