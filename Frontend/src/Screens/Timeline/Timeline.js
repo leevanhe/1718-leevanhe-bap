@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Header from '../../Components/Header/index';
 import Header2 from '../../Components/Header2/index';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Colors from '../../Config/theme'
 
 import TimelineService from '../../Actions/Timeline/TimelineActions';
+
+import {Actions} from 'react-native-router-flux';
 
 class Timeline extends Component {
   render() {
     return (
       <View style={styles.box}>
         <Header/>
-        <Header2/>
+        <View style={styles.container} onPress={()=> Actions.newPost()}>
+            <View style={{flex: 1, padding: 20}}>
+                <Text>Share something with your network</Text>
+            </View>
+            <View style={{paddingRight: 20}}>
+              <TouchableOpacity onPress={()=> Actions.newPost()}>
+                <Icon name='edit' size={40} color="#EC6845"/> 
+              </TouchableOpacity> 
+            </View>
+        </View>
         <TimelineService />
       </View>
     );
@@ -21,6 +33,17 @@ class Timeline extends Component {
 const styles = StyleSheet.create({
   box: {
     flex: 1,
+  },
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    maxHeight: 60,
+    alignItems: 'center',
+    backgroundColor: Colors.white,
+  },
+  logo : {
+    width: 30,
+    height: 62
   }
 })
 

@@ -133,7 +133,7 @@ const styles = StyleSheet.create ({
     },
     divRed: {
         flex: 1,
-        padding: 10,
+        padding: 20,
         marginTop: 20,
         backgroundColor: Colors.red,
         marginBottom: 20,

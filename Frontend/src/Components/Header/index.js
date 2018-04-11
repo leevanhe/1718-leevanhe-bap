@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet,  Image } from 'react-native';
+import { Text, View, StyleSheet,  Image, TouchableOpacity } from 'react-native';
 import Colors from '../../Config/theme';
 
 const logo = require('../../Assets/logo-enkel.png');

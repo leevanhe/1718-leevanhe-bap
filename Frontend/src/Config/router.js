@@ -6,6 +6,7 @@ import { View } from 'react-native';
 
 import Login from '../Screens/Login';
 import Timeline from '../Screens/Timeline/Timeline';
+import NewPost from '../Screens/Timeline/NewPost';
 import Matchmaking from '../Screens/Matchmaking/Matchmaking';
 import Events from '../Screens/Events/Events';
 import Profile from '../Screens/Profile';
@@ -22,6 +23,8 @@ const reducerCreate = params => {
   const navigator = () => (
     <Router createReducer={reducerCreate} >
         <Scene key="root" tabBarPosition='bottom'>
+
+            <Scene key="newPost" component={NewPost} hideNavBar={true}/>
 
             <Scene initial={true} key="login"component={Login} hideNavBar={true}/>
   
