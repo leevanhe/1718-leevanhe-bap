@@ -16,8 +16,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     fetchTimeline: (token, id) => dispatch(fetchTimeline(token, id)),
+    fetchUser: (token, id, userId) => dispatch(fetchUser(token, id, userId))
 })
 
+//timeline
 export const timelinePending = () => ({
     type: ActionTypes.TIMELINE_PENDING
 })
@@ -32,6 +34,23 @@ export const timelineError = (error) => ({
     error: error
 })
 
+//user
+export const timelineUserPending = () =>({
+    type: ActionTypes.TIMELINE_USER_PENDING
+})
+
+export const timelineUserSucces = (data) => ({
+    type: ActionTypes.TIMELINE_USER_SUCCESS,
+    user: data
+})
+
+export const timelineUserError = (error) => ({
+    type: ActionTypes.TIMELINE_USER_ERROR,
+    error: error
+})
+
+
+//Timeline
 export const fetchTimeline = (token, id) => {
     return dispatch => {
         dispatch(timelinePending())
@@ -43,6 +62,21 @@ export const fetchTimeline = (token, id) => {
         .catch(error => {
             dispatch(timelineError(error))
         });
+    }
+}
+
+//User
+export const fetchUser = (token, id, userId) => {
+    return dispatch => {
+        dispatch(timelineUserPending())
+        axios.get(`${URL}${id}/timeline/${userId}`, {headers: {'Authorization': `Bearer ${token}`}})
+        .then(response => {
+            console.log('RESPONSE', response);
+            dispatch(timelineUserSucces(response.data.user))
+        })
+        .catch(error => {
+            dispatch(timelineUserError)
+        })
     }
 }
 

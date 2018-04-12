@@ -10,7 +10,8 @@ class TimelineService extends Component {
   constructor(props) {
         super(props);
         this.state = {
-          data: []
+          data: [],
+          item: {},
         };   
     }
   
