@@ -22,6 +22,7 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::group(['middleware' => ['credentials']], function () {
         //Timeline
         Route::get('/{startup_id}/timeline', 'API\Timeline\TimelineController@index');
+        Route::get('/{startup_id}/timeline/{post_id}', 'API\Timeline\TimelineController@show');
 
         //Timeline
         Route::get('/{startup_id}/matchmaking', 'API\Matchmaking\MatchmakingController@index');

@@ -15,9 +15,21 @@ class MatchmakingController extends Controller
      */
     public function index($id)
     {
-        $services = Startup::where('id',$id)->first()->categories()->with('services')->get();
-        
-        return $services;
+        $categories = Startup::where('id',$id)->first()->categories;
+        $id = [];
+
+        foreach($categories as $category){
+            $services =  $category->startup()->get();
+
+            $obj = [];
+            $obj['category'] = $category;
+            $obj['services'] = $services;
+
+            $data[] = $obj;
+        }
+
+
+        return $data;
         
     }
 

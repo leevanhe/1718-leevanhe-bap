@@ -17,7 +17,7 @@ class TimelineController extends Controller
     public function index($id)
     {
         $connections = Startup::where('id',$id)->first()->connections()->with('posts')->get();
-        
+
         return $connections;
     }
 
@@ -29,5 +29,17 @@ class TimelineController extends Controller
     public function create($id, Request $request) 
     {
 
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id, $user_id) 
+    {
+        $connection = Startup::where('id',$id)->first()->connections()->where('connection_id',$user_id)->get();
+
+        return $connection;
     }
 }
