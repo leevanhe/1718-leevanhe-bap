@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Startup;
+use App\Post;
 
 class TimelineController extends Controller
 {
@@ -28,6 +29,12 @@ class TimelineController extends Controller
      */
     public function create($id, Request $request) 
     {
+        $startup = Startup::where('id', $id)->first();
+
+        $post = New Post;
+        $post->description = $request->description;
+        $post->startup_id = $startup->id;
+        $post->save();
 
     }
 
