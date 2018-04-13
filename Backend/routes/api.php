@@ -23,6 +23,7 @@ Route::group(['middleware' => ['jwt.auth']], function () {
         //Timeline
         Route::get('/{startup_id}/timeline', 'API\Timeline\TimelineController@index');
         Route::get('/{startup_id}/timeline/{post_id}', 'API\Timeline\TimelineController@show');
+        Route::get('/{startup_id}/timeline/startup', 'API\Timeline\TimelineController@startup');
         Route::post('/{startup_id}/timeline/create', 'API\Timeline\TimelineController@create');
 
         //Timeline
