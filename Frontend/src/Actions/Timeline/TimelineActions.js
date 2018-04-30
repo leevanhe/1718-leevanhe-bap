@@ -16,10 +16,11 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     fetchTimeline: (token, id) => dispatch(fetchTimeline(token, id)),
-    fetchUser: (token, id, userId) => dispatch(fetchUser(token, id, userId))
+    select: (token, id, post) => dispatch(selectPost(token, id, post)),
+    fetch: (token, id, post) => dispatch(fetchPostDetail(token, id, post))
 })
 
-//timeline
+//All posts
 export const timelinePending = () => ({
     type: ActionTypes.TIMELINE_PENDING
 })
@@ -34,23 +35,6 @@ export const timelineError = (error) => ({
     error: error
 })
 
-//user
-export const timelineUserPending = () =>({
-    type: ActionTypes.TIMELINE_USER_PENDING
-})
-
-export const timelineUserSucces = (data) => ({
-    type: ActionTypes.TIMELINE_USER_SUCCESS,
-    user: data
-})
-
-export const timelineUserError = (error) => ({
-    type: ActionTypes.TIMELINE_USER_ERROR,
-    error: error
-})
-
-
-//Timeline
 export const fetchTimeline = (token, id) => {
     return dispatch => {
         dispatch(timelinePending())
@@ -65,18 +49,33 @@ export const fetchTimeline = (token, id) => {
     }
 }
 
-//User
-export const fetchUser = (token, id, userId) => {
-    return dispatch => {
-        dispatch(timelineUserPending())
-        axios.get(`${URL}${id}/timeline/${userId}`, {headers: {'Authorization': `Bearer ${token}`}})
-        .then(response => {
-            console.log('RESPONSE', response);
-            dispatch(timelineUserSucces(response.data.user))
-        })
-        .catch(error => {
-            dispatch(timelineUserError)
-        })
+//Detail post
+export const selectPost = (post) => ({
+    type: ActionTypes.SELECT_POST,
+    post
+});
+ 
+export const requestPost = (post) => ({
+    type: ActionTypes.REQUEST_POST,
+    post
+});
+
+export const recievePost = (response) => ({
+    type: ActionTypes.RECIEVE_POST,
+    data: response
+});
+
+export const fetchPostDetail = (post) => {
+    return function (dispatch) {
+        dispatch(requestEvent(event))
+        return axios.get(`${URL}${id}/timeline/${post}`, {headers: {'Authorization': `Bearer ${token}`}})
+            .then(response => { 
+                dispatch(receiveEvent(response.data)), 
+                Actions.event(response.data) 
+            })
+            .catch(error => {
+                dispatch(timelineError(error))
+            });
     }
 }
 

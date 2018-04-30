@@ -5,40 +5,43 @@ import { connect } from 'react-redux';
 import { URL } from '../../Config/index';
 import { Actions } from 'react-native-router-flux';
 
-const mapStateToProps = (state) => ({   
+const mapStateToProps = (state) => ({
+    isLoading: state.userdata.isLoading,
+    error: state.userdata.error,
+    data: state.userdata.data,   
     token: state.auth.token,
     id: state.auth.id
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    submitNewPost: (token, id, data) => dispatch(submitNewPost(token, id, data))
+    fetchUserdata: (token, id) => dispatch(fetchUserdata(token, id)),
 })
 
-export const submitPending = () => ({
-    type: ActionTypes.SUBMIT_PENDING
+export const userdataPending = () => ({
+    type: ActionTypes.USERDATA_PENDING
 })
 
-export const submitSuccess = (data) => ({
-    type: ActionTypes.SUBMIT_SUCCESS,
+export const userdataSuccess = (data) => ({
+    type: ActionTypes.USERDATA_SUCCESS,
     data: data
 })
 
-export const submitError = (error) => ({
-    type: ActionTypes.SUBMIT_ERROR,
+export const userdataError = (error) => ({
+    type: ActionTypes.USERDATA_ERROR,
     error: error
 })
 
-export const submitNewPost = (token, id, data) => {
+export const fetchUserdata = (token, id) => {
     return dispatch => {
-        dispatch(submitPending())
-        axios.post( `${URL}${id}/timeline/create`, data, {headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}})
+        dispatch(userdataPending())
+        axios.get(`${URL}${id}/timeline/userdata`, {headers: {'Authorization': `Bearer ${token}`}})
         .then(response => {
-            dispatch(submitSuccess(response.data));
-            Actions.pop()
+            dispatch(userdataSuccess(response.data))
         })
         .catch(error => {
-            dispatch(submitError(error))
+            dispatch(userdataError(error))
         });
     }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(NewPostService);

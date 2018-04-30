@@ -4,24 +4,25 @@ import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import Button from '../Button/index';
 
-class NewPostService extends React.Component{  
+class NewPostService extends Component{  
   constructor(props){
     super(props);
     this.state = {
+      data: [],
       description: '',
       error: '',
     }
   }
 
-  submit = () => {  
+  componentDidMount() {
+    this.props.fetchUserdata(this.props.token,this.props.id)
+  }
 
-    let data = {
-      description: this.state.description
-    };
-    console.log(data);
-
-    this.setState({error: ''});
-    this.props.submitNewPost(this.props.token, this.props.id, JSON.stringify(data));
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data.length > 0 && nextProps.error == undefined) {
+      this.setState({data: nextProps.data});
+      console.log(this.state.data);
+    }
   }
 
   render(){  
@@ -33,12 +34,20 @@ class NewPostService extends React.Component{
             </View>
             :null}
 
+            {this.state.data != undefined? this.state.data.map((a,i)=>{
+              return(
+                <View>
+                  <Text>a.name</Text>
+                </View>
+              );
+            }): null}
+
             <View>
                 <Text>Opmerkingen</Text>
                 <View>
                     <TextInput
-                    onChangeText={(description) => {this.setState({description})}}
-                    value={this.state.description}/>
+                    placeholder="hier komt tekst"
+                    />
                 </View>              
             </View>
 

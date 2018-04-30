@@ -22,11 +22,12 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::group(['middleware' => ['credentials']], function () {
         //Timeline
         Route::get('/{startup_id}/timeline', 'API\Timeline\TimelineController@index');
+        Route::get('/{startup_id}/timeline/userdata', 'API\Timeline\StartupController@index');
+
         Route::get('/{startup_id}/timeline/{post_id}', 'API\Timeline\TimelineController@show');
-        Route::get('/{startup_id}/timeline/startup', 'API\Timeline\TimelineController@startup');
         Route::post('/{startup_id}/timeline/create', 'API\Timeline\TimelineController@create');
 
-        //Timeline
+        //Matchmaking
         Route::get('/{startup_id}/matchmaking', 'API\Matchmaking\MatchmakingController@index');
     });
 });

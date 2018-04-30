@@ -8,9 +8,20 @@ export const TIMELINE_PENDING   = 'timeline_pending';
 export const TIMELINE_ERROR     = 'timeline_error';
 export const TIMELINE_SUCCESS   = 'timeline_success';
 
+export const SELECT_POST   = 'select_post';
+export const REQUEST_POST     = 'request_post';
+export const RECIEVE_POST   = 'recieve_post';
+
+
+
 export const TIMELINE_USER_PENDING   = 'timeline_user_pending';
 export const TIMELINE_USER_ERROR     = 'timeline_user_error';
 export const TIMELINE_USER_SUCCESS   = 'timeline_user_success';
+
+
+export const USERDATA_PENDING = 'userdata_pending';
+export const USERDATA_SUCCESS = 'userdata_success';
+export const USERDATA_ERROR = 'userdata_error';
 
 export const SUBMIT_PENDING   = 'submit_pending';
 export const SUBMIT_ERROR     = 'submit_error';

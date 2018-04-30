@@ -6,12 +6,13 @@ import moment from 'moment';
 import 'moment/locale/nl-be';
 import Colors from '../../Config/theme';
 
+import {Actions} from 'react-native-router-flux';
+
 class TimelineService extends Component {
   constructor(props) {
         super(props);
         this.state = {
           data: [],
-          item: {},
         };   
     }
   
@@ -21,9 +22,7 @@ class TimelineService extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.data.length > 0 && nextProps.error == undefined) {
-      this.setState({
-        data: nextProps.data,
-      });
+      this.setState({data: nextProps.data});
       console.log(this.state.data);
     }
   }
@@ -37,15 +36,23 @@ class TimelineService extends Component {
                 a.posts.map((p,i) => {
                   return (
                   <View key={i} style={styles.container}>
+                    <TouchableOpacity onPress={() => {
+                      this.props.select(p._id) 
+                      this.props.fetch(p._id)
+                    }}>
                     <View style={{flex :1, flexDirection: 'row', marginBottom: 20}}>
                       <View style={{marginRight: 10}}>
                         <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
                       </View>
                       <View style={{flex:1, justifyContent:'center'}}>
-                        <Text>{a.name}</Text>
+                        <TouchableOpacity onPress={()=> Actions.NewPost()}>
+                          <Text>{a.name}</Text>
+                          <Text>{a.id}</Text>
+                        </TouchableOpacity>
                       </View>
                     </View>
                     <Text>{p.description}</Text>
+                    </TouchableOpacity>
                   </View>
                   )
                 })

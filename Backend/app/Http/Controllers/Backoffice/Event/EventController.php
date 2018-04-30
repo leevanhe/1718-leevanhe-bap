@@ -6,6 +6,7 @@ use App\Event;
 use App\Adresses;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Session;
 
 class EventController extends Controller
 {
@@ -67,9 +68,10 @@ class EventController extends Controller
 
         $event->adresses->save($adress);
         
-        //redirect
-        $events = Event::all();
-        return view ('event.index', compact('events'));
+        //Redirect
+        Session::flash('succes', 'The event was succesfully saved!');
+
+        return redirect()->route('events.index');
     }
 
     /**
@@ -82,7 +84,7 @@ class EventController extends Controller
     {
         $event = Event::find($id);
 
-        return view('event.show')->with('event', $event);
+        return view('event.show', compact('event'));
     }
 
     /**
@@ -93,7 +95,9 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $event = Event::find($id);
+
+        return view('event.edit', compact('event'));
     }
 
     /**
@@ -105,7 +109,21 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $event = Event::find($id); 
+        $event->name = $request->name;
+        $event->description = $request->description;
+        $event->start = $request->start;
+        $event->end = $request->end;
+        $event->save();
+
+        $adress = $event->adresses;
+
+        $adress->line1 = $request->line1;
+        $adress->city = $request->city;
+        $adress->ZIP = $request->ZIP;
+        $adress->country = $request->country;
+
+        $event->adresses->save($adress);
     }
 
     /**
@@ -116,6 +134,12 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $event = Event::find($id);
+
+        $event->delete();
+
+        Session::flash('deleted', 'The event was succesfully deleted');
+
+        return redirect()->route('events.index');
     }
 }
