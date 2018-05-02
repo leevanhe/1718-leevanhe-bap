@@ -41,14 +41,11 @@ class Credentials
             }
             $count++;
         }
-        // Get route parameters.
         $parameters = $request->route()->parameters();
         $keys = array_keys($parameters);
-        // For every route parameter check the following.
         foreach( $keys as $key){
             if($key == 'startup_id'){
                 $startups = Startup::where('user_id', $this->id)->first();
-                // Check if parent id is actually the parent_id given in the token. 
                 if($request->route('startup_id') == $startups->id){
                     return $next($request);
                 } else {

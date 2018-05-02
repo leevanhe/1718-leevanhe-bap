@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, ListView, ActivityIndicator, TextInput, Touchab
 import { connect }from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Icon  from 'react-native-vector-icons/FontAwesome';
-import store from '../../../Reducers/index';
-import Colors from '../../../Config/theme';
+import store from '../../../../Reducers/index';
+import Colors from '../../../../Config/theme';
 
 class LoginService extends Component {
   constructor(props) {

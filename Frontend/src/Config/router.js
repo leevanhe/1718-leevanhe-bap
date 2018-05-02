@@ -6,13 +6,11 @@ import { View } from 'react-native';
 
 import Login from '../Screens/Login';
 import Timeline from '../Screens/Timeline/Timeline';
-import DetailUser from '../Screens/Timeline/DetailUser';
-import DetailPost from '../Screens/Timeline/DetailPost';
-import NewPost from '../Screens/Timeline/NewPost';
+import NewPost from '../Screens/NewPost/NewPost';
 import Matchmaking from '../Screens/Matchmaking/Matchmaking';
 import Events from '../Screens/Events/Events';
-import Profile from '../Screens/Profile';
-import TabIcon from '../Components/TabIcon/index';
+import Profile from '../Screens/Profile/Profile';
+import TabIcon from '../Components/Others/TabIcon/index';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 
 const reducerCreate = params => {
@@ -26,13 +24,9 @@ const reducerCreate = params => {
     <Router createReducer={reducerCreate} >
         <Scene key="root" tabBarPosition='bottom'>
 
-            <Scene key="newPost" component={NewPost} hideNavBar={true}/>
-
-            <Scene key="detailUser" component={DetailUser} hideNavBar={true}/>
-
-            <Scene key="detailPost" component={DetailPost} hideNavBar={true}/>
-
             <Scene initial={true} key="login"component={Login} hideNavBar={true}/>
+
+            <Scene key="newpost" component={NewPost} hideNavBar={true}/>
   
             <Scene 
                 key="tabbar"

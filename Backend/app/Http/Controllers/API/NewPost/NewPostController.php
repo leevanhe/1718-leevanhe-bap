@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\API\Timeline;
+namespace App\Http\Controllers\API\NewPost;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Startup;
+use App\Post;
 
-class StartupController extends Controller
+class NewPostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,7 @@ class StartupController extends Controller
      */
     public function index($id)
     {
-        $startup = Startup::where('id',$id)->get();
+        $startup = Startup::all();
 
         return $startup;
     }

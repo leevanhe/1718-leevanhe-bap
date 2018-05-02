@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actionTypes';
 import axios from 'axios';
-import LoginService from '../../Components/Auth/Login/index';
+import LoginService from '../../Components/Pages/Auth/Login/index';
 
 import { Actions } from 'react-native-router-flux';
 import { AsyncStorage } from 'react-native';
@@ -15,6 +15,20 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     login: (credentials) => dispatch(login(credentials))
+})
+
+export const loginPending = () => ({
+    type: ActionTypes.LOGGING_IN
+})
+
+export const loginSuccess = (data) => ({
+    type: ActionTypes.LOGIN_SUCCESS,
+    data: data
+})
+
+export const loginError = (error) => ({
+    type: ActionTypes.LOGIN_ERROR,
+    error: error
 })
 
 export const login =(credentials) => { 
@@ -47,19 +61,5 @@ saveCredentials = (username, password, token, startup_id) => {
         } 
         return AsyncStorage.setItem('startup', JSON.stringify(startup)); 
 }
-
-export const loginPending = () => ({
-    type: ActionTypes.LOGGING_IN
-})
-
-export const loginSuccess = (data) => ({
-    type: ActionTypes.LOGIN_SUCCESS,
-    data: data
-})
-
-export const loginError = (error) => ({
-    type: ActionTypes.LOGIN_ERROR,
-    error: error
-})
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginService);

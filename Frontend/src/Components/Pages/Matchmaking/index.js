@@ -4,7 +4,7 @@ import { connect }from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import moment from 'moment';
 import 'moment/locale/nl-be';
-import Colors from '../../Config/theme';
+import Colors from '../../../Config/theme';
 
 class MatchmakingService extends Component {
   constructor(props) {

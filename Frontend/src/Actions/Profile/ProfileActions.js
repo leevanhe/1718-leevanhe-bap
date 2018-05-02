@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actionTypes';
 import axios from 'axios';
-import ProfileService from '../../Components/Profile/index';
+import ProfileService from '../../Components/Pages/Profile/index';
 
 import { connect } from 'react-redux';
 import { URL } from '../../Config/index';

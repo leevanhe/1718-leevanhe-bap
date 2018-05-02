@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet,  Image, TouchableOpacity } from 'react-native';
-import Colors from '../../Config/theme';
+import Colors from '../../../Config/theme';
 
-const logo = require('../../Assets/logo-enkel.png');
+const logo = require('../../../Assets/logo-enkel.png');
 
 const Header = (props) => (
     <View style={style.container}>

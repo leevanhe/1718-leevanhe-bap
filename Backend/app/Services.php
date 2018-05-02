@@ -18,7 +18,7 @@ class Services extends Model
     */
     public function startup()
     {
-        return $this->hasMany(Startup::class);
+        return $this->belongsTo(Startup::class);
     }
     
     public function categories()

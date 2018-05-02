@@ -1,19 +1,20 @@
 import * as Actions from '../Actions/actionTypes'
 
-const TimelineReducer = (state = { isLoading: false, error: undefined, data: {}, user: {} }, action) => {
+const TimelineReducer = (state = { isLoading: false, error: undefined, data: {} }, action) => {
     switch (action.type) {
-        case Actions.TIMELINE_PENDING:
+        case Actions.POSTS_PENDING:
             return Object.assign({}, state, {
                 isLoading: true,
             });
-        case Actions.TIMELINE_ERROR:
+        case Actions.POSTS_ERROR:
             return Object.assign({}, state, {
                 isLoading: false,
                 error: action.error
             });
-        case Actions.TIMELINE_SUCCESS:
+        case Actions.POSTS_SUCCESS:
             return Object.assign({}, state, {
                 isLoading: false,
+                loggedIn: true,
                 data: action.data,
             });
         default:

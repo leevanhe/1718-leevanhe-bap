@@ -5,7 +5,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import Colors from '../../Config/theme';
+import Colors from '../../../Config/theme';
 
 
 const GenerateLoading = (props) => {

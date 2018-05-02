@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, TextInput, ScrollView, TouchableOpacity, Image } from 'react-native';
-import { Col, Row, Grid } from "react-native-easy-grid";
 import { connect }from 'react-redux';
 
-import Colors from '../../Config/theme';
-import GenerateLoading from '../Loading/index';
+import Colors from '../../../Config/theme';
+import GenerateLoading from '../../Others/Loading/index';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Button from'../Button/index';
+import Button from'../../Others/Button/index';
 
 class ProfileService extends Component {
   constructor(props) {

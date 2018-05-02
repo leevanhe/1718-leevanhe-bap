@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Colors from '../../Config/theme';
+import Colors from '../../../Config/theme';
 
 const propTypes = {
   selected: PropTypes.bool,

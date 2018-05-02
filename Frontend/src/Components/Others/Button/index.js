@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
-import Colors from '../../Config/theme';
+import Colors from '../../../Config/theme';
 
 const Button = ({onPress, children}) => {
     return (

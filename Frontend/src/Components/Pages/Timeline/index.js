@@ -3,22 +3,19 @@ import { StyleSheet, Text, ScrollView, View, ActivityIndicator, TextInput,ListVi
 import { connect }from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import moment from 'moment';
-import 'moment/locale/nl-be';
-import Colors from '../../Config/theme';
-
-import {Actions} from 'react-native-router-flux';
+import Colors from '../../../Config/theme';
 
 class TimelineService extends Component {
   constructor(props) {
-        super(props);
-        this.state = {
-          data: [],
-        };   
-    }
+    super(props);
+    this.state = {
+      data: [],
+    };   
+  }
   
-    componentDidMount() {
-        this.props.fetchTimeline(this.props.token, this.props.id);
-    }   
+  componentDidMount() {
+    this.props.fetchPosts(this.props.token, this.props.id);
+  }   
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.data.length > 0 && nextProps.error == undefined) {
@@ -36,10 +33,7 @@ class TimelineService extends Component {
                 a.posts.map((p,i) => {
                   return (
                   <View key={i} style={styles.container}>
-                    <TouchableOpacity onPress={() => {
-                      this.props.select(p._id) 
-                      this.props.fetch(p._id)
-                    }}>
+                    <TouchableOpacity onPress={() => {}}>
                     <View style={{flex :1, flexDirection: 'row', marginBottom: 20}}>
                       <View style={{marginRight: 10}}>
                         <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
@@ -47,7 +41,6 @@ class TimelineService extends Component {
                       <View style={{flex:1, justifyContent:'center'}}>
                         <TouchableOpacity onPress={()=> Actions.NewPost()}>
                           <Text>{a.name}</Text>
-                          <Text>{a.id}</Text>
                         </TouchableOpacity>
                       </View>
                     </View>

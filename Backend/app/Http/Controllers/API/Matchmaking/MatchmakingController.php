@@ -16,10 +16,10 @@ class MatchmakingController extends Controller
     public function index($id)
     {
         $categories = Startup::where('id',$id)->first()->categories;
-        $id = [];
+        $data = [];
 
         foreach($categories as $category){
-            $services =  $category->startup()->get();
+            $services =  $category->services()->with('startup')->get();
 
             $obj = [];
             $obj['category'] = $category;

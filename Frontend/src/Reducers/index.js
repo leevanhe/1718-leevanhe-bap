@@ -4,20 +4,16 @@ import { createLogger } from 'redux-logger';
 
 import authReducer from './auth';
 import TimelineReducer from './timeline';
-import UserdataReducer from './userdata';
-import SubmitPostReducer from './submitPost';
 import MatchmakingReducer from './matchmaking';
 import ProfileReducer from './profile';
-import postReducer from './post';
+import UserReducer from './user';
 
 const AppReducers = combineReducers({
     auth: authReducer,
     timeline: TimelineReducer,
-    post: postReducer,
-    userdata: UserdataReducer,
+    user: UserReducer,
     matchmaking: MatchmakingReducer,
     profile: ProfileReducer,
-    submitPost: SubmitPostReducer,
 });
 
 const rootReducer = (state, action) => {

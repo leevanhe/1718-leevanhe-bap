@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import Header from '../Components/Header/index';
-import ProfileSevice from '../Actions/Profile/ProfileActions';
+import Header from '../../Components/Others/Header/index';
+import ProfileSevice from '../../Actions/Profile/ProfileActions';
 
 class Profile extends Component {
   render() {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import Header from '../../Components/Header/index';
-import Header2 from '../../Components/Header2/index';
+import Header from '../../Components/Others/Header/index';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from '../../Config/theme'
 
@@ -14,16 +13,16 @@ class Timeline extends Component {
     return (
       <View style={styles.box}>
         <Header/>
-        <View style={styles.container} onPress={()=> Actions.newPost()}>
+        <View style={styles.container}>
             <View style={{flex: 1, padding: 20}}>
                 <Text>Share something with your network</Text>
             </View>
             <View style={{paddingRight: 20}}>
-              <TouchableOpacity onPress={()=> Actions.newPost()}>
+              <TouchableOpacity onPress={()=> Actions.newpost()}>
                 <Icon name='edit' size={40} color="#EC6845"/> 
               </TouchableOpacity> 
             </View>
-        </View>
+        </View> 
         <TimelineService />
       </View>
     );

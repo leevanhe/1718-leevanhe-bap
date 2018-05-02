@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet,  Image } from 'react-native';
-import Colors from '../../Config/theme';
+import Colors from '../../../Config/theme';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Header2 = (props) => (
