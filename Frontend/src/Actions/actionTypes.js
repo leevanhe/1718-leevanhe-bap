@@ -15,6 +15,10 @@ export const USER_PENDING   = 'user_pending';
 export const USER_ERROR     = 'user_error';
 export const USER_SUCCES    = 'user_succes';
 
+export const SUBMIT_PENDING = 'submit_pending';
+export const SUBMIT_ERROR   = 'submit_error';
+export const SUBMIT_SUCCES  = 'submit_succes';
+
 /*** MATCHMAKING PAGE ***/
 export const MATCHMAKING_PENDING   = 'matchmaking_pending';
 export const MATCHMAKING_ERROR     = 'matchmaking_error';
