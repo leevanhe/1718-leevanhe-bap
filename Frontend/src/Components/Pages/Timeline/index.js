@@ -30,9 +30,9 @@ class TimelineService extends Component {
           <ScrollView style={{flex: 1}}>
             {this.state.data != undefined? this.state.data.map((a, i) => {
               return (
-                a.posts.map((p,i) => {
+                a.posts.map((p, i) => {
                   return (
-                  <View key={i} style={styles.container}>
+                    <View key={i} style={styles.container}>
                     <TouchableOpacity onPress={() => {}}>
                     <View style={{flex :1, flexDirection: 'row', marginBottom: 20}}>
                       <View style={{marginRight: 10}}>
@@ -40,11 +40,28 @@ class TimelineService extends Component {
                       </View>
                       <View style={{flex:1, justifyContent:'center'}}>
                         <TouchableOpacity onPress={()=> Actions.NewPost()}>
-                          <Text>{a.name}</Text>
+                          <Text>{a.connection.name}</Text>
                         </TouchableOpacity>
                       </View>
                     </View>
                     <Text>{p.description}</Text>
+                    <View style={{flex: 1, flexDirection: 'row', marginTop: 10}}>
+                      <Text style= {{paddingTop: 2}}>{p.comments_count}</Text>
+                      <Icon style={{marginLeft: 5}} name="comments-o" size={20} color={Colors.orange}/>
+                    </View>
+                    <View style={{ flex: 1, flexDirection: 'row', marginTop: 10}}>
+                      <TouchableOpacity style={{ marginLeft: 25, paddingTop:5}} onPress={() => {}}>
+                          <Icon name="lightbulb-o" size={40} color={Colors.orange}/>
+                      </TouchableOpacity>
+                      <View style={{flex:1, alignItems: 'center'}}>
+                        <TouchableOpacity style={{ alignItems: 'center', paddingTop:5}} onPress={() => {}}>
+                            <Icon name="comments-o" size={40} color={Colors.orange}/>
+                        </TouchableOpacity>
+                      </View>
+                      <TouchableOpacity style={{ marginRight: 25, paddingTop:5}} onPress={() => {}}>
+                          <Icon name="share-alt" size={35} color={Colors.orange}/>
+                      </TouchableOpacity>
+                    </View>
                     </TouchableOpacity>
                   </View>
                   )

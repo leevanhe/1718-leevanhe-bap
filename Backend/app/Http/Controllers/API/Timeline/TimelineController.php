@@ -17,9 +17,22 @@ class TimelineController extends Controller
      */
     public function index($id)
     {
-        $connections = Startup::where('id',$id)->first()->connections()->with('posts')->get();
+        $connections = Startup::where('id',$id)->first()->connections;
 
-        return $connections;
+        $data = [];
+
+        foreach($connections as $connection)
+        {
+            $posts = $connection->posts()->with('comments')->withCount('comments')->get();
+
+            $obj = [];
+            $obj['connection'] = $connection;
+            $obj['posts'] = $posts;
+
+            $data[] = $obj;
+        }
+
+        return $data;
     }
 
     /**

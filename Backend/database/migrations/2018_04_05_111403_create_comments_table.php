@@ -17,11 +17,13 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->string('description', 1000);
             $table->unsignedInteger('post_id');
+            $table->unsignedInteger('startup_id');
             $table->timestamps();
         });
 
         Schema::table('comments', function (Blueprint $table) {
             $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('startup_id')->references('id')->on('startups');
         });
     }
 

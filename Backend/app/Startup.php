@@ -12,6 +12,7 @@ use App\Realisations;
 use App\Services;
 use App\Post;
 use App\Startup;
+use App\Comment;
 
 class Startup extends Model
 {
@@ -62,6 +63,11 @@ class Startup extends Model
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
     /**

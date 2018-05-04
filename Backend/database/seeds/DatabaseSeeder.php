@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             CategoryServiceTableSeeder::class,
             ConnectionStartupTableSeeder::class,
             RecommendationStartupTableSeeder::class,
+            CommentTableSeeder::class,
         ]);
     }
 }
