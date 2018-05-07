@@ -8,13 +8,17 @@ import MatchmakingReducer from './matchmaking';
 import ProfileReducer from './profile';
 import UserReducer from './user';
 import SubmitPostReducer from './submitPost';
+import SubmitServiceReducer from './submitService';
+import CommentsReducer from './comments';
 
 const AppReducers = combineReducers({
     auth: authReducer,
     timeline: TimelineReducer,
     user: UserReducer,
     submitPost: SubmitPostReducer,
+    comments: CommentsReducer,
     matchmaking: MatchmakingReducer,
+    submitService: SubmitServiceReducer,
     profile: ProfileReducer,
 });
 

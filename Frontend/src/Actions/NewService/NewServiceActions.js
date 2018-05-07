@@ -1,13 +1,12 @@
 import * as ActionTypes from '../actionTypes';
 import axios from 'axios';
-import NewPostService from '../../Components/Pages/NewPost/index';
+import NewServiceService from '../../Components/Pages/NewService/index';
 
 import { connect } from 'react-redux';
 import { URL } from '../../Config/index';
 import { Actions } from 'react-native-router-flux';
 
-const mapStateToProps = (state) => 
-({
+const mapStateToProps = (state) => ({
     isLoading: state.user.isLoading,
     error: state.user.error,
     data: state.user.data,
@@ -15,10 +14,9 @@ const mapStateToProps = (state) =>
     id: state.auth.id
 })
 
-const mapDispatchToProps = (dispatch) => 
-({
+const mapDispatchToProps = (dispatch) => ({
     fetchUser: (token,id) => dispatch(fetchUser(token, id)),
-    submitPost: (token, id, data) => dispatch(submitPost(token, id, data))
+    submitService: (token, id, data) => dispatch(submitService(token, id, data))
 })
 
 //Fetch userdata
@@ -50,33 +48,32 @@ export const fetchUser = (token, id) => {
     }
 }
 
-//Submit post
-export const submitPending = () => ({
-    type: ActionTypes.SUBMIT_PENDING
+export const submitServicePending = () => ({
+    type: ActionTypes.NEWSERVICE_PENDING,
 })
 
-export const submitSucces = (data) => ({
-    type: ActionTypes.SUBMIT_SUCCES,
+export const submitServiceError = (error) => ({
+    type: ActionTypes.NEWSERVICE_ERROR,
+    error: error,
+})
+
+export const submitServiceSucces = (data) => ({
+    type: ActionTypes.NEWSERVICE_SUCCES,
     data: data
 })
 
-export const submitError = (error) => ({
-    type: ActionTypes.SUBMIT_ERROR,
-    error: error
-})
-
-export const submitPost = (token, id, data) => {
+export const submitService = (token, id, data) => {
     return dispatch => {
-        dispatch(submitPending())
-        axios.post(`${URL}${id}/timeline/create`, data, {headers: {'Content-Type':'application/json','Authorization': `Bearer ${token}`}})
+        dispatch(submitServicePending())
+        axios.post(`${URL}${id}/matchmaking/create`, data, {headers: {'Content-Type':'application/json','Authorization': `Bearer ${token}`}})
         .then(response => {
-            dispatch(submitSucces(response.data));
+            dispatch(submitServiceSucces(response.data))
             Actions.pop();
         })
         .catch(response => {
-            dispatch(submitError(response.error))
-        })
+            dispatch(submitServiceError(response.error))
+        });
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (NewPostService);
+export default connect(mapStateToProps, mapDispatchToProps) (NewServiceService)

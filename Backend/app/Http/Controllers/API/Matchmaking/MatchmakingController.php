@@ -4,7 +4,9 @@ namespace App\Http\Controllers\API\Matchmaking;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 use App\Startup;
+use App\Services;
 
 class MatchmakingController extends Controller
 {
@@ -38,9 +40,16 @@ class MatchmakingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id, Request $request)
     {
-        //
+        $startup = Startup::where('id', $id)->first();
+
+        $service = new Services;
+        $service->title = $request->title;
+        $service->description = $request->description;
+        $service->city = $request->city;
+        $service->startup_id = $startup->id;
+        $service->save();
     }
 
     /**

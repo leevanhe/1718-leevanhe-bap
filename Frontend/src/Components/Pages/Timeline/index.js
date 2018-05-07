@@ -5,6 +5,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import moment from 'moment';
 import Colors from '../../../Config/theme';
 
+import { Actions } from 'react-native-router-flux';
+
 class TimelineService extends Component {
   constructor(props) {
     super(props);
@@ -47,14 +49,16 @@ class TimelineService extends Component {
                     <Text>{p.description}</Text>
                     <View style={{flex: 1, flexDirection: 'row', marginTop: 10}}>
                       <Text style= {{paddingTop: 2}}>{p.comments_count}</Text>
-                      <Icon style={{marginLeft: 5}} name="comments-o" size={20} color={Colors.orange}/>
+                      <TouchableOpacity onPress={() => Actions.comments()}>
+                        <Icon style={{marginLeft: 5}} name="comments-o" size={20} color={Colors.orange}/>
+                      </TouchableOpacity>
                     </View>
                     <View style={{ flex: 1, flexDirection: 'row', marginTop: 10}}>
                       <TouchableOpacity style={{ marginLeft: 25, paddingTop:5}} onPress={() => {}}>
                           <Icon name="lightbulb-o" size={40} color={Colors.orange}/>
                       </TouchableOpacity>
                       <View style={{flex:1, alignItems: 'center'}}>
-                        <TouchableOpacity style={{ alignItems: 'center', paddingTop:5}} onPress={() => {}}>
+                        <TouchableOpacity style={{ alignItems: 'center', paddingTop:5}} onPress={() => Actions.comments()}>
                             <Icon name="comments-o" size={40} color={Colors.orange}/>
                         </TouchableOpacity>
                       </View>

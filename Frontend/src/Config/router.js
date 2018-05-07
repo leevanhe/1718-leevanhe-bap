@@ -7,6 +7,8 @@ import { View } from 'react-native';
 import Login from '../Screens/Login';
 import Timeline from '../Screens/Timeline/Timeline';
 import NewPost from '../Screens/NewPost/NewPost';
+import NewService from '../Screens/NewService/NewService';
+import Comments from '../Screens/Comments/Comments';
 import Matchmaking from '../Screens/Matchmaking/Matchmaking';
 import Events from '../Screens/Events/Events';
 import Profile from '../Screens/Profile/Profile';
@@ -27,6 +29,10 @@ const reducerCreate = params => {
             <Scene initial={true} key="login"component={Login} hideNavBar={true}/>
 
             <Scene key="newpost" component={NewPost} hideNavBar={true}/>
+            <Scene key="comments" component={Comments} hideNavBar={true}/>
+
+            <Scene key="newservice" component={NewService} hideNavBar={true}/>
+
   
             <Scene 
                 key="tabbar"

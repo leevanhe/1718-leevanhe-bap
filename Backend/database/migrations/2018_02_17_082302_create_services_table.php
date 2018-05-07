@@ -15,6 +15,7 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
             $table->string('description', 1000);
             $table->string('city');
             $table->unsignedInteger('startup_id');
