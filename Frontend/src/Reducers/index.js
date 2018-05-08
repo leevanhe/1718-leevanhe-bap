@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
 import authReducer from './auth';
+import SubmitUserReducer from './submitUser';
 import TimelineReducer from './timeline';
 import MatchmakingReducer from './matchmaking';
 import ProfileReducer from './profile';
@@ -13,6 +14,7 @@ import CommentsReducer from './comments';
 
 const AppReducers = combineReducers({
     auth: authReducer,
+    register: SubmitUserReducer,
     timeline: TimelineReducer,
     user: UserReducer,
     submitPost: SubmitPostReducer,

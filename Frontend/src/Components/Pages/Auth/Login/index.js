@@ -16,7 +16,8 @@ class LoginService extends Component {
     error = "";
     errorActive = false;
   }
-  componentDidMount() {}   
+  componentDidMount() {}  
+   
   componentWillReceiveProps(nextProps) {
     if(nextProps.error != undefined){
       this.error = nextProps.error;
@@ -45,11 +46,6 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       margin: 10,
-  },
-  label: {
-      fontWeight: '800',
-      color: Colors.darkgrey,
-      marginBottom:0
   },
   textInput: {
       marginBottom: 15,

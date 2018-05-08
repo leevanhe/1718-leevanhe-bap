@@ -5,6 +5,7 @@ import Colors from './theme';
 import { View } from 'react-native';
 
 import Login from '../Screens/Login';
+import Register from '../Screens/Register';
 import Timeline from '../Screens/Timeline/Timeline';
 import NewPost from '../Screens/NewPost/NewPost';
 import NewService from '../Screens/NewService/NewService';
@@ -27,6 +28,8 @@ const reducerCreate = params => {
         <Scene key="root" tabBarPosition='bottom'>
 
             <Scene initial={true} key="login"component={Login} hideNavBar={true}/>
+
+            <Scene key="register" component={Register} hideNavBar={true}/>
 
             <Scene key="newpost" component={NewPost} hideNavBar={true}/>
             <Scene key="comments" component={Comments} hideNavBar={true}/>

@@ -24,7 +24,7 @@ Route::group(['middleware' => ['jwt.auth']], function () {
         Route::get('/{startup_id}/timeline', 'API\Timeline\TimelineController@index');
         Route::get('/{startup_id}/timeline/userdata', 'API\Timeline\StartupController@index');
 
-        Route::get('/{startup_id}/timeline/{post_id}', 'API\Timeline\TimelineController@show');
+        Route::get('/{startup_id}/timeline/{connection_id}', 'API\Timeline\TimelineController@show');
         Route::post('/{startup_id}/timeline/create', 'API\Timeline\TimelineController@create');
 
         //NewPost
@@ -35,6 +35,8 @@ Route::group(['middleware' => ['jwt.auth']], function () {
         Route::post('/{startup_id}/matchmaking/create', 'API\Matchmaking\MatchmakingController@create');
     });
 });
+
+Route::post('/register', 'API\Auth\RegisterController@create');
 
 Route::get('/startup/profile', 'API\Profile\ProfileController@index');
 
