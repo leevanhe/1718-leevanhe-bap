@@ -15,6 +15,10 @@ export const POSTS_PENDING          = 'posts_pending';
 export const POSTS_ERROR            = 'posts_error';
 export const POSTS_SUCCESS          = 'posts_success';
 
+export const SELECT_FRIEND           = 'select_friend';
+export const REQUEST_FRIEND          = 'request_friend';
+export const RECEIVE_FRIEND          = 'receive_friend';
+
 /*** NEWPOST PAGE ***/
 export const USER_PENDING           = 'user_pending';
 export const USER_ERROR             = 'user_error';

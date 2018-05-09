@@ -15,7 +15,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchPosts: (token, id) => dispatch(fetchPosts(token, id))
+    fetchPosts: (token, id) => dispatch(fetchPosts(token, id)),
+
+    select: (token, id, friend) =>  dispatch(selectFriend(token, id, friend)),
+    fetch: (token, id, friend)  =>  dispatch(fetchFriendDetail(token, id, friend)),
+
 })
 
 /*** ALL POSTS ***/
@@ -44,6 +48,36 @@ export const fetchPosts = (token, id) => {
         .catch(error => {
             dispatch(postsError(error))
         });
+    }
+}
+
+/*** USER DETAIL ***/
+
+export const selectFriend = (friend) => ({
+    type: ActionTypes.SELECT_FRIEND,
+    friend
+});
+
+export const requestFriend = (friend) => ({
+    type: ActionTypes.REQUEST_FRIEND,
+    friend
+});
+
+export const receiveFriend = (response) => ({
+    type: ActionTypes.RECEIVE_FRIEND,
+    data: response,
+});
+
+export const fetchFriendDetail = (friend) => {
+    return function (dispatch) {
+      dispatch(requestFriend(friend))
+      return axios.get(`${URL}${id}/timeline/${friend}`,  {headers: {'Authorization': `Bearer ${token}`}})
+        .then( response => { 
+            dispatch(receiveFriend(response.data)), 
+            Actions.friend(response.data) 
+        },
+            error => console.log('An error occurred.', error)
+        )
     }
 }
 
