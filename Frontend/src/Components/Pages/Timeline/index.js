@@ -35,19 +35,16 @@ class TimelineService extends Component {
                 a.posts.map((p, i) => {
                   return (
                     <View key={i} style={styles.container}>
-                    <TouchableOpacity onPress={() => {}}>
                     <View style={{flex :1, flexDirection: 'row', marginBottom: 20}}>
                       <View style={{marginRight: 10}}>
                         <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
                       </View>
                       <View style={{flex:1, justifyContent:'center'}}>
-                        <TouchableOpacity onPress={() => {
-                          this.props.select(a.id) 
-                          this.props.fetch(a.id)
-                        }}>
-                          <Text>{a.connection.name}</Text>
-                          <Text>{a.id}</Text>
-                        </TouchableOpacity>
+                      <TouchableOpacity onPress={() => {this.props.select(
+                        this.props.token, this.props.id, a.connection.id), 
+                        this.props.fetch(this.props.token, this.props.id, a.connection.id)}}>
+                        <Text>{a.connection.name}</Text>
+                      </TouchableOpacity>
                       </View>
                     </View>
                     <Text>{p.description}</Text>
@@ -70,7 +67,6 @@ class TimelineService extends Component {
                           <Icon name="share-alt" size={35} color={Colors.orange}/>
                       </TouchableOpacity>
                     </View>
-                    </TouchableOpacity>
                   </View>
                   )
                 })

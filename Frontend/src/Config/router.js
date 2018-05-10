@@ -5,6 +5,7 @@ import Colors from './theme';
 import { View } from 'react-native';
 
 import Login from '../Screens/Login';
+import Friend from '../Screens/DetailFriend/detailfriend';
 import Register from '../Screens/Register';
 import Timeline from '../Screens/Timeline/Timeline';
 import NewPost from '../Screens/NewPost/NewPost';
@@ -49,7 +50,11 @@ const reducerCreate = params => {
                 labelStyle={{display: 'none'}}
                 >
 
-                <Scene key="timeline" component={Timeline} hideNavBar={true} icon={TabIcon} iconName="home"/>
+                <Scene key="timeline" hideNavBar={true}>
+                    <Scene key="timeline" component={Timeline}/>
+                    <Scene key="friend" component={Friend}/>
+                </Scene>
+                
                 <Scene key="matchmaking" component={Matchmaking} hideNavBar={true} icon={TabIcon} iconName="home"/>
                 <Scene key="events" component={Events} tabBarLabel="Events" hideNavBar={true} icon={TabIcon} iconName="home"/>
                 <Scene key="profile" component={Profile} tabBarLabel="Profile" hideNavBar={true} icon={TabIcon} iconName="home"/>

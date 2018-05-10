@@ -19,6 +19,11 @@ export const SELECT_FRIEND           = 'select_friend';
 export const REQUEST_FRIEND          = 'request_friend';
 export const RECEIVE_FRIEND          = 'receive_friend';
 
+
+
+
+
+
 /*** NEWPOST PAGE ***/
 export const USER_PENDING           = 'user_pending';
 export const USER_ERROR             = 'user_error';

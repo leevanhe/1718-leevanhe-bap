@@ -11,19 +11,19 @@ import UserReducer from './user';
 import SubmitPostReducer from './submitPost';
 import SubmitServiceReducer from './submitService';
 import CommentsReducer from './comments';
-import friendReducer from './friend';
+import FriendReducer from './friend';
 
 const AppReducers = combineReducers({
     auth: authReducer,
     register: SubmitUserReducer,
     timeline: TimelineReducer,
+    friend: FriendReducer,
     user: UserReducer,
     submitPost: SubmitPostReducer,
     comments: CommentsReducer,
     matchmaking: MatchmakingReducer,
     submitService: SubmitServiceReducer,
     profile: ProfileReducer,
-    friend: friendReducer
 });
 
 const rootReducer = (state, action) => {

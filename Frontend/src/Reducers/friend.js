@@ -10,8 +10,7 @@ function selectedFriend(state = 'friend', action) {
     }
 }
 
-function friend(
-    state = {isFetching: false, error: false,friend: {}}, action ) {
+function friend( state = {isFetching: false, error: false, friend: {} }, action ) {
     switch (action.type) {
       case Actions.REQUEST_FRIEND:
         return Object.assign({}, state, {
@@ -24,7 +23,7 @@ function friend(
           error: false,
           friend: action.data,
         })
-        case Actions.SERVICE_RESET:
+      case Actions.SERVICE_RESET:
         return Object.assign({}, state, {
           isFetching: false,
           error: false,
@@ -35,9 +34,9 @@ function friend(
     }
 }
    
-const friendReducer = combineReducers({
-    friend: friend,
-    selected: selectedFriend
+const FriendReducer = combineReducers({
+  selected: selectedFriend,
+  friend: friend
 })
   
-  export default friendReducer
+export default FriendReducer;

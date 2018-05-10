@@ -68,10 +68,10 @@ export const receiveFriend = (response) => ({
     data: response,
 });
 
-export const fetchFriendDetail = (friend) => {
+export const fetchFriendDetail = (token, id, friend) => {
     return function (dispatch) {
-      dispatch(requestFriend(friend))
-      return axios.get(`${URL}${id}/timeline/${friend}`,  {headers: {'Authorization': `Bearer ${token}`}})
+      dispatch(requestFriend(token, id, friend))
+      axios.get(`${URL}${id}/timeline/${friend}`,  {headers: {'Authorization': `Bearer ${token}`}})
         .then( response => { 
             dispatch(receiveFriend(response.data)), 
             Actions.friend(response.data) 
