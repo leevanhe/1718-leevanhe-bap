@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import moment from 'moment';
 import 'moment/locale/nl-be';
 import Colors from '../../../Config/theme';
+import {Actions} from 'react-native-router-flux';
 
 class MatchmakingService extends Component {
   constructor(props) {
@@ -39,21 +40,23 @@ class MatchmakingService extends Component {
                 a.services.map((s,i) => {
                   return (
                   <View key={i} style={styles.container}>
-                    <View style={{flex: 1, flexDirection: 'row'}}>
-                      <View style={{marginRight: 10}}>
-                          <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
+                    <TouchableOpacity onPress={() => {Actions.detailMatchmaking({'matchmakingId':s.id})}}>
+                      <View style={{flex: 1, flexDirection: 'row'}}>
+                        <View style={{marginRight: 10}}>
+                            <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
+                        </View>
+                        <View style={{flex:1, justifyContent:'center'}}>
+                            <Text style={{fontWeight: 'bold'}}>{s.title}</Text>
+                            <Text numberOfLines={1}>{s.description}</Text>
+                        </View>
                       </View>
-                      <View style={{flex:1, justifyContent:'center'}}>
-                          <Text style={{fontWeight: 'bold'}}>{s.title}</Text>
-                          <Text numberOfLines={1}>{s.description}</Text>
+                      <View style={{flex: 1, flexDirection: 'row', marginTop: 10}}>
+                        <Icon style={{marginRight: 5}} name="calendar" size={20} color={Colors.orange}/>
+                        <Text style= {{paddingTop: 2}}>{moment(s.updated_at).fromNow()}</Text>    
+                        <Icon style={{marginRight: 5, marginLeft: 20}} name="map-marker" size={20} color={Colors.orange}/>
+                        <Text style= {{paddingTop: 2}}>{s.city}</Text>    
                       </View>
-                    </View>
-                    <View style={{flex: 1, flexDirection: 'row', marginTop: 10}}>
-                      <Icon style={{marginRight: 5}} name="calendar" size={20} color={Colors.orange}/>
-                      <Text style= {{paddingTop: 2}}>{moment(s.updated_at).fromNow()}</Text>    
-                      <Icon style={{marginRight: 5, marginLeft: 20}} name="map-marker" size={20} color={Colors.orange}/>
-                      <Text style= {{paddingTop: 2}}>{s.city}</Text>    
-                    </View>
+                    </TouchableOpacity>
                   </View>
                   )
                 })

@@ -12,6 +12,7 @@ import FriendItemReducer from './friendItem';
 import SubmitPostReducer from './submitPost';
 import SubmitServiceReducer from './submitService';
 import CommentsReducer from './comments';
+import MatchmakingItemReducer from './matchmakingItem';
 
 const AppReducers = combineReducers({
     auth: authReducer,
@@ -23,7 +24,8 @@ const AppReducers = combineReducers({
     matchmaking: MatchmakingReducer,
     submitService: SubmitServiceReducer,
     profile: ProfileReducer,
-    friend: FriendItemReducer
+    friend: FriendItemReducer,
+    matchmakingItem: MatchmakingItemReducer
 });
 
 const rootReducer = (state, action) => {

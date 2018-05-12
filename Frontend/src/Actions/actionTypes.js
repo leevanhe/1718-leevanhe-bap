@@ -43,6 +43,10 @@ export const MATCHMAKING_PENDING    = 'matchmaking_pending';
 export const MATCHMAKING_ERROR      = 'matchmaking_error';
 export const MATCHMAKING_SUCCESS    = 'matchmaking_success';
 
+export const MATCHMAKING_ITEM_PENDING    = 'matchmaking_item_pending';
+export const MATCHMAKING_ITEM_ERROR      = 'matchmaking_item_error';
+export const MATCHMAKING_ITEM_SUCCESS    = 'matchmaking_item_succes';
+
 /*** NEWSERVICE PAGE ***/
 export const NEWSERVICE_PENDING     = 'newservice_pending';
 export const NEWSERVICE_ERROR       = 'newservice_error';

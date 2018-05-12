@@ -12,6 +12,7 @@ import NewPost from '../Screens/NewPost/NewPost';
 import NewService from '../Screens/NewService/NewService';
 import Comments from '../Screens/Comments/Comments';
 import Matchmaking from '../Screens/Matchmaking/Matchmaking';
+import MatchmakingDetail from '../Screens/DetailMatchmaking/detailMatchmaking';
 import Profile from '../Screens/Profile/Profile';
 
 import TabIcon from '../Components/Others/TabIcon/index';
@@ -37,6 +38,8 @@ const navigator = () => (
             <Scene key="comments" component={Comments} hideNavBar={true}/>
 
             <Scene key="newservice" component={NewService} hideNavBar={true}/>
+            <Scene key="detailMatchmaking" component={MatchmakingDetail} hideNavBar={true}/>
+
     
             <Scene 
                 key="tabbar"

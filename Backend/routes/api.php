@@ -35,6 +35,7 @@ Route::group(['middleware' => ['jwt.auth']], function () {
 
         //Matchmaking
         Route::get('/{startup_id}/matchmaking', 'API\Matchmaking\MatchmakingController@index');
+        Route::get('/{startup_id}/matchmaking/{matchmaking_id}', 'API\Matchmaking\MatchmakingController@show');
         Route::post('/{startup_id}/matchmaking/create', 'API\Matchmaking\MatchmakingController@create');
     });
 });
