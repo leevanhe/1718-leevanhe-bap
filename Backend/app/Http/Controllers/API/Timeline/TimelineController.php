@@ -65,7 +65,7 @@ class TimelineController extends Controller
 
     public function showComments($id , $post_id)
     {
-        $post = Post::where('id',$post_id)->first()->comments()->get();
+        $post = Post::where('id',$post_id)->first()->comments()->with('startup')->get();
         
         return $post;
     }
