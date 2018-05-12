@@ -58,7 +58,7 @@ class TimelineController extends Controller
      */
     public function show($id, $user_id) 
     {
-        $connection = Startup::where('id',$id)->first()->connections()->where('connection_id',$user_id)->get();
+        $connection = Startup::where('id',$id)->first()->connections()->where('connection_id',$user_id)->with('connections')->get();
 
         return $connection;
     }

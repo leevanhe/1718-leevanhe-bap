@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
-import { connect } from 'react-redux';
 import Colors from '../Config/theme';
 import LoginService from '../Actions/Login/AuthActions';
+import {Actions} from 'react-native-router-flux';
 
 const logo = require('../Assets/logo-enkel.png');
-import {Actions} from 'react-native-router-flux';
 
 class Login extends React.Component{  
     render(){  
@@ -14,7 +13,7 @@ class Login extends React.Component{
                 <Image style={styles.logo} source={require('../Assets/logo-enkel.png')} />
                 <LoginService />
                 <TouchableOpacity onPress={()=> Actions.register()}>
-                    <Text style={{color: Colors.white, marginLeft: 250}}>Register</Text>
+                    <Text style={styles.register}>Register</Text>
                 </TouchableOpacity> 
             </View>
             )
@@ -30,6 +29,10 @@ const styles = StyleSheet.create({
     logo: {
         marginTop: 45,
         marginBottom: 20
+    },
+    register:  {
+        color: Colors.white, 
+        marginLeft: 250
     }
 });
     

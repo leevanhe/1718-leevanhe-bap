@@ -33,16 +33,20 @@ class TimelineService extends Component {
             {this.state.data != undefined? this.state.data.map((a, i) => {
               return (
                 a.posts.map((p, i) => {
+                  return(
                     p.comments.map((c, i) => {
-                        return (
-                            <View style={{flex: 1}}>
-                                <Text style={{marginTop: 10}}>c.description</Text>
-                            </View>
-                        )
+                      return (
+                        <View style={{flex: 1}}>
+                        <Text style={{marginTop: 10}}>{c.description}</Text>
+                        <Text style={{marginTop: 10}}>{c.post_id}</Text>
+                      </View>
+
+                      )
                     })
+                  )
                 })
               )
-            }): null}
+            }):null}
           </ScrollView>
         );
     }

@@ -48,6 +48,8 @@ class ProfileService extends Component {
                     <View style={{alignItems:'center'}}>
                         <Text style={styles.title}>Realisations</Text>
                     </View>
+
+
                     {this.state.data.realisations != undefined ? this.state.data.realisations.map((r, i) =>{
                         return (
                             <View key={i} style={{flex: 1, flexDirection: 'row', marginTop:10}}>
@@ -154,6 +156,9 @@ const styles = StyleSheet.create ({
         width: 60,
         height: 60,
     },
+    error: {
+        alignItems: 'center'
+    }
     
 });
 

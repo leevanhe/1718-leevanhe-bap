@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ListView, ActivityIndicator, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { connect }from 'react-redux';
-import { Actions } from 'react-native-router-flux';
-import Icon  from 'react-native-vector-icons/FontAwesome';
-import store from '../../../../Reducers/index';
 import Colors from '../../../../Config/theme';
 
 class LoginService extends Component {
@@ -15,8 +12,7 @@ class LoginService extends Component {
     }
     error = "";
     errorActive = false;
-  }
-  componentDidMount() {}  
+  }  
    
   componentWillReceiveProps(nextProps) {
     if(nextProps.error != undefined){

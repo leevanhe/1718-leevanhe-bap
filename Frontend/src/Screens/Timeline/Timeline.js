@@ -3,9 +3,7 @@ import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Header from '../../Components/Others/Header/index';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from '../../Config/theme';
-
 import TimelineService from '../../Actions/Timeline/TimelineActions';
-
 import {Actions} from 'react-native-router-flux';
 
 class Timeline extends Component {

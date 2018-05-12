@@ -15,12 +15,9 @@ export const POSTS_PENDING          = 'posts_pending';
 export const POSTS_ERROR            = 'posts_error';
 export const POSTS_SUCCESS          = 'posts_success';
 
-export const SELECT_FRIEND           = 'select_friend';
-export const REQUEST_FRIEND          = 'request_friend';
-export const RECEIVE_FRIEND          = 'receive_friend';
-
-
-
+export const FRIEND_ITEM_PENDING    = 'friend_item_pending';
+export const FRIEND_ITEM_ERROR      = 'friend_item_error';
+export const FRIEND_ITEM_SUCCESS    = 'friend_item_succes';
 
 
 
@@ -36,7 +33,7 @@ export const SUBMIT_SUCCES          = 'submit_succes';
 /*** COMMENTS PAGE ***/
 export const COMMENTS_PENDING       = 'comments_pending';
 export const COMMENTS_ERROR         = 'comments_error';
-export const COMMENTS_SUCCES        = 'comments_succes';
+export const COMMENTS_SUCCESS        = 'comments_success';
 
 
 

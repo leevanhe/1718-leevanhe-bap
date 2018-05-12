@@ -16,7 +16,6 @@ class NewPostService extends Component {
         };
     }
 
-
     componentDidMount () {
         this.props.fetchUser(this.props.token, this.props.id);
     }
@@ -55,7 +54,7 @@ class NewPostService extends Component {
                 <View style={styles.container}>
                     {this.state.data != undefined? this.state.data.map((user, i) => {
                         return (
-                            <View style={{flex:1}}>
+                            <View key={i} style={{flex:1}}>
                                 <View style= {{flex: 1, flexDirection: 'row',}}>
                                     <View style={{marginRight: 10}}>
                                         <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
@@ -64,14 +63,10 @@ class NewPostService extends Component {
                                         <Text style={{backgroundColor: Colors.white,}}>{user.name}</Text>
                                     </View>
                                 </View>
-
-                                <View style={{flex: 1}}>
-                                    <TextInput
-                                    placeholder = {'Share something with your network'}
-                                    onChangeText ={(description) => {this.setState({description})}} />
+                                <View style={{flex:8}}>
+                                    <TextInput placeholder = {'Share something with your network'} onChangeText ={(description) => {this.setState({description})}} />
                                 </View>
-                            </View>
-                            
+                            </View> 
                         )
                     }): null}
                 </View>

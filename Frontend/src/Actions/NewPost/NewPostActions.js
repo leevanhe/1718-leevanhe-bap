@@ -41,7 +41,6 @@ export const fetchUser = (token, id) => {
         dispatch(userPending())
         axios.get(`${URL}${id}/timeline/userdata`, {headers: {'Authorization': `Bearer ${token}`}})
         .then(response => {
-            console.log('Response', response);
             dispatch(userSucces(response.data))
         })
         .catch(response => {

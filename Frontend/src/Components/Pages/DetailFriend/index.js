@@ -1,28 +1,32 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import * as ActionTypes from '../../../Actions/actionTypes';
 import { connect } from 'react-redux';
-import store from '../../../Reducers/index';
 import Colors from '../../../Config/theme';
+import Button from'../../Others/Button/index';
 
 const logo = require('../../../Assets/logo-enkel.png');
 import {Actions} from 'react-native-router-flux';
 
-class DetailFriend extends Component {
+class FriendItemService extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-            selected: store.getState().friend.selected,
-            friend: store.getState().friend.friend
+            data: [],
 		}
-	}
+    }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.data != null) {
-           console.log(nextProps);
+    componentDidMount () {
+        this.props.fetchFriendItem(this.props.token, this.props.id, this.props.friendId)
+    }
+
+    componentWillReceiveProps (nextProps) {
+        if(nextProps.data.length > 0 && nextProps.error == undefined) {
+            this.setState({data: nextProps.data});
         }
     }
+
 	render() {
 			return (
 			<View style={{flex: 1}}>
@@ -34,10 +38,24 @@ class DetailFriend extends Component {
                         <Image source={logo} style={styles.logo} />
                     </View>
                 </View>
+                <ScrollView style= {{flex: 1}}>
+                    {this.state.data != undefined? this.state.data.map((friend, i) => {
+                        return (
+                            <View key={i} style={styles.info}>
+                                <Image style={styles.avatar} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
+                                <Text style={styles.name}>{friend.name}</Text>
+                                <Text numberOfLines={4}>{friend.description}</Text>
+                                <Button onPress={() => this.test()}>Read more</Button>
+                            </View>
+                        )
+                    }): null}
 
-				<View style={{flex: 1}}>
-					<Text>{this.state.friend.friend.name}</Text>
-				</View>
+                    <View style={styles.div}>
+                        <View style={{alignItems:'center'}}>
+                            <Text style={styles.title}>Realisations</Text>
+                        </View>     
+                    </View>
+                </ScrollView>
 			</View>
 			);
 		}
@@ -56,9 +74,37 @@ class DetailFriend extends Component {
     logo : {
         width: 22,
         height: 36
-    }
+    },
+    info: {
+        flex: 1,
+        padding: 10,
+        marginTop: 110,
+        backgroundColor: Colors.white,
+        alignItems: 'center'
+    },
+    avatar: {
+        width: 110,
+        height: 110,
+        marginTop: -55,
+    },
+    name: {
+        fontSize: 20,
+        marginTop: 20,
+        marginBottom: 20
+    },
+    div: {
+        flex: 1,
+        padding: 20,
+        marginTop: 20,
+        backgroundColor: Colors.white,
+    },
+    title: {
+        fontSize: 20,
+        color: Colors.red,
+        alignItems: 'center'
+    },
 });
   
 
 
-export default connect(({routes}) => ({routes}))(DetailFriend)
+export default connect()(FriendItemService);

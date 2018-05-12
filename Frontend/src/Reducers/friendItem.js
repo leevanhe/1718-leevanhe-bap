@@ -1,26 +1,26 @@
 import * as Actions from '../Actions/actionTypes'
 
-const TimelineReducer = (state = { isLoading: false, error: undefined, data: {}}, action) => {
-    switch (action.type) {
-        //All posts
-        case Actions.POSTS_PENDING:
+const FriendItemReducer = ( state = { isLoading: false, error: undefined, data: {} }, action) => {
+    switch(action.type)
+    {
+        case Actions.FRIEND_ITEM_PENDING:
             return Object.assign({}, state, {
                 isLoading: true,
             });
-        case Actions.POSTS_ERROR:
+        case Actions.FRIEND_ITEM_ERROR:
             return Object.assign({}, state, {
                 isLoading: false,
                 error: action.error
             });
-        case Actions.POSTS_SUCCESS:
+        case Actions.FRIEND_ITEM_SUCCESS:
             return Object.assign({}, state, {
                 isLoading: false,
-                loggedIn: true,
-                data: action.data,
-            });
+                data: action.data
+            })
         default:
             return state;
+            
     }
 }
 
-export default TimelineReducer;
+export default FriendItemReducer;

@@ -1,25 +1,20 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {
-  Text, View
-} from 'react-native';
+import { Text, View } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from '../../../Config/theme';
 
-const propTypes = {
-  selected: PropTypes.bool,
-  iconName: PropTypes.string,
-};
-
 const TabIcon = (props) => {
   return (
-  <View style={{marginTop: 5, flex: 1, flexDirection:'column', alignItems:'center', alignSelf:'center', justifyContent: 'center'}}>
-    <Icon style={{color: props.focused ? Colors.white : Colors.white }} name={props.iconName || "circle"} size={20}/>
-  </View>
+    <View style={{marginTop: 5, flex: 1, flexDirection:'column', alignItems:'center', alignSelf:'center', justifyContent: 'center'}}>
+      <Icon name={props.iconName} size={20} color={Colors.white}/>
+    </View>
   );
 }
 
-TabIcon.propTypes = propTypes;
+TabIcon.propTypes = {
+  iconName: PropTypes.string,
+};
 
 export default TabIcon;

@@ -6,7 +6,7 @@ const CommentsReducer = (state = { isLoading: false, error: undefined, data: {} 
             return Object.assign({}, state, {
                 isLoading: true,
             });
-        case Actions.COMMENTS_ERROR:
+        case Actions.COMM:
             return Object.assign({}, state, {
                 isLoading: false,
                 error: action.error

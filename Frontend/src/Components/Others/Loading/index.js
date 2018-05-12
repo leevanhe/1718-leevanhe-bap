@@ -1,10 +1,5 @@
 import React, {Component} from 'react';
-import {
-  ActivityIndicator, 
-  View, 
-  StyleSheet,
-} from 'react-native';
-
+import { ActivityIndicator, View, StyleSheet} from 'react-native';
 import Colors from '../../../Config/theme';
 
 
