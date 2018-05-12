@@ -29,7 +29,8 @@ Route::group(['middleware' => ['jwt.auth']], function () {
 
         Route::get('/{startup_id}/timeline/{connection_id}', 'API\Timeline\TimelineController@showUser');
         Route::get('/{startup_id}/timeline/post/{post_id}', 'API\Timeline\TimelineController@showComments');
-        Route::post('/{startup_id}/timeline/create', 'API\Timeline\TimelineController@create');
+        Route::post('/{startup_id}/timeline/create', 'API\Timeline\TimelineController@createPost');
+        Route::post('/{startup_id}/timeline/{post_id}/comment', 'API\Timeline\TimelineController@createComment');
 
         //NewPost
         Route::get('/{startup_id}/data', 'API\NewPost\NewPostController@index');

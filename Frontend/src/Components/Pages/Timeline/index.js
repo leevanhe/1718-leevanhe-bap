@@ -50,7 +50,9 @@ class TimelineService extends Component {
 
                       <View style={styles.containerActions}>
                         <Text style= {{paddingTop: 2}}>{p.comments_count}</Text>
-                        <Icon style={{marginLeft: 5}} name="comments-o" size={20} color={Colors.orange}/>
+                        <TouchableOpacity onPress={() => {Actions.comments({'postId':p.id})}}>
+                          <Icon style={{marginLeft: 5}} name="comments-o" size={20} color={Colors.orange}/>
+                        </TouchableOpacity>
                       </View>
                       <View style={styles.containerActions}>
 
