@@ -19,8 +19,6 @@ export const FRIEND_ITEM_PENDING    = 'friend_item_pending';
 export const FRIEND_ITEM_ERROR      = 'friend_item_error';
 export const FRIEND_ITEM_SUCCESS    = 'friend_item_succes';
 
-
-
 /*** NEWPOST PAGE ***/
 export const USER_PENDING           = 'user_pending';
 export const USER_ERROR             = 'user_error';

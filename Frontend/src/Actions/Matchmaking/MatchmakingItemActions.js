@@ -3,7 +3,6 @@ import axios from 'axios';
 import MatchmakingItemService from '../../Components/Pages/DetailMatchmaking/index';
 import { connect } from 'react-redux';
 import { URL } from '../../Config/index';
-import { Actions } from 'react-native-router-flux';
 
 const mapStateToProps = (state) => ({
     isLoading: state.matchmakingItem.isLoading,

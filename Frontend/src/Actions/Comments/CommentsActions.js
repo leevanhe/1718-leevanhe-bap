@@ -1,7 +1,6 @@
 import * as ActionTypes from '../actionTypes';
 import axios from 'axios';
 import CommentsService from '../../Components/Pages/Comments/index';
-
 import { connect } from 'react-redux';
 import { URL } from '../../Config/index';
 
@@ -14,10 +13,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchComments: (token, id) => dispatch(fetchComments(token, id))
+    fetchComments: (token, id, postId) => dispatch(fetchComments(token, id, postId))
 })
 
-/*** ALL COMMENTS ***/
 export const commentsPending = () => ({
     type: ActionTypes.COMMENTS_PENDING
 })
@@ -32,10 +30,10 @@ export const commentsError = (error) => ({
     error: error
 })
 
-export const fetchComments = (token, id) => {
+export const fetchComments = (token, id, postId) => {
     return dispatch => {
         dispatch(commentsPending())
-        axios.get(`${URL}${id}/timeline`, {headers: {'Authorization': `Bearer ${token}`}})
+        axios.get(`${URL}${id}/timeline/post/${postId}`, {headers: {'Authorization': `Bearer ${token}`}})
         .then(response => {
             console.log('RESPONSE', response);
             dispatch(commentsSuccess(response.data))

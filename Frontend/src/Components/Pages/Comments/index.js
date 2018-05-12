@@ -16,13 +16,12 @@ class TimelineService extends Component {
   }
   
   componentDidMount() {
-    this.props.fetchComments(this.props.token, this.props.id);
+    this.props.fetchComments(this.props.token, this.props.id, this.props.postId);
   }   
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.data.length > 0 && nextProps.error == undefined) {
       this.setState({data: nextProps.data});
-      console.log(this.state.data);
     }
   }
 
@@ -30,21 +29,11 @@ class TimelineService extends Component {
 
         return (
           <ScrollView style={{flex: 1}}>
-            {this.state.data != undefined? this.state.data.map((a, i) => {
+            {this.state.data != undefined? this.state.data.map((comment, i) => {
               return (
-                a.posts.map((p, i) => {
-                  return(
-                    p.comments.map((c, i) => {
-                      return (
-                        <View style={{flex: 1}}>
-                        <Text style={{marginTop: 10}}>{c.description}</Text>
-                        <Text style={{marginTop: 10}}>{c.post_id}</Text>
-                      </View>
-
-                      )
-                    })
-                  )
-                })
+                <View style={{flex: 1}}>
+                  <Text style={{marginTop: 10}}>{comment.description}</Text>
+                </View>
               )
             }):null}
           </ScrollView>

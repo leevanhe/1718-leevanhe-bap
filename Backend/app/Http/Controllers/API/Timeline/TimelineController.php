@@ -56,10 +56,17 @@ class TimelineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id, $user_id) 
+    public function showUser($id, $user_id) 
     {
         $connection = Startup::where('id',$id)->first()->connections()->where('connection_id',$user_id)->with('connections')->get();
 
         return $connection;
+    }
+
+    public function showComments($id , $post_id)
+    {
+        $post = Post::where('id',$post_id)->first()->comments()->get();
+        
+        return $post;
     }
 }

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity  } from 'react-native';
 import Colors from '../../Config/theme';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
 import CommmentsService from '../../Actions/Comments/CommentsActions';
+import PropTypes from 'prop-types';
 
 const logo = require('../../Assets/logo-enkel.png');
 import {Actions} from 'react-native-router-flux';
@@ -20,11 +20,16 @@ class Comments extends Component {
                         <Image source={logo} style={styles.logo} />
                     </View>
                 </View>
-            <CommmentsService/>
+            <CommmentsService postId={this.props.postId}/>
       </View>
     );
   }
 }
+
+Comments.propTypes = {
+  postId: PropTypes.number.isRequired,
+}
+
 
 const styles = StyleSheet.create({
   box: {

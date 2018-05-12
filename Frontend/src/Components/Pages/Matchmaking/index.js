@@ -6,35 +6,31 @@ import moment from 'moment';
 import 'moment/locale/nl-be';
 import Colors from '../../../Config/theme';
 import {Actions} from 'react-native-router-flux';
+import GenerateLoading from '../../Others/Loading/index';
 
 class MatchmakingService extends Component {
   constructor(props) {
-        super(props);
-        this.state = {
-          data: []
-        };   
-    }
+    super(props);
+    this.state = {
+      data: [],
+      isloaded: false
+    };   
+  }
   
-    componentDidMount() {
-        this.props.fetchMatchmaking(this.props.token, this.props.id);
-    }   
+  componentDidMount() {
+    this.props.fetchMatchmaking(this.props.token, this.props.id);
+  }   
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.data.length > 0 && nextProps.error == undefined) {
-      this.setState({
-        data: nextProps.data,
-      });
-      console.log(this.state.data);
+      this.setState({data: nextProps.data, isLoaded: true});
     }
   }
 
-
-
-
-  render() {
-
-        return (
-          <ScrollView style={{flex: 1}}>
+  renderView () {
+    if(this.state.isLoaded) {
+      return (
+        <ScrollView style={{flex: 1}}>
             {this.state.data != undefined? this.state.data.map((a, i) => {
               return (
                 a.services.map((s,i) => {
@@ -63,8 +59,18 @@ class MatchmakingService extends Component {
               )
             }): null}
           </ScrollView>
-        );
+      )
     }
+    return (
+      <GenerateLoading/>
+    )
+  }
+
+  render() {
+    return (
+      this.renderView()  
+    );
+  }
 }
 
 const styles = StyleSheet.create ({
