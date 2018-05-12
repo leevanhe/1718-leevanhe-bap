@@ -9,6 +9,7 @@ import Friend from '../Screens/DetailFriend/detailfriend';
 import Register from '../Screens/Register';
 import Timeline from '../Screens/Timeline/Timeline';
 import NewPost from '../Screens/NewPost/NewPost';
+import NewComment from '../Screens/NewComment/NewComment';
 import NewService from '../Screens/NewService/NewService';
 import Comments from '../Screens/Comments/Comments';
 import Matchmaking from '../Screens/Matchmaking/Matchmaking';
@@ -36,6 +37,7 @@ const navigator = () => (
             <Scene key="newpost" component={NewPost} hideNavBar={true}/>
             <Scene key="detailFriend" component={Friend} hideNavBar={true}/>
             <Scene key="comments" component={Comments} hideNavBar={true}/>
+            <Scene key="newcomment" component={NewComment} hideNavBar={true}/>
 
             <Scene key="newservice" component={NewService} hideNavBar={true}/>
             <Scene key="detailMatchmaking" component={MatchmakingDetail} hideNavBar={true}/>

@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actionTypes';
 import axios from 'axios';
-import NewPostService from '../../Components/Pages/NewPost/index';
+import NewCommentService from '../../Components/Pages/NewComment/index';
 import { connect } from 'react-redux';
 import { URL } from '../../Config/index';
 import { Actions } from 'react-native-router-flux';
@@ -17,7 +17,7 @@ const mapStateToProps = (state) =>
 const mapDispatchToProps = (dispatch) => 
 ({
     fetchUser: (token,id) => dispatch(fetchUser(token, id)),
-    submitPost: (token, id, data) => dispatch(submitPost(token, id, data))
+    submitComment: (token, id, post_id, data) => dispatch(submitComment(token, id, post_id, data))
 })
 
 //Fetch userdata
@@ -49,24 +49,24 @@ export const fetchUser = (token, id) => {
 }
 
 //Submit post
-export const submitPending = () => ({
-    type: ActionTypes.SUBMIT_PENDING
+export const submitCommentPending = () => ({
+    type: ActionTypes.COMMENTS_SUBMIT_PENDING
 })
 
-export const submitSucces = (data) => ({
-    type: ActionTypes.SUBMIT_SUCCES,
+export const submitCommentSucces = (data) => ({
+    type: ActionTypes.COMMENTS_SUBMIT_SUCCESS,
     data: data
 })
 
-export const submitError = (error) => ({
-    type: ActionTypes.SUBMIT_ERROR,
+export const submitCommentError = (error) => ({
+    type: ActionTypes.COMMENTS_SUBMIT_ERROR,
     error: error
 })
 
-export const submitPost = (token, id, data) => {
+export const submitComment = (token, id, post_id, data) => {
     return dispatch => {
         dispatch(submitPending())
-        axios.post(`${URL}${id}/timeline/create`, data, {headers: {'Content-Type':'application/json','Authorization': `Bearer ${token}`}})
+        axios.post(`${URL}${id}/timeline/${post_id}/comment`, data, {headers: {'Content-Type':'application/json','Authorization': `Bearer ${token}`}})
         .then(response => {
             dispatch(submitSucces(response.data));
             Actions.pop();
@@ -76,5 +76,3 @@ export const submitPost = (token, id, data) => {
         })
     }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps) (NewPostService);

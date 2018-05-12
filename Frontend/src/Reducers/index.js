@@ -10,6 +10,7 @@ import ProfileReducer from './profile';
 import UserReducer from './user';
 import FriendItemReducer from './friendItem';
 import SubmitPostReducer from './submitPost';
+import SubmitCommentReducer from './submitComment';
 import SubmitServiceReducer from './submitService';
 import CommentsReducer from './comments';
 import MatchmakingItemReducer from './matchmakingItem';
@@ -20,6 +21,7 @@ const AppReducers = combineReducers({
     timeline: TimelineReducer,
     user: UserReducer,
     submitPost: SubmitPostReducer,
+    submitComment: SubmitCommentReducer,
     comments: CommentsReducer,
     matchmaking: MatchmakingReducer,
     submitService: SubmitServiceReducer,

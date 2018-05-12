@@ -33,6 +33,10 @@ export const COMMENTS_PENDING       = 'comments_pending';
 export const COMMENTS_ERROR         = 'comments_error';
 export const COMMENTS_SUCCESS        = 'comments_success';
 
+export const COMMENTS_SUBMIT_PENDING       = 'comments_submit_pending';
+export const COMMENTS_SUBMIT_ERROR         = 'comments_submit_error';
+export const COMMENTS_SUBMIT_SUCCESS       = 'comments_submit_success';
+
 
 
 
