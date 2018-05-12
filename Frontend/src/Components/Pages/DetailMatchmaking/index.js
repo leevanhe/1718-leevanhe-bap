@@ -44,7 +44,7 @@ class MatchmakingItemService extends Component {
                             <View key={i} style={styles.info}>
                                 <Image style={styles.avatar} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
                                 <Text style={styles.name}>{service.title}</Text>
-                                <Text numberOfLines={4}>{service.description}</Text>
+                                <Text style={styles.description}>{service.description}</Text>
                             </View>
                         )
                     }): null}
@@ -84,6 +84,11 @@ class MatchmakingItemService extends Component {
         fontSize: 20,
         marginTop: 20,
         marginBottom: 20
+    },
+    description: {
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingBottom: 20
     },
     div: {
         flex: 1,
