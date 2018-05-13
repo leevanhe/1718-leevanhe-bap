@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actionTypes';
 import axios from 'axios';
-import FriendItemService from '../../Components/Pages/DetailFriend/index';
+import FriendItemService from '../../Components/Pages/Timeline/DetailFriend/index';
 import { connect } from 'react-redux';
 import { URL } from '../../Config/index';
 import { Actions } from 'react-native-router-flux';

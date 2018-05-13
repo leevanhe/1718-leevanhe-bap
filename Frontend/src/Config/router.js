@@ -4,16 +4,25 @@ import { connect } from 'react-redux';
 import Colors from './theme';
 import { View } from 'react-native';
 
-import Login from '../Screens/Login';
-import Friend from '../Screens/DetailFriend/detailfriend';
-import Register from '../Screens/Register';
-import Timeline from '../Screens/Timeline/Timeline';
-import NewPost from '../Screens/NewPost/NewPost';
-import NewComment from '../Screens/NewComment/NewComment';
-import NewService from '../Screens/NewService/NewService';
+//Auth
+import Login from '../Screens/Auth/Login';
+import Register from '../Screens/Auth/Register';
+
+//Comment
 import Comments from '../Screens/Comments/Comments';
+import NewComment from '../Screens/Comments/NewComment';
+
+//Matchmaking
+import NewService from '../Screens/Matchmaking/NewMatchmaking';
 import Matchmaking from '../Screens/Matchmaking/Matchmaking';
-import MatchmakingDetail from '../Screens/DetailMatchmaking/detailMatchmaking';
+import MatchmakingDetail from '../Screens/Matchmaking/detailMatchmaking';
+
+//Timeline
+import Friend from '../Screens/Timeline/detailfriend';
+import Timeline from '../Screens/Timeline/Timeline';
+import NewPost from '../Screens/Timeline/NewPost';
+
+//Profile
 import Profile from '../Screens/Profile/Profile';
 
 import TabIcon from '../Components/Others/TabIcon/index';

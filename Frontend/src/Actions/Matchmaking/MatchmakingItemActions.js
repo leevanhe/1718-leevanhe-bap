@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actionTypes';
 import axios from 'axios';
-import MatchmakingItemService from '../../Components/Pages/DetailMatchmaking/index';
+import MatchmakingItemService from '../../Components/Pages/Matchmaking/DetailMatchmaking/index';
 import { connect } from 'react-redux';
 import { URL } from '../../Config/index';
 

@@ -2,19 +2,26 @@ import { combineReducers, applyMiddleware, createStore, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
-import authReducer from './auth';
-import SubmitUserReducer from './submitUser';
-import TimelineReducer from './timeline';
-import MatchmakingReducer from './matchmaking';
-import ProfileReducer from './profile';
+//Auth
+import authReducer from './Auth/auth';
+import SubmitUserReducer from './Auth/submitUser';
+//Comments
+import CommentsReducer from './Comments/comments';
+import CommentItemReducer from './Comments/commentItem';
+import SubmitCommentReducer from './Comments/submitComment';
+//Matchmaking
+import MatchmakingReducer from './Matchmaking/matchmaking';
+import MatchmakingItemReducer from './Matchmaking/matchmakingItem';
+import SubmitServiceReducer from './Matchmaking/submitMatchmaking';
+//Profile
+import ProfileReducer from './Profile/profile';
+//Timeline
+import TimelineReducer from './Timeline/timeline';
+import FriendItemReducer from './Timeline/friendItem';
+import SubmitPostReducer from './Timeline/submitPost';
+//Otherss
 import UserReducer from './user';
-import FriendItemReducer from './friendItem';
-import SubmitPostReducer from './submitPost';
-import SubmitCommentReducer from './submitComment';
-import SubmitServiceReducer from './submitService';
-import CommentsReducer from './comments';
-import CommentItemReducer from './commentItem';
-import MatchmakingItemReducer from './matchmakingItem';
+
 
 const AppReducers = combineReducers({
     auth: authReducer,
