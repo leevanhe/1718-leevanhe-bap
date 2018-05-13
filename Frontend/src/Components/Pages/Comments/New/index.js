@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView, Image } from 'react-native';
 import { connect }from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Colors from '../../../../Config/theme';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+const logo = require('../../../../Assets/logo-enkel.png');
 
 class NewCommentService extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        post: {},
-        userdata: [],
+        data: [],
         description: '', 
     }
   }   
@@ -20,7 +22,7 @@ class NewCommentService extends Component {
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.data.length > 0 && nextProps.error == undefined) {
-        this.setState({userdata: nextProps.userdata});
+        this.setState({data: nextProps.data});
     }
   }
 
@@ -51,25 +53,8 @@ class NewCommentService extends Component {
                 </TouchableOpacity>
             </View>
 
-
-            <View style={styles.container}>
-                {this.state.userdata != undefined? this.state.userdata.map((user, i) => {
-                    return (
-                        <View key={i} style={{flex:1}}>
-                            <View style= {{flex: 1, flexDirection: 'row',}}>
-                                <View style={{marginRight: 10}}>
-                                    <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
-                                </View>
-                                <View style = {{paddingTop:8}}>
-                                    <Text style={{backgroundColor: Colors.white,}}>{user.name}</Text>
-                                </View>
-                            </View>
-                            <View style={{flex:8}}>
-                                <TextInput placeholder = {'leave a comment'} onChangeText ={(description) => {this.setState({description})}} />
-                            </View>
-                        </View> 
-                    )
-                }): null}
+            <View style={{flex:1}}>
+                <TextInput placeholder = {'leave a comment'} onChangeText ={(description) => {this.setState({description})}} />
             </View>
         </View>
     )

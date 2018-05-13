@@ -56,7 +56,7 @@ class CommentController extends Controller
             'post' => $post
         ];
 
-        return $response;
+        return $post;
     }
 
     /**

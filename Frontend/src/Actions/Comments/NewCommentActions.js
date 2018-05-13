@@ -16,7 +16,7 @@ const mapStateToProps = (state) =>
 
 const mapDispatchToProps = (dispatch) => 
 ({
-    fetchUserAndPost: (token, id, postId) => dispatch(fetchUser(token, id, postId)),
+    fetchUserAndPost: (token, id, postId) => dispatch(fetchUserAndPost(token, id, postId)),
     submitComment: (token, id, postId, data) => dispatch(submitComment(token, id, postId, data))
 })
 
@@ -30,10 +30,9 @@ export const commentItemError = (error) => ({
     error: error
 })
 
-export const commentItemSucces = (data, userdata) => ({
+export const commentItemSucces = (data) => ({
     type: ActionTypes.COMMENT_ITEM_SUCCESS,
-    post: data,
-    userdata: userdata
+    data: data,
 })
 
 export const fetchUserAndPost = (token, id, postId) => {
@@ -41,7 +40,7 @@ export const fetchUserAndPost = (token, id, postId) => {
         dispatch(commentItemPending())
         axios.get(`${URL}${id}/timeline/post/${postId}/comment/data`, {headers: {'Authorization': `Bearer ${token}`}})
         .then(response => {
-            dispatch(commentItemSucces(response.data.userdata, response.data.post))
+            dispatch(commentItemSucces(response.data))
         })
         .catch(response => {
             dispatch(commentItemError(response.error))
@@ -66,14 +65,16 @@ export const submitCommentError = (error) => ({
 
 export const submitComment = (token, id, postId, data) => {
     return dispatch => {
-        dispatch(submitPending())
+        dispatch(submitCommentPending())
         axios.post(`${URL}${id}/timeline/post/${postId}/comment/create`, data, {headers: {'Content-Type':'application/json','Authorization': `Bearer ${token}`}})
         .then(response => {
-            dispatch(submitSucces(response.data));
+            dispatch(submitCommentSucces(response.data));
             Actions.pop();
         })
         .catch(response => {
-            dispatch(submitError(response.error))
+            dispatch(submitCommentError(response.error))
         })
     }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewCommentService);
