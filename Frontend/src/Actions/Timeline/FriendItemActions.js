@@ -33,9 +33,8 @@ export const friendItemSuccess = (data) => ({
 
 export const fetchFriendItem = (token, id, friendId) => {
     return dispatch => {
-        console.log('URL',`${URL}${id}/timeline/${friendId}` )
         dispatch(friendItemPending())
-        axios.get(`${URL}${id}/timeline/${friendId}`,  {headers: {'Authorization': `Bearer ${token}`}})
+        axios.get(`${URL}${id}/timeline/friend/${friendId}`,  {headers: {'Authorization': `Bearer ${token}`}})
         .then(response => {
             dispatch(friendItemSuccess(response.data))
         })

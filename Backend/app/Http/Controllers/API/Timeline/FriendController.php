@@ -9,7 +9,6 @@ use App\Startup;
 
 class FriendController extends Controller
 {
-
     public function addFriend($id, $friend_id)
     {
         $startup = Startup::where('id',$id)->first();
@@ -28,6 +27,18 @@ class FriendController extends Controller
         $addrecommendation = $startup->addRecommendation($recommendation);
 
         return $addrecommendation;
-    }    
+    }
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id, $user_id) 
+    {
+        $connection = Startup::where('id',$id)->first()->connections()->where('connection_id',$user_id)->with('connections')->get();
+
+        return $connection;
+    }
 
 }

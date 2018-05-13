@@ -7,48 +7,49 @@ import { Actions } from 'react-native-router-flux';
 
 const mapStateToProps = (state) => 
 ({
-    isLoading: state.user.isLoading,
-    error: state.user.error,
-    data: state.user.data,
+    isLoading: state.commentItem.isLoading,
+    error: state.commentItem.error,
+    data: state.commentItem.data,
     token: state.auth.token,
     id: state.auth.id
 })
 
 const mapDispatchToProps = (dispatch) => 
 ({
-    fetchUser: (token,id) => dispatch(fetchUser(token, id)),
-    submitComment: (token, id, post_id, data) => dispatch(submitComment(token, id, post_id, data))
+    fetchUserAndPost: (token, id, postId) => dispatch(fetchUser(token, id, postId)),
+    submitComment: (token, id, postId, data) => dispatch(submitComment(token, id, postId, data))
 })
 
 //Fetch userdata
-export const userPending = () => ({
-    type: ActionTypes.USER_PENDING
+export const commentItemPending = () => ({
+    type: ActionTypes.COMMENT_ITEM_PENDING
 })
 
-export const userError = (error) => ({
-    type: ActionTypes.USER_ERROR,
+export const commentItemError = (error) => ({
+    type: ActionTypes.COMMENT_ITEM_ERROR,
     error: error
 })
 
-export const userSucces = (data) => ({
-    type: ActionTypes.USER_SUCCES,
-    data: data
+export const commentItemSucces = (data, userdata) => ({
+    type: ActionTypes.COMMENT_ITEM_SUCCESS,
+    post: data,
+    userdata: userdata
 })
 
-export const fetchUser = (token, id) => {
+export const fetchUserAndPost = (token, id, postId) => {
     return dispatch => {
-        dispatch(userPending())
-        axios.get(`${URL}${id}/timeline/userdata`, {headers: {'Authorization': `Bearer ${token}`}})
+        dispatch(commentItemPending())
+        axios.get(`${URL}${id}/timeline/post/${postId}/comment/data`, {headers: {'Authorization': `Bearer ${token}`}})
         .then(response => {
-            dispatch(userSucces(response.data))
+            dispatch(commentItemSucces(response.data.userdata, response.data.post))
         })
         .catch(response => {
-            dispatch(userError(response.error))
+            dispatch(commentItemError(response.error))
         });
     }
 }
 
-//Submit post
+//Submit comment
 export const submitCommentPending = () => ({
     type: ActionTypes.COMMENTS_SUBMIT_PENDING
 })
@@ -63,10 +64,10 @@ export const submitCommentError = (error) => ({
     error: error
 })
 
-export const submitComment = (token, id, post_id, data) => {
+export const submitComment = (token, id, postId, data) => {
     return dispatch => {
         dispatch(submitPending())
-        axios.post(`${URL}${id}/timeline/${post_id}/comment`, data, {headers: {'Content-Type':'application/json','Authorization': `Bearer ${token}`}})
+        axios.post(`${URL}${id}/timeline/post/${postId}/comment/create`, data, {headers: {'Content-Type':'application/json','Authorization': `Bearer ${token}`}})
         .then(response => {
             dispatch(submitSucces(response.data));
             Actions.pop();

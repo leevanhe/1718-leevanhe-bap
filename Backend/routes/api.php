@@ -20,20 +20,24 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Check for bearer token
 Route::group(['middleware' => ['jwt.auth']], function () {
     Route::group(['middleware' => ['credentials']], function () {
-        //Timeline
+        //Timeline page
         Route::get('/{startup_id}/timeline', 'API\Timeline\TimelineController@index');
-        Route::get('/{startup_id}/timeline/userdata', 'API\Timeline\StartupController@index');
 
+        //New post
+        Route::get('/{startup_id}/timeline/userdata', 'API\Timeline\StartupController@index');
+        Route::post('/{startup_id}/timeline/create', 'API\Timeline\PostController@create');
+
+        //Detail friend
+        Route::get('/{startup_id}/timeline/friend/{connection_id}', 'API\Timeline\FriendController@show');
         Route::post('/{startup_id}/timeline/addfriend/{addfriend_id}', 'API\Timeline\FriendController@addFriend');
         Route::post('/{startup_id}/timeline/addrecommendation/{addrecommendation_id}', 'API\Timeline\FriendController@addRecommendation');
 
-        Route::get('/{startup_id}/timeline/{connection_id}', 'API\Timeline\TimelineController@showUser');
-        Route::get('/{startup_id}/timeline/post/{post_id}', 'API\Timeline\TimelineController@showComments');
-        Route::post('/{startup_id}/timeline/create', 'API\Timeline\TimelineController@createPost');
-        Route::post('/{startup_id}/timeline/{post_id}/comment', 'API\Timeline\TimelineController@createComment');
+        //Detail comment
+        Route::get('/{startup_id}/timeline/post/{post_id}/comment', 'API\Timeline\CommentController@index');
 
-        //NewPost
-        Route::get('/{startup_id}/data', 'API\NewPost\NewPostController@index');
+        //New comment
+        Route::get('/{startup_id}/timeline/post/{post_id}/comment/data', 'API\Timeline\CommentController@show');
+        Route::post('/{startup_id}/timeline/post/{post_id}/comment/create', 'API\Timeline\CommentController@create');
 
         //Matchmaking
         Route::get('/{startup_id}/matchmaking', 'API\Matchmaking\MatchmakingController@index');

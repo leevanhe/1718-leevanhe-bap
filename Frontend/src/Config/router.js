@@ -36,6 +36,7 @@ const navigator = () => (
 
             <Scene key="newpost" component={NewPost} hideNavBar={true}/>
             <Scene key="detailFriend" component={Friend} hideNavBar={true}/>
+            
             <Scene key="comments" component={Comments} hideNavBar={true}/>
             <Scene key="newcomment" component={NewComment} hideNavBar={true}/>
 

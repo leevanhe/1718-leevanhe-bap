@@ -33,7 +33,7 @@ export const commentsError = (error) => ({
 export const fetchComments = (token, id, postId) => {
     return dispatch => {
         dispatch(commentsPending())
-        axios.get(`${URL}${id}/timeline/post/${postId}`, {headers: {'Authorization': `Bearer ${token}`}})
+        axios.get(`${URL}${id}/timeline/post/${postId}/comment`, {headers: {'Authorization': `Bearer ${token}`}})
         .then(response => {
             console.log('RESPONSE', response);
             dispatch(commentsSuccess(response.data))

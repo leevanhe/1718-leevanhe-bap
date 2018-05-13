@@ -61,7 +61,7 @@ class TimelineService extends Component {
                         </TouchableOpacity>
 
                         <View style={{flex:1, alignItems: 'center'}}>
-                          <TouchableOpacity style={styles.buttonMiddle} onPress={() => Actions.newcomment()}>
+                          <TouchableOpacity style={styles.buttonMiddle} onPress={() => {Actions.newcomment({'postId':p.id})}}>
                             <Icon name="comments-o" size={30} color={Colors.orange}/>
                           </TouchableOpacity>
                         </View>
