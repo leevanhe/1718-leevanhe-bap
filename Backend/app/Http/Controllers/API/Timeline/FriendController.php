@@ -37,22 +37,17 @@ class FriendController extends Controller
     public function show($id, $user_id) 
     {
         $connection = Startup::where('id',$user_id)->get();
-        
-        $data = [];
 
         foreach ($connection as $c) {
             $confromcon = $c->connections()->select('id', 'name','description')->get();
             $recfromrec = $c->recommendations()->select('id', 'name','description')->get();
             $realisation = $c->realisations()->select('id', 'name','description')->get();
-            
-            $obj = [];
-            $obj['connection'] = $connection;
-            $obj['confromcon'] = $confromcon;
-            $obj['recfromrec'] = $recfromrec;
-            $obj['realisation'] = $realisation;
-
-            $data[] = $obj;
         }
+
+        $data['connection'] = $connection;
+        $data['confromcon'] = $confromcon;
+        $data['recfromrec'] = $recfromrec;
+        $data['realisation'] = $realisation;
 
         return $data;
     }

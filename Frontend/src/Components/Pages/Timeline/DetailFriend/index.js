@@ -13,7 +13,7 @@ class FriendItemService extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-            data: [],
+            data: {},
 		}
     }
 
@@ -22,9 +22,9 @@ class FriendItemService extends Component {
     }
 
     componentWillReceiveProps (nextProps) {
-        if(nextProps.data.length > 0 && nextProps.error == undefined) {
+        if (nextProps.error == undefined) {
             this.setState({data: nextProps.data});
-        }
+          } 
     }
 
 	render() {
@@ -39,7 +39,7 @@ class FriendItemService extends Component {
                     </View>
                 </View>
                 <ScrollView style= {{flex: 1}}>
-                    {this.state.data != undefined? this.state.data.map((friend, i) => {
+                    {this.state.data.connection != undefined? this.state.data.connection.map((friend, i) => {
                         return (
                             <View key={i} style={styles.info}>
                                 <Image style={styles.avatar} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
@@ -51,10 +51,66 @@ class FriendItemService extends Component {
                     }): null}
 
                     <View style={styles.div}>
-                        <View style={{alignItems:'center'}}>
-                            <Text style={styles.title}>Realisations</Text>
-                        </View>     
+                    <View style={{alignItems:'center'}}>
+                        <Text style={styles.title}>Realisations</Text>
                     </View>
+
+
+                    {this.state.data.realisations != undefined ? this.state.data.realisations.map((r, i) =>{
+                        return (
+                            <View key={i} style={{flex: 1, flexDirection: 'row', marginTop:10}}>
+                                <View style={{marginRight: 10}}>
+                                    <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
+                                </View>
+                                <View style={{flex:1, justifyContent:'center'}}>
+                                    <Text>{r.name}</Text>
+                                    <Text numberOfLines={1}>{r.description}</Text>
+                                </View>
+                            </View>
+                        )
+                    }): null}
+
+                    
+                    </View>
+
+
+                    <View style={styles.div}>
+                    <View style={{alignItems:'center'}}>
+                        <Text style={styles.title}>Connections</Text>
+                    </View>
+                    {this.state.data.confromcon != undefined ? this.state.data.confromcon.map((c, i) =>{
+                        return (
+                            <View key={i} style={{flex: 1, flexDirection: 'row', marginTop:10}}>
+                                <View style={{marginRight: 10}}>
+                                    <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
+                                </View>
+                                <View style={{flex:1, justifyContent:'center'}}>
+                                    <Text>{c.name}</Text>
+                                    <Text numberOfLines={1}>{c.description}</Text>
+                                </View>
+                            </View>
+                        )
+                    }): null}
+                </View>
+
+                <View style={styles.divRed}>
+                    <View style={{alignItems:'center'}}>
+                        <Text style={styles.titleRed}>Recommendations</Text>
+                    </View>
+                    {this.state.data.recfromrec != undefined ? this.state.data.recfromrec.map((re, i) =>{
+                        return (
+                            <View key={i} style={{flex: 1, flexDirection: 'row', marginTop:10}}>
+                                <View style={{marginRight: 10}}>
+                                    <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
+                                </View>
+                                <View style={{flex:1, justifyContent:'center'}}>
+                                    <Text style={styles.textRed}>{re.name}</Text>
+                                    <Text style={styles.textRed} numberOfLines={1}>{re.description}</Text>
+                                </View>
+                            </View>
+                        )
+                    }): null}
+                </View>
                 </ScrollView>
 			</View>
 			);
@@ -98,10 +154,29 @@ class FriendItemService extends Component {
         marginTop: 20,
         backgroundColor: Colors.white,
     },
+    divRed: {
+        flex: 1,
+        padding: 20,
+        marginTop: 20,
+        backgroundColor: Colors.red,
+        marginBottom: 20,
+    },
+    titleRed: {
+        fontSize: 20,
+        color: Colors.white,
+        alignItems: 'center' 
+    },
+    textRed: {
+        color: Colors.white
+    },
     title: {
         fontSize: 20,
         color: Colors.red,
         alignItems: 'center'
+    },
+    avatarSmall: {
+        width: 60,
+        height: 60,
     },
 });
   
