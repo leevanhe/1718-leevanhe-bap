@@ -22,10 +22,9 @@ class TimelineController extends Controller
 
         foreach($connections as $connection)
         {
-            $posts = $connection->posts()->with('comments')->withCount('comments')->get();
+            $posts = $connection->posts()->latest()->with('startup')->withCount('comments')->get();
 
             $obj = [];
-            $obj['connection'] = $connection;
             $obj['posts'] = $posts;
 
             $data[] = $obj;

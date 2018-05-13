@@ -40,8 +40,8 @@ class TimelineService extends Component {
                           <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
                         </View>
                         <View style={styles.name}>
-                          <TouchableOpacity onPress={() => {Actions.detailFriend({'friendId': a.connection.id})}}>
-                            <Text>{a.connection.name}</Text>
+                          <TouchableOpacity onPress={() => {Actions.detailFriend({'friendId': p.startup.id})}}>
+                            <Text>{p.startup.name}</Text>
                           </TouchableOpacity>
                         </View>
                       </View>
