@@ -58,9 +58,6 @@
                             <li>
                                 <a href="{{ ('/users') }}"><i class="fa fa-users fa-lg" style="padding-left: 5px; margin-right:10px;"></i> Users</a>
                             </li>
-                            <li>
-                                <a href="{{ ('/events') }}"><i class="fa fa-calendar fa-lg" style="padding-left: 5px; margin-right:10px;"></i> Events</a>
-                            </li>
                         </ul>
                     </div>
                 </div>

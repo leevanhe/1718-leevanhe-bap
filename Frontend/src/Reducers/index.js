@@ -18,6 +18,7 @@ import ProfileReducer from './Profile/profile';
 //Timeline
 import TimelineReducer from './Timeline/timeline';
 import FriendItemReducer from './Timeline/friendItem';
+import Friend2ItemReducer from './Timeline/friend2Item';
 import SubmitPostReducer from './Timeline/submitPost';
 //Otherss
 import UserReducer from './user';
@@ -35,6 +36,7 @@ const AppReducers = combineReducers({
     submitService: SubmitServiceReducer,
     profile: ProfileReducer,
     friend: FriendItemReducer,
+    friend2: Friend2ItemReducer,
     matchmakingItem: MatchmakingItemReducer,
     commentItem: CommentItemReducer,
 });

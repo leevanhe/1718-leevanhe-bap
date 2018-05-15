@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import { URL } from '../../Config/index';
 import { Actions } from 'react-native-router-flux';
 
-const mapStateToProps = (state) => 
-({
+const mapStateToProps = (state) => ({
     isLoading: state.user.isLoading,
     error: state.user.error,
     data: state.user.data,

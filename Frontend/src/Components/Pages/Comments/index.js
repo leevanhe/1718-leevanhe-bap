@@ -31,7 +31,7 @@ class TimelineService extends Component {
           <ScrollView style={{flex: 1}}>
             {this.state.data != undefined? this.state.data.map((comment, i) => {
               return (
-                <View style={styles.container}>
+                <View key={i} style={styles.container}>
                   <View style={styles.containerUser}>
                     <View style={{marginRight: 10}}>
                       <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>

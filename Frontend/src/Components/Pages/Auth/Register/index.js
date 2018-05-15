@@ -20,33 +20,30 @@ class NewUserService extends Component {
             name: '',
             description: '',
             website: '',
-            employees: '',
+            employees: null,
             start: '',
         };
     }
-
-    componentDidMount() {}  
    
     componentWillReceiveProps(nextProps) {
         if(nextProps.error != undefined){
             this.error = nextProps.error;
-            this.errorActive = true;
         } 
     }
 
     submit = () => {
         let data = {
-            username: this.state.username,
-            password: this.state.password,
-            line1: this.state.line1,
-            city: this.state.city,
-            ZIP: this.state.ZIP,
-            country: this.state.country,
-            name: this.state.name,
-            description: this.state.description,
-            website: this.state.website,
-            employees: this.state.employees,
-            start: this.state.start,
+            line1:this.state.line1,
+            city:this.state.city,
+            username:this.state.username,
+            ZIP:this.state.ZIP,
+            country:this.state.country,
+            name:this.state.name,
+            description:this.state.description,
+            website:this.state.website,
+            employees:this.state.employees,
+            start:this.state.start,
+            password:this.state.password
         };
         this.props.register(JSON.stringify(data))
     }
@@ -67,10 +64,11 @@ class NewUserService extends Component {
                     <TextInput autoCapitalize="none" style={styles.textInput} placeholder = {'line1'} onChangeText ={(line1) => {this.setState({line1})}} />
                     <TextInput autoCapitalize="none" style={styles.textInput} placeholder = {'city'} onChangeText ={(city) => {this.setState({city})}} />
                     <TextInput autoCapitalize="none" style={styles.textInput} placeholder = {'ZIP'} onChangeText ={(ZIP) => {this.setState({ZIP})}} />
-                    <TextInput autoCapitalize="none" style={styles.textInput} placeholder = {'Country'} onChangeText ={(Country) => {this.setState({Country})}} />
+                    <TextInput autoCapitalize="none" style={styles.textInput} placeholder = {'Country'} onChangeText ={(country) => {this.setState({country})}} />
 
                     <TextInput autoCapitalize="none" style={styles.textInput} placeholder = {'name'} onChangeText ={(name) => {this.setState({name})}} />
                     <TextInput autoCapitalize="none" style={styles.textInput} placeholder = {'description'} onChangeText ={(description) => {this.setState({description})}} />
+
                     <TextInput autoCapitalize="none" style={styles.textInput} placeholder = {'website'} onChangeText ={(website) => {this.setState({website})}} />
                     <TextInput autoCapitalize="none" keyboardType='numeric' style={styles.textInput} placeholder = {'employees'} onChangeText ={(employees) => {this.setState({employees})}} />
                     <TextInput autoCapitalize="none" style={styles.textInput} placeholder = {'start'} onChangeText ={(start) => {this.setState({start})}} />

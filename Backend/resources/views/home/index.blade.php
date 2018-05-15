@@ -33,11 +33,11 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-calendar fa-5x"></i>
+                                <i class="fa fa-pie-chart fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">{{ $getEventsCount }}</div>
-                                <div>Events</div>
+                                <div class="huge">{{ $getCategoryCount }}</div>
+                                <div>Categories</div>
                             </div>
                         </div>
                     </div>

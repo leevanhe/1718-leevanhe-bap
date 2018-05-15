@@ -9,7 +9,7 @@ import Button from'../../../Others/Button/index';
 const logo = require('../../../../Assets/logo-enkel.png');
 import {Actions} from 'react-native-router-flux';
 
-class FriendItemService extends Component {
+class Friend2ItemService extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -18,7 +18,7 @@ class FriendItemService extends Component {
     }
 
     componentDidMount () {
-        this.props.fetchFriendItem(this.props.token, this.props.id, this.props.friendId)
+        this.props.fetchFriend2Item(this.props.token, this.props.id, this.props.friendesId)
     }
 
     componentWillReceiveProps (nextProps) {
@@ -84,7 +84,7 @@ class FriendItemService extends Component {
                                     <View style={{marginRight: 10}}>
                                         <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
                                     </View>
-                                    <TouchableOpacity onPress={() => {Actions.detailFriend2({'friendesId': c.id})}}>
+                                    <TouchableOpacity onPress={() => {Actions.detailFriend({'friendId': c.id})}}>
                                     <View style={{flex:1, justifyContent:'center'}}>
                                         <Text>{c.name}</Text>
                                         <Text>{c.id}</Text>
@@ -185,4 +185,4 @@ class FriendItemService extends Component {
   
 
 
-export default connect()(FriendItemService);
+export default connect()(Friend2ItemService);

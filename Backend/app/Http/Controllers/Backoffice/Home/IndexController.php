@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backoffice\Home;
 
 use App\User;
-use App\Event;
+use App\Category;
 use App\Post;
 use App\Startup;
 use App\Services;
@@ -24,7 +24,7 @@ class IndexController extends Controller
     {
         //count for topcards
         $getUsersCount = User::all()->count();
-        $getEventsCount = Event::all()->count();
+        $getCategoryCount = Category::all()->count();
         $getPostsCount = Post::all()->count();
         $getServicesCount = Services::all()->count();
 
@@ -46,6 +46,6 @@ class IndexController extends Controller
         //latest matchmakings
 
         //return view with data
-        return view ('home.index', compact('getUsersCount', 'getEventsCount', 'getServicesCount', 'getPostsCount', 'getRecentUsers', 'latestPosts','chart'));
+        return view ('home.index', compact('getUsersCount', 'getCategoryCount', 'getServicesCount', 'getPostsCount', 'getRecentUsers', 'latestPosts','chart'));
     }
 }

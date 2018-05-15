@@ -1,7 +1,6 @@
 import * as ActionTypes from '../actionTypes';
 import axios from 'axios';
 import NewUserService from '../../Components/Pages/Auth/Register/index';
-
 import { connect } from 'react-redux';
 import { URL } from '../../Config/index';
 import { Actions } from 'react-native-router-flux';
