@@ -23,6 +23,7 @@ import Friend from '../Screens/Timeline/detailfriend';
 import Friend2 from '../Screens/Timeline/detailfriend2';
 import Timeline from '../Screens/Timeline/Timeline';
 import NewPost from '../Screens/Timeline/NewPost';
+import Friends from '../Screens/Startups/Startups'
 
 //Profile
 import Profile from '../Screens/Profile/Profile';
@@ -48,6 +49,7 @@ const navigator = () => (
             <Scene key="newpost" component={NewPost} hideNavBar={true}/>
             <Scene key="detailFriend" component={Friend} hideNavBar={true}/>
             <Scene key="detailFriend2" component={Friend2} hideNavBar={true}/>
+            <Scene key="friends" component={Friends} hideNavBar={true}/>
             
             <Scene key="comments" component={Comments} hideNavBar={true}/>
             <Scene key="newcomment" component={NewComment} hideNavBar={true}/>

@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from '../../../Config/theme';
 import { Actions } from 'react-native-router-flux';
 import GenerateLoading from '../../Others/Loading/index';
+import Button from'../../Others/Button/index';
 
 class TimelineService extends Component {
   constructor(props) {
@@ -79,7 +80,9 @@ class TimelineService extends Component {
       )
     }
     return (
-      <GenerateLoading/>
+      <View style= {styles.button}>
+        <Button onPress={() => Actions.friends()}>Explore</Button>
+      </View>
     )
   }
 

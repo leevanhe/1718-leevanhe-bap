@@ -9,6 +9,18 @@ use App\Startup;
 
 class FriendController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index($id)
+    {
+        $startups = Startup::where('id', '!=', $id)->get();
+        
+        return $startups;
+    }
+
     public function addFriend($id, $friend_id)
     {
         $startup = Startup::where('id',$id)->first();
