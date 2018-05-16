@@ -57,6 +57,15 @@ export const MATCHMAKING_ITEM_PENDING    = 'matchmaking_item_pending';
 export const MATCHMAKING_ITEM_ERROR      = 'matchmaking_item_error';
 export const MATCHMAKING_ITEM_SUCCESS    = 'matchmaking_item_succes';
 
+
+export const CATEGORY_PENDING           = 'category_pending';
+export const CATEGORY_ERROR             = 'category_error';
+export const CATEGORY_SUCCES            = 'category_succes';
+
+export const CATEGORY_SUBMIT_PENDING         = 'category_submit_pending';
+export const CATEGORY_SUBMIT_ERROR           = 'category_submit_error';
+export const CATEGORY_SUBMIT_SUCCES          = 'category_submit_succes';
+
 /*** NEWSERVICE PAGE ***/
 export const NEWSERVICE_PENDING     = 'newservice_pending';
 export const NEWSERVICE_ERROR       = 'newservice_error';

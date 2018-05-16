@@ -7,6 +7,7 @@ import 'moment/locale/nl-be';
 import Colors from '../../../Config/theme';
 import {Actions} from 'react-native-router-flux';
 import GenerateLoading from '../../Others/Loading/index';
+import Button from'../../Others/Button/index';
 
 class MatchmakingService extends Component {
   constructor(props) {
@@ -23,13 +24,16 @@ class MatchmakingService extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.data.length > 0 && nextProps.error == undefined) {
-      this.setState({data: nextProps.data, isLoaded: true});
+      this.setState({
+        data: nextProps.data, 
+        isLoaded: true
+      });
     }
   }
 
   renderView () {
     if(this.state.isLoaded) {
-      return (
+      return (  
         <ScrollView style={{flex: 1}}>
             {this.state.data != undefined? this.state.data.map((a, i) => {
               return (
@@ -61,8 +65,10 @@ class MatchmakingService extends Component {
           </ScrollView>
       )
     }
-    return (
-      <GenerateLoading/>
+    return(
+      <View style= {styles.button}>
+        <Button onPress={() => Actions.category()}>Select categories</Button>
+      </View>
     )
   }
 
@@ -84,6 +90,12 @@ const styles = StyleSheet.create ({
         width: 40,
         height: 40,
   },
+  button: {
+    flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center'
+  }
 });
 
 export default connect()(MatchmakingService);

@@ -16,6 +16,7 @@ import NewComment from '../Screens/Comments/NewComment';
 import NewService from '../Screens/Matchmaking/NewMatchmaking';
 import Matchmaking from '../Screens/Matchmaking/Matchmaking';
 import MatchmakingDetail from '../Screens/Matchmaking/detailMatchmaking';
+import Category from '../Screens/Category/Category';
 
 //Timeline
 import Friend from '../Screens/Timeline/detailfriend';
@@ -53,6 +54,7 @@ const navigator = () => (
 
             <Scene key="newservice" component={NewService} hideNavBar={true}/>
             <Scene key="detailMatchmaking" component={MatchmakingDetail} hideNavBar={true}/>
+            <Scene key="category" component={Category} hideNavBar={true}/>
 
     
             <Scene 

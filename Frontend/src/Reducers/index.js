@@ -13,6 +13,8 @@ import SubmitCommentReducer from './Comments/submitComment';
 import MatchmakingReducer from './Matchmaking/matchmaking';
 import MatchmakingItemReducer from './Matchmaking/matchmakingItem';
 import SubmitServiceReducer from './Matchmaking/submitMatchmaking';
+import CategoryReducer from './Matchmaking/category';
+import SubmitCategoryReducer from './Matchmaking/categorySubmit';
 //Profile
 import ProfileReducer from './Profile/profile';
 //Timeline
@@ -28,8 +30,10 @@ const AppReducers = combineReducers({
     auth: authReducer,
     register: SubmitUserReducer,
     timeline: TimelineReducer,
+    category: CategoryReducer,
     user: UserReducer,
     submitPost: SubmitPostReducer,
+    submitCategory: SubmitCategoryReducer,
     submitComment: SubmitCommentReducer,
     comments: CommentsReducer,
     matchmaking: MatchmakingReducer,

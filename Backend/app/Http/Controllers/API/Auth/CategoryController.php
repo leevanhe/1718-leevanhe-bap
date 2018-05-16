@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\API\Matchmaking;
+namespace App\Http\Controllers\API\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Startup;
-use App\Services;
+use App\Category;
 
-class MatchmakingController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,22 +17,9 @@ class MatchmakingController extends Controller
      */
     public function index($id)
     {
-        $categories = Startup::where('id',$id)->first()->categories;
-        $data = [];
+        $categories = Category::all();
 
-        foreach($categories as $category){
-            $services =  $category->services()->with('startup')->get();
-
-            $obj = [];
-            $obj['category'] = $category;
-            $obj['services'] = $services;
-
-            $data[] = $obj;
-        }
-
-
-        return $data;
-        
+        return $categories;
     }
 
     /**
@@ -40,16 +27,14 @@ class MatchmakingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id, Request $request)
+    public function create($id, $category_id)
     {
-        $startup = Startup::where('id', $id)->first();
+        $startup = Startup::where('id',$id)->first();
+        $category = Category::find($category_id);
 
-        $service = new Services;
-        $service->title = $request->title;
-        $service->description = $request->description;
-        $service->city = $request->city;
-        $service->startup_id = $startup->id;
-        $service->save();
+        $addcategory = $startup->categories()->attach($category);
+
+        return $addcategory;
     }
 
     /**
@@ -69,11 +54,9 @@ class MatchmakingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id ,$eventid)
+    public function show($id)
     {
-        $service = Services::where('id',$eventid)->get();
-        
-        return $service;
+        //
     }
 
     /**

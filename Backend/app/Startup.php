@@ -40,6 +40,11 @@ class Startup extends Model
         return $this->belongsToMany(Category::class);
     }
 
+    public function addCategory(Startup $startup)
+	{
+		$this->categories()->attach($startup->id);
+	}
+
     public function user()
     {
        return $this->belongsTo(User::class); 
