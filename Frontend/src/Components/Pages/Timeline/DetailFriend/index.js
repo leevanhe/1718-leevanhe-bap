@@ -46,6 +46,7 @@ class FriendItemService extends Component {
                                 <Text style={styles.name}>{friend.name}</Text>
                                 <Text numberOfLines={4}>{friend.description}</Text>
                                 <Button onPress={() => this.test()}>Read more</Button>
+                                <Button onPress={() => {this.props.addFriend(this.props.token, this.props.id, this.newFriendId = friend.id);}}></Button> 
                             </View>
                         )
                     }): null}

@@ -62,7 +62,6 @@ export const categorySubmitSucces = () => ({
 })
 
 export const submitCategory = (token, id, categoryId) => {
-    console.log(`${URL}${id}/matchmaking/empty/${categoryId}`)
     return dispatch => {
         dispatch(categorySubmitPending())
         axios.post(`${URL}${id}/matchmaking/empty/${categoryId}`, null, {headers: {'Authorization': `Bearer ${token}`}})

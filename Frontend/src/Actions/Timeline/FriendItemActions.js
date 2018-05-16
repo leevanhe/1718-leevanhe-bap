@@ -14,7 +14,8 @@ const mapStateToProps = (state) => ({
 })
 
 const dispatchStateToProps = (dispatch) => ({
-    fetchFriendItem: (token, id, friendId) => dispatch(fetchFriendItem(token, id, friendId))
+    fetchFriendItem: (token, id, friendId) => dispatch(fetchFriendItem(token, id, friendId)),
+    addFriend: (token, id, newFriendId) => dispatch(addFriend(token, id, newFriendId))
 })
 
 export const friendItemPending = () => ({
@@ -43,5 +44,34 @@ export const fetchFriendItem = (token, id, friendId) => {
         })
     }
 }
+
+export const addFriendPending = () => ({
+    type: ActionTypes.ADDFRIEND_PENDING
+})
+
+export const addFriendError = (error) => ({
+    type: ActionTypes.ADDFRIEND_ERROR,
+    error: error
+})
+
+export const addFriendSucces = () => ({
+    type: ActionTypes.ADDFRIEND_SUCCESS
+})
+
+export const addFriend = (token, id, newFriendId) => {
+    console.log(`${URL}${id}/timeline/addfriend/${newFriendId}`)
+    return dispatch => {
+        dispatch(addFriendPending())
+        axios.post(`${URL}${id}/timeline/addfriend/${newFriendId}`, null, {headers: {'Authorization': `Bearer ${token}`}})
+        .then(response => {
+            dispatch(addFriendSucces());
+            Actions.timeline();
+        })
+        .catch(response => {
+            dispatch(addFriendError());
+        })
+    }
+}
+
 
 export default connect(mapStateToProps, dispatchStateToProps) (FriendItemService)

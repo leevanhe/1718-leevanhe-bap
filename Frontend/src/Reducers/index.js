@@ -23,6 +23,7 @@ import FriendItemReducer from './Timeline/friendItem';
 import Friend2ItemReducer from './Timeline/friend2Item';
 import SubmitPostReducer from './Timeline/submitPost';
 import FriendReducer from './Timeline/friends';
+import AddFriendReducer from './Timeline/addfriend';
 //Otherss
 import UserReducer from './user';
 
@@ -33,6 +34,7 @@ const AppReducers = combineReducers({
     timeline: TimelineReducer,
     allFriends: FriendReducer,
     category: CategoryReducer,
+    addFriend: AddFriendReducer,
     user: UserReducer,
     submitPost: SubmitPostReducer,
     submitCategory: SubmitCategoryReducer,

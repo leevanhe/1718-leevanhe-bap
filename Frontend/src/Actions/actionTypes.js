@@ -27,6 +27,10 @@ export const FRIENDS_PENDING    = 'friends_pending';
 export const FRIENDS_ERROR      = 'friends_error';
 export const FRIENDS_SUCCESS    = 'friends_succes';
 
+export const ADDFRIEND_PENDING    = 'addfriend_pending';
+export const ADDFRIEND_ERROR      = 'addfriend_error';
+export const ADDFRIEND_SUCCESS    = 'addfriend_succes';
+
 /*** NEWPOST PAGE ***/
 export const USER_PENDING           = 'user_pending';
 export const USER_ERROR             = 'user_error';
