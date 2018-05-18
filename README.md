@@ -31,6 +31,7 @@ recommendations. Vervolgens wordt alles netjes vastgelegd op je profiel om te la
 
 ## URL & logingegevens
 
-(http://188.166.63.130/ "StartMeUp backoffice")
+### Backoffice
+http://188.166.63.130/
 - login: Admin
 - pass: Admin
