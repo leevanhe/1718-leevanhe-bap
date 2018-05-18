@@ -34,7 +34,9 @@ class TimelineService extends Component {
               return (
                 a.posts.map((p, i) => {
                   return (
-                    <View key={i} style={styles.container}>
+                    <View
+                     style={styles.container}
+                     key={i} >
 
                       <View style={styles.containerUser}>
                         <View style={{marginRight: 10}}>
@@ -94,12 +96,20 @@ class TimelineService extends Component {
 }
 
 const styles = StyleSheet.create ({
-  container: {
+  lastContainer: {
         flex: 1,
         padding: 20,
         marginTop: 20,
+        marginBottom: 20,
         backgroundColor: Colors.white,
   },
+
+  container: {
+    flex: 1,
+    padding: 20,
+    marginTop: 20,
+    backgroundColor: Colors.white,
+},
 
   containerUser: {
     flex :1, 

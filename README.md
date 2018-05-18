@@ -1,6 +1,13 @@
 StartMeUp
 ==================================
 
+StartMeUp is een online sociaal platform voor startups. Of het nu een bakkerij is, een eventbureau of kledinglijn. StartMeUp is voor  iedereen die geïntereseerd is in ondernemen, zijn onderneming wil laten groeien en hierbij zijn netwerk wil uitbreiden.
+ 
+Het is een beetje zoals een traditioneel netwerkevent waar je andere startups ontmoet, een beetje praat over wat je onderneming inhoudt. Op StartMeUp voeg je echter “connecties” toe, je wordt op de hoogte gehouden door updates op de timeline. Dit varieert van milestones tot 
+recommendations. Vervolgens wordt alles netjes vastgelegd op je profiel om te laten zien aan andere startups.
+
+## Mappenstuctuur
+
     .
     ├── Backend/					# Backend created with Laravel 5.5
     ├── Docs/
@@ -22,14 +29,8 @@ StartMeUp
 
 ## Deploy
 
-### Clone
+## URL & logingegevens
 
-```
-$ cd ~/Code/
-```
-
-```
-$ git clone https://github.com/leevanhe/1718-leevanhe-bap.git
-```
-
-### Install required packages
+(http://188.166.63.130/ "StartMeUp backoffice")
+- login: Admin
+- pass: Admin
