@@ -57,7 +57,7 @@ class NewServiceService extends Component {
                 <View style={styles.container}>
                     {this.state.data != undefined? this.state.data.map((user, i) => {
                         return (
-                            <View style={{flex:1}}>
+                            <View key={i} style={{flex:1}}>
                                 <View style= {{flex: 1, flexDirection: 'row',}}>
                                     <View style={{marginRight: 10}}>
                                         <Image style={styles.avatarSmall} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
@@ -67,16 +67,10 @@ class NewServiceService extends Component {
                                     </View>
                                 </View>
 
-                                <View style={{flex: 1}}>
-                                    <TextInput
-                                    placeholder = {'title'}
-                                    onChangeText ={(title) => {this.setState({title})}} />
-                                    <TextInput
-                                    placeholder = {'description'}
-                                    onChangeText ={(description) => {this.setState({description})}} />
-                                    <TextInput
-                                    placeholder = {'city'}
-                                    onChangeText ={(city) => {this.setState({city})}} />
+                                <View style={{flex: 8}}>
+                                    <TextInput autoFocus={true} placeholder={'title'} style={{borderBottomWidth: 1, borderColor: Colors.gray, paddingBottom: 10}} onChangeText={(title) => {this.setState({title})}} />
+                                    <TextInput placeholder={'description'} style={{borderBottomWidth: 1, borderColor: Colors.gray, paddingBottom: 10, marginTop: 25}} onChangeText={(description) => {this.setState({description})}} />
+                                    <TextInput placeholder={'city'} style={{borderBottomWidth: 1, borderColor: Colors.gray, paddingBottom: 10, marginTop: 25}} onChangeText={(city) => {this.setState({city})}} />
                                 </View>
                             </View>
                             

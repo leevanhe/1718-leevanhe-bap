@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, ScrollView, View, ActivityIndicator,ListView,  TouchableOpacity, Image, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, Alert } from 'react-native';
 import { connect }from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from '../../../../Config/theme';
+import ValidationComponent from 'react-native-form-validator';
 
 const logo = require('../../../../Assets/logo-enkel.png');
 import {Actions} from 'react-native-router-flux';
 
-class NewPostService extends Component {
+
+class NewPostService extends ValidationComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -27,9 +29,20 @@ class NewPostService extends Component {
     }
 
     submit = () => {
+        this.validate({
+            description: {minlength:3, maxlength:255, required: true},
+        });
+
         let data = {
             description: this.state.description
         };
+
+        if(Boolean(this.getErrorMessages())) {
+            Alert.alert(
+                this.getErrorMessages()
+            )
+        }
+
         this.props.submitPost(this.props.token, this.props.id, JSON.stringify(data))
     }
 
@@ -64,7 +77,7 @@ class NewPostService extends Component {
                                     </View>
                                 </View>
                                 <View style={{flex:8}}>
-                                    <TextInput placeholder = {'Share something with your network'} onChangeText ={(description) => {this.setState({description})}} />
+                                    <TextInput autoFocus={true} style={{borderBottomWidth: 1, borderColor: Colors.gray, paddingBottom: 10}} placeholder = {'Share something with your network'} onChangeText ={(description) => {this.setState({description})}} />
                                 </View>
                             </View> 
                         )

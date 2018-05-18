@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, TextInput, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { connect }from 'react-redux';
-
+import { Actions } from 'react-native-router-flux';
 import Colors from '../../../Config/theme';
 import GenerateLoading from '../../Others/Loading/index';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -50,7 +50,7 @@ class ProfileService extends Component {
                     </View>
 
 
-                    {this.state.data.realisations != undefined ? this.state.data.realisations.map((r, i) =>{
+                    {this.state.data.realisations > 0 ? this.state.data.realisations.map((r, i) =>{
                         return (
                             <View key={i} style={{flex: 1, flexDirection: 'row', marginTop:10}}>
                                 <View style={{marginRight: 10}}>
@@ -62,14 +62,19 @@ class ProfileService extends Component {
                                 </View>
                             </View>
                         )
-                    }): null}
+                    }):
+                    <View style={styles.textmessage}>
+                        <Text>There are no realisations</Text>
+                        <Button onPress={() => this.test()}>Add a realisation</Button>
+                    </View>
+                    }
                 </View>
 
                 <View style={styles.div}>
                     <View style={{alignItems:'center'}}>
                         <Text style={styles.title}>Connections</Text>
                     </View>
-                    {this.state.data.connections != undefined ? this.state.data.connections.map((c, i) =>{
+                    {this.state.data.connections > 0 ? this.state.data.connections.map((c, i) =>{
                         return (
                             <View key={i} style={{flex: 1, flexDirection: 'row', marginTop:10}}>
                                 <View style={{marginRight: 10}}>
@@ -81,7 +86,11 @@ class ProfileService extends Component {
                                 </View>
                             </View>
                         )
-                    }): null}
+                    }):
+                    <View style={styles.textmessage}>
+                        <Text>There are no connections</Text>
+                        <Button onPress={() => Actions.friends()}>Expand your network</Button>
+                    </View>}
                 </View>
 
                 <View style={styles.divRed}>
@@ -114,6 +123,11 @@ const styles = StyleSheet.create ({
         marginTop: 110,
         backgroundColor: Colors.white,
         alignItems: 'center'
+    },
+    textmessage: {
+        flex: 1,
+        alignItems: 'center',
+        marginTop: 20
     },
     avatar: {
         width: 110,

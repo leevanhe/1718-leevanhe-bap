@@ -13,7 +13,6 @@
 
 Route::middleware('auth')->group(function() {
     Route::get('/dashboard', 'Backoffice\Home\IndexController@index');
-
     Route::resource('/users', 'Backoffice\User\UserController');
     Route::resource('/realisations', 'Backoffice\Realisation\RealisationController');
     Route::resource('/events', 'Backoffice\Event\EventController');
@@ -23,7 +22,7 @@ Route::middleware('auth')->group(function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::get('/login', 'Auth\LoginController@index')->name('login');
+Route::get('/', 'Auth\LoginController@index')->name('login');
 Route::post('/authenticate', 'Auth\LoginController@authenticate')->name('authenticate');
 
 

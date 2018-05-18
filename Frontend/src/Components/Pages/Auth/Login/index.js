@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { connect }from 'react-redux';
 import Colors from '../../../../Config/theme';
 
@@ -18,23 +18,26 @@ class LoginService extends Component {
     if(nextProps.error != undefined){
       this.error = nextProps.error;
       this.errorActive = true;
+        Alert.alert(this.error)
     } 
   }
-  
-      render() {
-        return (
-          <View  style={styles.container}>
-            {this.errorActive == true ? <Text style={styles.error}>{this.error}</Text> : null}
 
-            <TextInput placeholder="username" autoCapitalize="none" style={styles.textInput} onChangeText={(username) => {this.setState({username})}} value={this.state.username}/>
-            <TextInput placeholder="password" autoCapitalize="none" secureTextEntry={true} style={styles.textInput} onChangeText={(password) => this.setState({password})} value={this.state.password}/>
+  submit = () => {
+    this.props.login(JSON.stringify(this.state));
+  }
 
-            <TouchableOpacity style={styles.btn} onPress={() => {this.props.login(JSON.stringify(this.state)); }}>
-              <Text style={styles.btnText}>Login</Text>
-            </TouchableOpacity>
-          </View>
-        );
-      }
+  render() {
+    return (
+      <View  style={styles.container}>
+        <TextInput placeholder="username" autoCapitalize="none" style={styles.textInput} onChangeText={(username) => {this.setState({username})}} value={this.state.username}/>
+        <TextInput placeholder="password" autoCapitalize="none" secureTextEntry={true} style={styles.textInput} onChangeText={(password) => this.setState({password})} value={this.state.password}/>
+
+        <TouchableOpacity style={styles.button} onPress={() => {this.props.login(JSON.stringify(this.state))}}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -52,23 +55,14 @@ const styles = StyleSheet.create({
       padding: 10,
       backgroundColor: 'white'
   },
-  error: {
-      color: '#efefef',
-      textAlign: 'center',
-      fontWeight: '800',
-      marginTop: 10,
-      marginBottom: 10,
-      backgroundColor: 'red',
-      padding: 5
-  },
-  btn: {
+  button: {
       alignItems: 'center',
       backgroundColor: Colors.white,
       padding: 10,
       marginTop: 20,
       width: 300,
   },
-  btnText: {
+  buttonText: {
       fontSize: 20,
       color: Colors.red,
   }

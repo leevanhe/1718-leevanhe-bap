@@ -30,7 +30,7 @@ class TimelineService extends Component {
     if(this.state.isLoaded) {
       return (
         <ScrollView style={{flex: 1}}>
-            {this.state.data != undefined? this.state.data.map((a, i) => {
+            {this.state.data != undefined ? this.state.data.map((a, i) => {
               return (
                 a.posts.map((p, i) => {
                   return (
@@ -81,7 +81,7 @@ class TimelineService extends Component {
     }
     return (
       <View style= {styles.button}>
-        <Button onPress={() => Actions.friends()}>Explore</Button>
+        <Button onPress={() => Actions.friends()}>Expand your network</Button>
       </View>
     )
   }
@@ -131,6 +131,12 @@ const styles = StyleSheet.create ({
   buttonRight: {
     marginRight: 25,
     paddingTop: 5
+  },
+  button: {
+    flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center'
   }
 });
 
