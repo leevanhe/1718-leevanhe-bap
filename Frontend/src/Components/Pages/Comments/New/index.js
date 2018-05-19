@@ -31,8 +31,6 @@ class NewCommentService extends Component {
         description: this.state.description
     };
 
-    
-
     this.props.submitComment(this.props.token, this.props.id,  this.props.postId, JSON.stringify(data))
     }
 
@@ -53,8 +51,8 @@ class NewCommentService extends Component {
                 </TouchableOpacity>
             </View>
 
-            <View style={{flex:1}}>
-                <TextInput placeholder = {'leave a comment'} onChangeText ={(description) => {this.setState({description})}} />
+            <View style={styles.container}>
+                <TextInput autoFocus={true} style={{borderBottomWidth: 1, borderColor: Colors.gray, paddingBottom: 10}} placeholder = {'leave a comment'} onChangeText ={(description) => {this.setState({description})}} />
             </View>
         </View>
     )

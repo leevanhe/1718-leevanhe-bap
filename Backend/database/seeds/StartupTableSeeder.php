@@ -14,14 +14,14 @@ class StartupTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::where(['username' => 'leevanhe'])->first();
-        $adress = Adresses::where(['line1' => 'Gentdam 27'])->first();
+        $user = User::where(['username' => 'Admin'])->first();
+        $adress = Adresses::where(['line1' => 'Industrieweg 232'])->first();
         DB::table('startups')->insert([
-            'name' => 'SeakClothing',
-            'description' => 'dit is een beschrijving',
+            'name' => 'Test bedrijf',
+            'description' => 'De Arteveldehogeschool is een katholieke hogeschool. De Arteveldehogeschool in Gent biedt diverse bacheloropleidingen aan, alsook bachelor-na-bacheloropleidingen, postgraduaten en bijscholingen en studiedagen.',
             'avatar' => '1.jpg',
-            'website' => 'http://www.seak-clothing.be',
-            'employees' => 2,
+            'website' => 'https://www.arteveldehogeschool.be/',
+            'employees' => 90,
             'start' => '2016-06-16',
             'adresses_id' => $adress->id,
             'user_id' => $user->id,

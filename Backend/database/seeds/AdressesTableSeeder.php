@@ -12,9 +12,9 @@ class AdressesTableSeeder extends Seeder
     public function run()
     {
         DB::table('adresses')->insert([
-            'line1' => 'Gentdam 27',
-            'city' => 'Lokeren',
-            'ZIP' => '9160',
+            'line1' => 'Industrieweg 232',
+            'city' => 'Gent',
+            'ZIP' => '9030',
             'country' => 'Belgium'
         ]);
 

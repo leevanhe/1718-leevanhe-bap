@@ -64,7 +64,6 @@ class ProfileController extends Controller
             }
         }
 
-        // Merge all info into one pretty object.
         $data['startups'] =  $startup;
         $data['connections'] =  $connections;
         $data['realisations'] =  $realisations;

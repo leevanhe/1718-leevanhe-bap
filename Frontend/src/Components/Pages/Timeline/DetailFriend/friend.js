@@ -5,6 +5,7 @@ import * as ActionTypes from '../../../../Actions/actionTypes';
 import { connect } from 'react-redux';
 import Colors from '../../../../Config/theme';
 import Button from'../../../Others/Button/index';
+import Collapsible from 'react-native-collapsible';
 
 const logo = require('../../../../Assets/logo-enkel.png');
 import {Actions} from 'react-native-router-flux';
@@ -14,6 +15,7 @@ class Friend2ItemService extends Component {
 		super(props);
 		this.state = {
             data: {},
+            collapsed: true
 		}
     }
 
@@ -27,6 +29,10 @@ class Friend2ItemService extends Component {
           } 
     }
 
+    _toggleExpanded = () => {
+        this.setState({ collapsed: !this.state.collapsed });
+      };
+
 	render() {
 			return (
 			<View style={{flex: 1}}>
@@ -34,9 +40,12 @@ class Friend2ItemService extends Component {
                     <TouchableOpacity style={{ marginLeft: 10, paddingTop:5}} onPress={() => Actions.timeline()}>
                         <Icon name="chevron-left" size={30} color="#FFF"/>
                     </TouchableOpacity>
-                    <View style={{flex:1, alignItems: 'center', marginRight: 30}}>
+                    <View style={{flex:1, alignItems: 'center', marginLeft: 15}}>
                         <Image source={logo} style={styles.logo} />
                     </View>
+                    <TouchableOpacity style={{marginRight: 20, paddingTop:7}} onPress={() => {this.props.addFriend(this.props.token, this.props.id, this.newFriendId = friend.id);}}>
+                        <Icon name="plus" size={25} color={Colors.white}/>
+                    </TouchableOpacity>
                 </View>
                 <ScrollView style= {{flex: 1}}>
                     {this.state.data.connection != undefined? this.state.data.connection.map((friend, i) => {
@@ -45,7 +54,20 @@ class Friend2ItemService extends Component {
                                 <Image style={styles.avatar} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
                                 <Text style={styles.name}>{friend.name}</Text>
                                 <Text numberOfLines={4}>{friend.description}</Text>
-                                <Button onPress={() => this.test()}>Read more</Button>
+                                <TouchableOpacity onPress={this._toggleExpanded} style={styles.button}>
+                                        <Text style={styles.buttonText}>Read more</Text>
+                                </TouchableOpacity>
+                                <Collapsible collapsed={this.state.collapsed} align='center'>
+                                    <View style={{flex: 1, flexDirection: 'row', marginTop: 10, marginBottom: 10}}>
+                                        <Icon style={{marginRight: 5}} name="users" size={20} color={Colors.orange}/>
+                                        <Text style={{marginRight:60}}>{friend.employees}</Text>
+                                        <Icon style={{marginRight: 5, marginLeft: 60}} name="calendar" size={20} color={Colors.orange}/>
+                                        <Text>{friend.start}</Text>
+                                    </View>
+                                    <View style={{flex:1,alignItems: 'center'}}>
+                                    <Text>Website: {friend.start}</Text>
+                                    </View>
+                                </Collapsible>
                             </View>
                         )
                     }): null}
@@ -87,7 +109,6 @@ class Friend2ItemService extends Component {
                                     <TouchableOpacity onPress={() => {Actions.detailFriend({'friendId': c.id})}}>
                                     <View style={{flex:1, justifyContent:'center'}}>
                                         <Text>{c.name}</Text>
-                                        <Text>{c.id}</Text>
                                         <Text numberOfLines={1}>{c.description}</Text>
                                     </View>
                                     </TouchableOpacity>
@@ -181,6 +202,17 @@ class Friend2ItemService extends Component {
         width: 60,
         height: 60,
     },
+    button: {
+        marginTop: 10,
+        paddingBottom: 10,
+        paddingTop: 5,
+    },
+    buttonText: {
+        textAlign: 'center',
+    },
+    content: {
+        padding: 20,
+    }  
 });
   
 

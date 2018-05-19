@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,  } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, TextInput, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { connect }from 'react-redux';
 import { Actions } from 'react-native-router-flux';
@@ -6,12 +6,14 @@ import Colors from '../../../Config/theme';
 import GenerateLoading from '../../Others/Loading/index';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Button from'../../Others/Button/index';
+import Collapsible from 'react-native-collapsible';
 
 class ProfileService extends Component {
   constructor(props) {
         super(props);
         this.state = {
           data: {},
+          collapsed: true
         }
         loading = false;
   }
@@ -26,20 +28,34 @@ class ProfileService extends Component {
     }   
   }
 
-  test() {
-      console.log('tested');
-  }
+  _toggleExpanded = () => {
+    this.setState({ collapsed: !this.state.collapsed });
+  };
 
   render() {
     return (
         <ScrollView style={{flex: 1}}>
+
                 {this.state.data.startups != undefined ? this.state.data.startups.map((startup, i) => {
                     return (
                         <View key={i} style={styles.info}>
                             <Image style={styles.avatar} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
                             <Text style={styles.name}>{startup.name}</Text>
                             <Text>{startup.description}</Text>
-                            <Button onPress={() => this.test()}>Read more</Button>
+                            <TouchableOpacity onPress={this._toggleExpanded} style={styles.button}>
+                                    <Text style={styles.buttonText}>Read more</Text>
+                            </TouchableOpacity>
+                            <Collapsible collapsed={this.state.collapsed} align='center'>
+                                <View style={{flex: 1, flexDirection: 'row', marginTop: 10, marginBottom: 10}}>
+                                    <Icon style={{marginRight: 5}} name="users" size={20} color={Colors.orange}/>
+                                    <Text style={{marginRight:60}}>{startup.employees}</Text>
+                                    <Icon style={{marginRight: 5, marginLeft: 60}} name="calendar" size={20} color={Colors.orange}/>
+                                    <Text>{startup.start}</Text>
+                                </View>
+                                <View style={{flex:1,alignItems: 'center'}}>
+                                <Text>Website: {startup.website}</Text>
+                                </View>
+                            </Collapsible>
                         </View>
                     )
                 }): null}
@@ -50,7 +66,7 @@ class ProfileService extends Component {
                     </View>
 
 
-                    {this.state.data.realisations > 0 ? this.state.data.realisations.map((r, i) =>{
+                    {this.state.data.realisations != undefined ? this.state.data.realisations.map((r, i) =>{
                         return (
                             <View key={i} style={{flex: 1, flexDirection: 'row', marginTop:10}}>
                                 <View style={{marginRight: 10}}>
@@ -74,7 +90,7 @@ class ProfileService extends Component {
                     <View style={{alignItems:'center'}}>
                         <Text style={styles.title}>Connections</Text>
                     </View>
-                    {this.state.data.connections > 0 ? this.state.data.connections.map((c, i) =>{
+                    {this.state.data.connections != undefined ? this.state.data.connections.map((c, i) =>{
                         return (
                             <View key={i} style={{flex: 1, flexDirection: 'row', marginTop:10}}>
                                 <View style={{marginRight: 10}}>
@@ -127,7 +143,7 @@ const styles = StyleSheet.create ({
     textmessage: {
         flex: 1,
         alignItems: 'center',
-        marginTop: 20
+        marginTop: 5
     },
     avatar: {
         width: 110,
@@ -172,8 +188,18 @@ const styles = StyleSheet.create ({
     },
     error: {
         alignItems: 'center'
-    }
-    
+    },
+    button: {
+        marginTop: 10,
+        paddingBottom: 10,
+        paddingTop: 5,
+    },
+    buttonText: {
+        textAlign: 'center',
+    },
+    content: {
+        padding: 20,
+    }    
 });
 
 export default connect()(ProfileService);

@@ -27,11 +27,16 @@ recommendations. Vervolgens wordt alles netjes vastgelegd op je profiel om te la
 - Keuzeoptie: **New Media Development**
 - Opleidingsinstelling: **Arteveldehogeschool**
 
-## Deploy
+## Url & logingegevens
 
-## URL & logingegevens
+link naar de [Backoffice](http://188.166.63.130/
+- login: Admin
+- pass: Admin
 
-### Backoffice
-http://188.166.63.130/
+Clientside (enkel voor IOS apparaten):
+- Download [TestFlight](https://itunes.apple.com/be/app/testflight/id899247664?l=nl&mt=8)
+- Redeem de code die u via mail heeft ontvangen
+- Open StartMeUp.Bachelorproef
+
 - login: Admin
 - pass: Admin
