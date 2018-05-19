@@ -1,6 +1,8 @@
 StartMeUp
 ==================================
 
+<img src="https://user-images.githubusercontent.com/14766149/40258569-44c250c6-5af2-11e8-86d0-1569221c9020.png" width="50"/>
+
 StartMeUp is een online sociaal platform voor startups. Of het nu een bakkerij is, een eventbureau of kledinglijn. StartMeUp is voor  iedereen die geïntereseerd is in ondernemen, zijn onderneming wil laten groeien en hierbij zijn netwerk wil uitbreiden.
  
 Het is een beetje zoals een traditioneel netwerkevent waar je andere startups ontmoet, een beetje praat over wat je onderneming inhoudt. Op StartMeUp voeg je echter “connecties” toe, je wordt op de hoogte gehouden door updates op de timeline. Dit varieert van milestones tot 
